@@ -1,0 +1,19 @@
+$bg-color: #f8f9f9;
+
+$pink: #ff51a8;
+$pink-light: #FCBDDC;
+$green: #5de8d1;
+$green-darker: #4ec4b0;
+$green-light: #DFFAF5;
+$yellow: #fff27d;
+
+.title {
+  font-family: "QuickSand-bold";
+  &--primary {
+    font-size: 30px;
+  }
+
+  &--secondary {
+    font-size: 20px;
+  }
+}
