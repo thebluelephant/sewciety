@@ -1,0 +1,14 @@
+@import "./Global.scss";
+
+.quick-access {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+
+  .title {
+    margin-bottom: 15px;
+  }
+
+}
