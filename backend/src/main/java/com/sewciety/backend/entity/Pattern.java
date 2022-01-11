@@ -2,7 +2,6 @@ package com.sewciety.backend.entity;
 
 import javax.persistence.*;
 
-import org.hibernate.type.descriptor.sql.VarcharTypeDescriptor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
