@@ -1,6 +1,8 @@
 package com.sewciety.backend.controllers;
 
+import org.hibernate.annotations.Any;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,9 +15,8 @@ import java.util.Optional;
 
 import com.sewciety.backend.entity.Pattern;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+@CrossOrigin(origins = "http://localhost:8082")
 @RestController
 @RequestMapping("/api/pattern")
 public class PatternController {
@@ -28,6 +29,11 @@ public class PatternController {
         return patternRepository.findAll(); // Returns all patterns!
     }
 
+    @GetMapping("/brands")
+    public List<String> find() {
+        return patternRepository.getBrands();
+    }
+
     @GetMapping()
     public List<Pattern> findPatternByNameOrBrand(@RequestParam("input") Optional<String> input,
             @RequestParam("brand") Optional<String> brand) {
@@ -38,7 +44,6 @@ public class PatternController {
         } else {
             return patternRepository.findPatternByInputAndBrand(input, brand);
         }
-
     }
 
 }
