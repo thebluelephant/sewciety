@@ -12,6 +12,9 @@ import com.sewciety.backend.entity.Pattern;
 @Repository
 public interface PatternRepository extends JpaRepository<Pattern, Long> {
 
+    @Query(value = "SELECT DISTINCT p.brand from Pattern p")
+    List<String> getBrands();
+
     @Query(value = "SELECT p from Pattern p WHERE p.name LIKE %:input% OR p.brand LIKE %:input%")
     List<Pattern> findPatternByInput(Optional<String> input);
 
