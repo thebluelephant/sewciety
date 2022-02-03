@@ -13,7 +13,6 @@ public class Pattern {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
-
     @Column(name = "brand")
     private String brand;
     @Column(name = "description")

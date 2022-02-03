@@ -22,4 +22,7 @@ public interface PatternRepository extends JpaRepository<Pattern, Long> {
     List<Pattern> findPatternByInputAndBrand(Optional<String> input, Optional<String> brand);
 
     List<Pattern> findPatternByBrandContaining(Optional<String> brand);
+
+    @Query(value = "SELECT p from Pattern p WHERE p.id = :id ")
+    Pattern findPatternById(Integer id);
 }
