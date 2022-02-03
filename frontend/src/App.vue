@@ -1,6 +1,12 @@
 <template>
   <span>
-    <BurgerMenu />
+    <div class="menu">
+      <svg @click="toggleMenu">
+        <use class="open-icon" xlink:href="#burgerMenu" />
+      </svg>
+
+      <BurgerMenu @hide-menu="toggleMenu" :showMenu="showMenu" />
+    </div>
     <router-view />
   </span>
 </template>
@@ -11,6 +17,21 @@ export default {
   name: "App",
   components: {
     BurgerMenu,
+  },
+  data() {
+    return {
+      showMenu: false,
+    };
+  },
+  methods: {
+    toggleMenu() {
+      this.showMenu = !this.showMenu;
+    },
+  },
+  watch: {
+    $route() {
+      this.showMenu = false;
+    },
   },
 };
 </script>
@@ -47,5 +68,19 @@ export default {
   left: 0;
   right: 0;
   padding: 15px;
+  background: #efefef;
+
+  .menu {
+    height: 30px;
+    display: flex;
+
+    svg {
+      height: 25px;
+      width: 25px;
+    }
+    .open-icon {
+      fill: $green;
+    }
+  }
 }
 </style>

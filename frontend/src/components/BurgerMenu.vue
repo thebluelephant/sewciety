@@ -1,22 +1,16 @@
 <template>
-  <div class="burger-menu">
-    <div class="burger-menu__close-button">
-      <svg v-on:click="show = !show">
-        <use class="icon" xlink:href="#burgerMenu" />
-      </svg>
-    </div>
-
+  <div class="burger-menu" v-if="showMenu">
     <transition name="slide-fade">
-      <div class="container" v-if="show">
+      <div class="container" v-if="showMenu">
         <div class="container__close-button">
-          <svg v-on:click="show = !show">
+          <svg @click="hideMenu()">
             <use class="icon" xlink:href="#close" />
           </svg>
         </div>
         <ul>
           <router-link class="container__routerlink" to="/" exact>
             <span class="routerlink__box">
-              <svg v-on:click="show = !show">
+              <svg>
                 <use class="icon" xlink:href="#home" />
               </svg>
               <span>Accueil</span>
@@ -24,7 +18,7 @@
           </router-link>
           <router-link class="container__routerlink" to="/research" exact>
             <span class="routerlink__box">
-              <svg v-on:click="show = !show">
+              <svg>
                 <use class="icon" xlink:href="#search" />
               </svg>
               <span>Recherche</span>
@@ -32,7 +26,7 @@
           >
           <router-link class="container__routerlink" to="/inventory" exact>
             <span class="routerlink__box">
-              <svg v-on:click="show = !show">
+              <svg>
                 <use class="icon" xlink:href="#inventory" />
               </svg>
               <span>Inventaire</span>
@@ -40,7 +34,7 @@
           >
           <router-link class="container__routerlink" to="/tools" exact>
             <span class="routerlink__box">
-              <svg v-on:click="show = !show">
+              <svg>
                 <use class="icon" xlink:href="#tool" />
               </svg>
               <span>Outils</span>
@@ -55,11 +49,18 @@
 <script>
 export default {
   name: "BurgerMenu",
+  props: ["showMenu"],
   components: {},
   data() {
     return {
       show: false,
     };
+  },
+  methods: {
+    hideMenu() {
+      console.log("coucou");
+      this.$emit("hide-menu");
+    },
   },
 };
 </script>

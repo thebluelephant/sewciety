@@ -1,11 +1,24 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Homepage from "../pages/Homepage.vue";
+import Researchpage from "../pages/Researchpage.vue";
+import PatternPage from "../pages/PatternPage.vue"
 
 const routes = [
   {
     path: "/",
     name: "Homepage",
     component: Homepage,
+  },
+  {
+    path: "/research",
+    name: "Research",
+    component: Researchpage,
+    props : () => ({research : "", brand : ""})
+  },
+  {
+    path: "/pattern/:id",
+    name: "Patternpage",
+    component: PatternPage,
   },
   /* 
   {
