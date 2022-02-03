@@ -1,0 +1,18 @@
+@import "./Global.scss";
+
+.research-page {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  overflow: auto;
+
+  &__research {
+    width: 100%;
+  }
+
+  &__pattern-card {
+    margin: 0 15px 10px 0;
+  }
+}

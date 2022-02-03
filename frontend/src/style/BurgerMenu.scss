@@ -7,6 +7,7 @@
   top: 0;
   left: 0;
   font-weight: bold;
+  z-index: 3;
   
   &__close-button {
     height: 40px;
@@ -14,10 +15,6 @@
     position: absolute;
     left: 10px;
     top: 10px;
-
-    .icon {
-      fill: $green;
-    }
   }
 
   .slide-fade-enter-active,
@@ -29,6 +26,7 @@
   }
   .slide-fade-leave-active {
     transform: translateX(-300px);
+
   }
   .container {
     position: absolute;
@@ -38,6 +36,7 @@
     background-color: $green;
     height: 100%;
     width: 100%;
+    z-index: 0;
 
     ul {
       list-style: none;

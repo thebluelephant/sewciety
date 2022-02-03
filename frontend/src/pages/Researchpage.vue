@@ -1,0 +1,51 @@
+<template>
+  <div class="research-page">
+    <span class="research-page__research">
+      <pattern-research :minimized="true" @research-pattern="searchPattern" />
+    </span>
+    <pattern-card
+      v-for="pattern in patterns"
+      :key="pattern.id"
+      :title="pattern.name"
+      :img="pattern.imageUrl"
+      :id="pattern.id"
+      class="research-page__pattern-card"
+    />
+    <p v-if="!this.patterns.length">Aucun patron disponible</p>
+  </div>
+</template>
+
+<script>
+import PatternCard from "../components/PatternCard.vue";
+import PatternResearch from "../components/PatternResearch.vue";
+import { apiCall } from "../services/patterns-api";
+
+export default {
+  components: { PatternCard, PatternResearch },
+  name: "Research",
+  data() {
+    return {
+      patterns: [],
+    };
+  },
+  methods: {
+    searchPattern(researchTerm, brandTerm) {
+      const research = researchTerm ?? this.$route.query.research;
+      const brand = brandTerm ?? this.$route.query.brand;
+
+      apiCall.searchPattern(research, brand).then((resp) => {
+        if (resp.length) {
+          this.patterns = resp;
+        }
+      });
+    },
+  },
+  beforeMount() {
+    this.searchPattern();
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+@import "../style/Researchpage";
+</style>
