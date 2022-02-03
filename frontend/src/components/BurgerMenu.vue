@@ -58,7 +58,6 @@ export default {
   },
   methods: {
     hideMenu() {
-      console.log("coucou");
       this.$emit("hide-menu");
     },
   },
