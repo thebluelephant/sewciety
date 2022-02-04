@@ -1,16 +1,18 @@
 <template>
   <div class="research-page">
     <span class="research-page__research">
-      <pattern-research :minimized="true" @research-pattern="searchPattern" />
+      <PatternResearch :minimized="true" @research-pattern="searchPattern" />
     </span>
-    <pattern-card
-      v-for="pattern in patterns"
-      :key="pattern.id"
-      :title="pattern.name"
-      :img="pattern.imageUrl"
-      :id="pattern.id"
-      class="research-page__pattern-card"
-    />
+    <span class="research-page__cards">
+      <PatternCard
+        v-for="pattern in patterns"
+        :key="pattern.id"
+        :title="pattern.name"
+        :img="pattern.imageUrl"
+        :id="pattern.id"
+        class="card"
+      />
+    </span>
     <p v-if="!this.patterns.length">Aucun patron disponible</p>
   </div>
 </template>

@@ -18,6 +18,17 @@ export const apiCall = {
       });
   },
 
+  searchPatternById : function(id) {
+    return axios
+      .get(`${apiUrl}/pattern/${id}`)
+      .then((response) => {
+        if (response.status === 200) {
+          return response.data;
+        } else console.log("Search Pattern by ID : A problem happened", response);
+      });
+  },
+
+  // Get list of brands
   getBrands: function() {
     return axios.get(`${apiUrl}/pattern/brands`).then((response) => {
       if (response.status === 200) {

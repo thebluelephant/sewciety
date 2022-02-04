@@ -4,7 +4,6 @@
       <svg @click="toggleMenu">
         <use class="open-icon" xlink:href="#burgerMenu" />
       </svg>
-
       <BurgerMenu @hide-menu="toggleMenu" :showMenu="showMenu" />
     </div>
     <router-view />
@@ -57,7 +56,7 @@ export default {
 }
 
 #app {
-  font-family: QuickSand-book;
+  font-family: QuickSand-bold;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

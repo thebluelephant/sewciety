@@ -1,0 +1,15 @@
+@import "./Global.scss";
+
+.pattern-page {
+  .pattern {
+    margin-top: 10%;
+    
+    &__image {
+      height: 200px;
+    }
+
+    &__description {
+      line-height: 20px;
+    }
+  }
+}
