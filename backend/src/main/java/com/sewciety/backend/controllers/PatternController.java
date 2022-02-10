@@ -20,32 +20,32 @@ import com.sewciety.backend.entity.Pattern;
 public class PatternController {
 
     @Autowired
-    private PatternRepository patternRepository;
+    private PatternRepository patternService;
 
     @GetMapping("/all")
     public List<Pattern> getPatterns() {
-        return patternRepository.findAll(); // Returns all patterns!
+        return patternService.findAll(); // Returns all patterns!
     }
 
     @RequestMapping("/{id}")
     public Pattern findPatternById(@PathVariable("id") Integer id) {
-        return patternRepository.findPatternById(id);
+        return patternService.findPatternById(id);
     }
 
     @GetMapping("/brands")
     public List<String> find() {
-        return patternRepository.getBrands();
+        return patternService.getBrands();
     }
 
     @GetMapping()
     public List<Pattern> findPatternByNameOrBrand(@RequestParam("input") Optional<String> input,
             @RequestParam("brand") Optional<String> brand) {
         if (brand.isEmpty()) {
-            return patternRepository.findPatternByInput(input);
+            return patternService.findPatternByInput(input);
         } else if (input.isEmpty()) {
-            return patternRepository.findPatternByBrandContaining(brand);
+            return patternService.findPatternByBrandContaining(brand);
         } else {
-            return patternRepository.findPatternByInputAndBrand(input, brand);
+            return patternService.findPatternByInputAndBrand(input, brand);
         }
     }
 
