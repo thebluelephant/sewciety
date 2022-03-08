@@ -1,6 +1,6 @@
 <template>
   <div class="quick-access">
-    <span class="title title--secondary">Accès rapide</span>
+    <span class="title title--secondary">{{$t('homepage.quick-access')}}</span>
   </div>
 </template>
 

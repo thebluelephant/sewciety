@@ -1,0 +1,27 @@
+{
+  "common" : {
+    "hello" : "Hello",
+    "more" : "More",
+    "less" : "Less",
+    "criterias" : "criterias"
+  },
+  "homepage" : {
+    "find-pattern" : "Find a pattern",
+    "research-placeholder" : "Pattern title, number, brand ...",
+    "select-brand" : "Select a brand",
+    "research" : "Research",
+    "quick-access" : "Quick access"
+  },
+  "burgermenu" : {
+    "homepage": "Homepage",
+    "research" : "Research",
+    "inventory" : "Inventory",
+    "tools" : "Tools",
+    "logout": "Logout"
+  },
+  "patternpage" : {
+    "pattern" : "Pattern",
+    "step-by-step" : "Step by step",
+    "achievements" : "Achievements"
+  }
+}

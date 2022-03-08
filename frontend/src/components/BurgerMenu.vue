@@ -13,7 +13,7 @@
               <svg>
                 <use class="icon" xlink:href="#home" />
               </svg>
-              <span>Accueil</span>
+              <span>{{$t('burgermenu.homepage')}}</span>
             </span>
           </router-link>
           <router-link class="container__routerlink" to="/research" exact>
@@ -21,25 +21,33 @@
               <svg>
                 <use class="icon" xlink:href="#search" />
               </svg>
-              <span>Recherche</span>
-            </span></router-link
-          >
+              <span>{{$t('burgermenu.research')}}</span>
+            </span>
+          </router-link>
           <router-link class="container__routerlink" to="/inventory" exact>
             <span class="routerlink__box">
               <svg>
                 <use class="icon" xlink:href="#inventory" />
               </svg>
-              <span>Inventaire</span>
-            </span></router-link
-          >
+              <span>{{$t('burgermenu.inventory')}}</span>
+            </span>
+          </router-link>
           <router-link class="container__routerlink" to="/tools" exact>
             <span class="routerlink__box">
               <svg>
                 <use class="icon" xlink:href="#tool" />
               </svg>
-              <span>Outils</span>
-            </span></router-link
-          >
+              <span>{{$t('burgermenu.tools')}}</span>
+            </span>
+          </router-link>
+          <span v-if="$auth.isAuthenticated.value" class="container__routerlink" @click="logout">
+            <span class="routerlink__box">
+              <svg>
+                <use class="icon" xlink:href="#logout" />
+              </svg>
+              <span>{{$t('burgermenu.logout')}}</span>
+            </span>
+          </span>
         </ul>
       </div>
     </transition>
@@ -59,6 +67,11 @@ export default {
   methods: {
     hideMenu() {
       this.$emit("hide-menu");
+    },
+    logout() {
+      this.$auth.logout({
+        returnTo: window.location.origin,
+      });
     },
   },
 };

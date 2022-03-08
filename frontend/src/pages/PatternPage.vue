@@ -1,10 +1,14 @@
 <template>
   <div class="pattern-page" v-if="pattern">
     <ChipMenu
-      :chips="['Patron', 'Pas à pas', 'Réalisation']"
-      @chip-clicked="setComponentVisibility"
+      :chips="[
+        `${$t('patternpage.pattern')}`,
+        `${$t('patternpage.step-by-step')}`,
+        `${$t('patternpage.achievements')}`,
+      ]"
+      @chip-clicked="setVisibleComponent"
     />
-    <div v-if="componentDisplay == 'Patron'"  class="pattern">
+    <div v-if="displayedComponent == 'Patron'" class="pattern">
       <img class="pattern__image" alt="pattern img" :src="pattern.imageUrl" />
       <p class="pattern__title title--primary">{{ pattern.name }}</p>
       <p class="pattern__description">{{ pattern.description }}</p>
@@ -21,25 +25,25 @@ export default {
   name: "PatternPage",
   data() {
     return {
-      pattern: '',
-      componentDisplay: "",
+      pattern: "",
+      displayedComponent: "",
     };
   },
   methods: {
     fetchPatternData() {
-      apiCall.searchPatternById(this.$route.params.id).then((resp) => {
+      apiCall.findPatternById(this.$route.params.id).then((resp) => {
         if (resp) {
           this.pattern = resp;
         }
       });
     },
-    setComponentVisibility(componentName) {
-      this.componentDisplay = componentName;
+    setVisibleComponent(componentName) {
+      this.displayedComponent = componentName;
     },
   },
   beforeMount() {
     this.fetchPatternData();
-    this.componentDisplay = "Patron";
+    this.displayedComponent = "Patron";
   },
 };
 </script>

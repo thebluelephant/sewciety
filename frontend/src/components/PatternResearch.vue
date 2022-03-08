@@ -1,7 +1,7 @@
 <template>
   <div class="pattern-research">
     <span v-if="!minimized" class="title title--secondary"
-      >Rechercher un patron</span
+      >{{$t('homepage.find-pattern')}}</span
     >
     <div
       class="container"
@@ -9,7 +9,7 @@
     >
       <input
         class="container__search-input"
-        placeholder="Titre d'un patron, marque, numéro..."
+        :placeholder="$t('homepage.research-placeholder')"
         type="text"
         v-model="research"
       />
@@ -20,7 +20,7 @@
         v-model="brand"
         v-if="!minimized || (minimized && showMoreCriterias)"
       >
-        <option value="" disabled>Select a brand</option>
+        <option value="" disabled>{{$t('homepage.select-brand')}}</option>
         <option
           v-for="brand in brands"
           v-show="brand"
@@ -40,11 +40,11 @@
           v-if="minimized || showMoreCriterias"
           @click="showMoreCriterias = !showMoreCriterias"
         >
-          <span v-if="!showMoreCriterias">Plus</span>
-          <span v-if="showMoreCriterias">Moins</span> de critères
+          <span v-if="!showMoreCriterias">{{$t('common.more')}}</span>
+          <span v-if="showMoreCriterias">{{$t('common.less')}}</span> {{$t('common.criterias')}}
         </p>
         <primary-button
-          title="Rechercher"
+          :title="$t('homepage.research')"
           @click="onResearch"
           :mini="minimized"
         />
