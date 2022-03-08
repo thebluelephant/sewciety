@@ -1,0 +1,27 @@
+{
+  "common" : {
+    "hello" : "Bonjour",
+    "more" : "Plus",
+    "less" : "Moins",
+    "criterias" : "de critères"
+  },
+  "homepage" : {
+    "find-pattern" : "Rechercher un patron",
+    "research-placeholder" : "Titre d'un patron, numero, marque ...",
+    "select-brand" : "Selectionner une marque",
+    "research" : "Rechercher",
+    "quick-access" : "Accès rapide"
+  },
+  "burgermenu" : {
+    "homepage": "Accueil",
+    "research" : "Recherche",
+    "inventory" : "Inventaire",
+    "tools" : "Outils",
+    "logout": "Déconnexion"
+  },
+  "patternpage" : {
+    "pattern" : "Patron",
+    "step-by-step" : "Pas à pas",
+    "achievements" : "Réalisations"
+  }
+}

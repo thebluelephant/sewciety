@@ -12,6 +12,8 @@
 
 <script>
 import BurgerMenu from "./components/BurgerMenu.vue";
+import { userService } from "./services/user.service";
+
 export default {
   name: "App",
   components: {
@@ -26,11 +28,24 @@ export default {
     toggleMenu() {
       this.showMenu = !this.showMenu;
     },
+    setLang() {
+      userService.getUserLang().then((userLangPreference) => {
+        const i18n = this.$root.$i18n.locale;
+        localStorage.setItem("lang", userLangPreference);
+
+        if (i18n !== userLangPreference) {
+          this.$root.$i18n.locale = userLangPreference;
+        }
+      });
+    },
   },
   watch: {
     $route() {
       this.showMenu = false;
     },
+  },
+  mounted() {
+    this.setLang();
   },
 };
 </script>

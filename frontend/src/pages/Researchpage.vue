@@ -1,7 +1,7 @@
 <template>
   <div class="research-page">
     <span class="research-page__research">
-      <PatternResearch :minimized="true" @research-pattern="searchPattern" />
+      <PatternResearch :minimized="true" @research-pattern="findPattern" />
     </span>
     <span class="research-page__cards">
       <PatternCard
@@ -31,11 +31,11 @@ export default {
     };
   },
   methods: {
-    searchPattern(researchTerm, brandTerm) {
+    findPattern(researchTerm, brandTerm) {
       const research = researchTerm ?? this.$route.query.research;
       const brand = brandTerm ?? this.$route.query.brand;
 
-      apiCall.searchPattern(research, brand).then((resp) => {
+      apiCall.findPattern(research, brand).then((resp) => {
         if (resp.length) {
           this.patterns = resp;
         }
@@ -43,7 +43,7 @@ export default {
     },
   },
   beforeMount() {
-    this.searchPattern();
+    this.findPattern();
   },
 };
 </script>

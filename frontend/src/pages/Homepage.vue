@@ -1,6 +1,6 @@
 <template>
   <div class="homepage">
-    <div class="title title--primary">Hello Marie !</div>
+    <div class="title title--primary">{{ $t("common.hello") }} Marie !</div>
     <PatternResearch />
     <QuickAccess />
   </div>
@@ -9,6 +9,7 @@
 <script>
 import PatternResearch from "../components/PatternResearch.vue";
 import QuickAccess from "../components/QuickAccess.vue";
+
 export default {
   name: "Homepage",
   components: {

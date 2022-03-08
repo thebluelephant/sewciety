@@ -14,7 +14,7 @@ import java.util.Optional;
 
 import com.sewciety.backend.entity.Pattern;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "https://localhost:8080")
 @RestController
 @RequestMapping("/api/pattern")
 public class PatternController {
