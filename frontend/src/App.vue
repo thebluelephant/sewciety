@@ -83,6 +83,7 @@ export default {
   right: 0;
   padding: 15px;
   background: #efefef;
+  overflow: auto;
 
   .menu {
     height: 30px;

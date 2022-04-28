@@ -10,7 +10,9 @@ import java.util.Optional;
 import com.sewciety.backend.entity.Pattern;
 
 @Repository
-public interface PatternRepository extends JpaRepository<Pattern, Long> {
+public interface PatternRepository extends JpaRepository<Pattern, Integer> {
+
+    List<Pattern> findAll(); 
 
     @Query(value = "SELECT DISTINCT p.brand from Pattern p")
     List<String> getBrands();

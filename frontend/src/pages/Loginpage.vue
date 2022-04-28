@@ -6,19 +6,21 @@
         class="pattern-card__button"
         title="Connexion"
         @click="login"
+        type="navigation"
       />
       <primary-button
         v-if="$auth.isAuthenticated.value"
         class="pattern-card__button"
         title="Deconnexion"
         @click="logout"
+        type="navigation"
       />
     </div>
   </div>
 </template>
 
 <script>
-import PrimaryButton from "../components/PrimaryButton.vue";
+import PrimaryButton from '../components/PrimaryButton.vue';
 
 export default {
   components: { PrimaryButton },

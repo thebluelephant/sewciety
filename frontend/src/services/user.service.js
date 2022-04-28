@@ -1,18 +1,28 @@
 import { apiCall } from "./user-api";
 
 export const userService = {
-  getCurrentUserId: () => {
+  // Return User ID with the "auth0|" value in it. Usually used to deal with authentication process
+  getCurrentAuthUserId: () => {
     const token = localStorage.getItem("token");
     return userService.decodeToken(token).sub;
   },
+
+  // Return user ID without the "auth0|"
+  getCurrentUserId: () => {
+    const authId = userService.getCurrentAuthUserId();
+    return authId.substring(6)
+  },
+  
   getCurrentUserData: async () => {
-    let userId = userService.getCurrentUserId();
+    let authUserId = userService.getCurrentAuthUserId();
     const accessToken = await apiCall.getAccessToken();
 
-    if (userId && accessToken) {
-      return apiCall.getUserDataById(userId, accessToken).then((response) => {
-        return response;
-      });
+    if (authUserId && accessToken) {
+      return apiCall
+        .getUserDataById(authUserId, accessToken)
+        .then((response) => {
+          return response;
+        });
     }
   },
   getUserLang: async () => {

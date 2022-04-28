@@ -1,18 +1,30 @@
 @import "./Global.scss";
 
 .primary-button {
-  background: linear-gradient(
-    90deg,
-    rgba(91, 186, 236, 1) 0%,
-    rgba(93, 232, 209, 1) 50%,
-    rgba(93, 232, 209, 1) 100%
-  );
   width: 150px;
   height: 40px;
   border-radius: 7px;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 2px 2px 5px 0px rgba(171, 171, 171, 0.714);
+
+  &-navigation {
+    background: linear-gradient(
+      90deg,
+      rgba(91, 186, 236, 1) 0%,
+      rgba(93, 232, 209, 1) 50%,
+      rgba(93, 232, 209, 1) 100%
+    );
+  }
+  &-action {
+    background: linear-gradient(
+      90deg,
+      rgba(245, 189, 35, 1) 0%,
+      rgba(255, 242, 125, 1) 42%,
+      rgba(255, 242, 125, 1) 100%
+    );
+  }
 
   &--mini {
     width: 30px;

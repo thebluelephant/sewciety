@@ -5,6 +5,7 @@
       class="pattern-card__button"
       :mini="true"
       :route="route"
+      type="navigation"
       @click="onRedirect"
     />
     <span class="pattern-card__title">{{ title }}</span>

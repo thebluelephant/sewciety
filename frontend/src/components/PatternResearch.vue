@@ -46,6 +46,7 @@
         <primary-button
           :title="$t('homepage.research')"
           @click="onResearch"
+          type="navigation"
           :mini="minimized"
         />
       </div>
@@ -55,7 +56,7 @@
 
 <script>
 import { apiCall } from "../services/patterns-api";
-import PrimaryButton from "../components/PrimaryButton.vue";
+import PrimaryButton from "./PrimaryButton.vue";
 import router from "../router/router.js";
 
 export default {

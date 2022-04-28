@@ -1,5 +1,11 @@
 <template>
-  <div :class="['primary-button', { 'primary-button--mini': mini }]">
+  <div
+    :class="[
+      'primary-button',
+      `primary-button-${type}`,
+      { 'primary-button--mini': mini },
+    ]"
+  >
     <a :href="route">
       <span v-if="!mini" class="title">{{ title }}</span>
       <svg v-if="mini">
@@ -12,7 +18,7 @@
 <script>
 export default {
   name: "PrimaryButton",
-  props: ["title", "route", "mini"],
+  props: ["title", "route", "mini", "type"],
 };
 </script>
 

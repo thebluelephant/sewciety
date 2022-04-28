@@ -1,4 +1,4 @@
-package com.sewciety.backend.services ; 
+package com.sewciety.backend.services;
 
 import com.sewciety.backend.entity.Pattern;
 import com.sewciety.backend.repositories.PatternRepository;
@@ -12,6 +12,10 @@ import java.util.Optional;
 public class PatternService {
     @Autowired
     private PatternRepository patternRepository;
+
+    public List<Pattern> findAll() {
+        return patternRepository.findAll();
+    }
 
     public List<String> getBrands() {
         return patternRepository.getBrands();

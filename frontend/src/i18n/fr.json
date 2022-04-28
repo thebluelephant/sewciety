@@ -23,5 +23,10 @@
     "pattern" : "Patron",
     "step-by-step" : "Pas à pas",
     "achievements" : "Réalisations"
+  },
+  "stepbysteppage":{
+    "create-sbs": "Créer un pas à pas",
+    "add-step":"Ajouter une étape",
+    "publish":"Publier"
   }
 }

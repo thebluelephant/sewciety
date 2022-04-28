@@ -8,10 +8,24 @@
       ]"
       @chip-clicked="setVisibleComponent"
     />
-    <div v-if="displayedComponent == 'Patron'" class="pattern">
+    <div
+      v-if="displayedComponent == `${$t('patternpage.pattern')}`"
+      class="pattern"
+    >
       <img class="pattern__image" alt="pattern img" :src="pattern.imageUrl" />
       <p class="pattern__title title--primary">{{ pattern.name }}</p>
       <p class="pattern__description">{{ pattern.description }}</p>
+    </div>
+    <div
+      v-if="displayedComponent == `${$t('patternpage.step-by-step')}`"
+      class="step-by-step"
+    >
+      <primary-button
+        class="create-sbs"
+        :title="`${$t('stepbysteppage.create-sbs')}`"
+        @click="redirectToSbsCreationPage()"
+        type="action"
+      />
     </div>
   </div>
 </template>
@@ -19,14 +33,16 @@
 <script>
 import ChipMenu from "../components/ChipMenu.vue";
 import { apiCall } from "../services/patterns-api";
+import PrimaryButton from "../components/PrimaryButton.vue";
 
 export default {
-  components: { ChipMenu },
+  components: { ChipMenu, PrimaryButton },
   name: "PatternPage",
   data() {
     return {
       pattern: "",
       displayedComponent: "",
+      patternId: "",
     };
   },
   methods: {
@@ -40,10 +56,14 @@ export default {
     setVisibleComponent(componentName) {
       this.displayedComponent = componentName;
     },
+    redirectToSbsCreationPage() {
+      this.$router.push({ path: `/pattern/${this.patternId}/sbs/create` });
+    },
   },
   beforeMount() {
     this.fetchPatternData();
     this.displayedComponent = "Patron";
+    this.patternId = this.$route.params.id;
   },
 };
 </script>
