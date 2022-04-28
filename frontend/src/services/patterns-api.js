@@ -34,4 +34,5 @@ export const apiCall = {
       } else console.log("Get brands : A problem happened", response);
     });
   },
+
 };

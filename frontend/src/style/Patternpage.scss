@@ -3,13 +3,22 @@
 .pattern-page {
   .pattern {
     margin-top: 10%;
-    
+
     &__image {
       height: 200px;
     }
 
     &__description {
       line-height: 20px;
+    }
+  }
+
+  .step-by-step {
+    display: flex;
+    justify-content: center;
+
+    .create-sbs {
+      margin-top: 5%;
     }
   }
 }

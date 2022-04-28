@@ -7,11 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.sewciety.backend.repositories.PatternRepository;
+import com.sewciety.backend.services.PatternService;
 import java.util.List;
 import java.util.Optional;
-
 import com.sewciety.backend.entity.Pattern;
 
 @CrossOrigin(origins = "https://localhost:8080")
@@ -20,7 +18,7 @@ import com.sewciety.backend.entity.Pattern;
 public class PatternController {
 
     @Autowired
-    private PatternRepository patternService;
+    private PatternService patternService;
 
     @GetMapping("/all")
     public List<Pattern> getPatterns() {
