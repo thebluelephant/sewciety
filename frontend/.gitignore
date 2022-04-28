@@ -4,6 +4,7 @@ node_modules
 backend/src/main/resources/
 backend/src/main/resources/application.properties
 frontend/auth_config.json 
+auth_config.json
 
 # local env files
 .env.local

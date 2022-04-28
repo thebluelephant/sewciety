@@ -32,7 +32,6 @@ export default {
       userService.getUserLang().then((userLangPreference) => {
         const i18n = this.$root.$i18n.locale;
         localStorage.setItem("lang", userLangPreference);
-
         if (i18n !== userLangPreference) {
           this.$root.$i18n.locale = userLangPreference;
         }

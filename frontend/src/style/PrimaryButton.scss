@@ -1,13 +1,14 @@
 @import "./Global.scss";
 
 .primary-button {
-  width: 150px;
+  max-width: 200px;
   height: 40px;
   border-radius: 7px;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 2px 2px 5px 0px rgba(171, 171, 171, 0.714);
+  padding: 0 10px;
 
   &-navigation {
     background: linear-gradient(

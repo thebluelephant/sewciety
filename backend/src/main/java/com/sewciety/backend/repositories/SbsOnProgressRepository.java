@@ -1,7 +1,5 @@
 package com.sewciety.backend.repositories;
 
-import java.util.Optional;
-
 import com.sewciety.backend.entity.SbsOnProgress;
 
 import org.springframework.data.jpa.repository.JpaRepository;

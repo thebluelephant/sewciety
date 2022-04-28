@@ -1,5 +1,8 @@
 package com.sewciety.backend.services;
 
+import java.util.Date;
+import java.util.List;
+
 import com.sewciety.backend.entity.FeNewStepByStep;
 import com.sewciety.backend.entity.SbsOnProgress;
 import com.sewciety.backend.entity.StepByStep;
@@ -18,7 +21,7 @@ public class StepByStepService {
 
     public Integer postNewStepByStep(FeNewStepByStep feStepByStep) {
         // First we create a StepByStep and post it
-        StepByStep stepByStep = new StepByStep(feStepByStep.getPatternId(), feStepByStep.getAuthorId());
+        StepByStep stepByStep = new StepByStep(feStepByStep.getPatternId(), feStepByStep.getAuthorId(), feStepByStep.getAuthorUsername(), new Date());
         StepByStep newStepByStep = postStepByStep(stepByStep);
 
         // Then, with the new Step by step created in DB, we create a progress that we automatically close
@@ -36,4 +39,7 @@ public class StepByStepService {
         return stepByStepRepository.save(stepByStep);
     }
 
+    public List<StepByStep> getListOfStepByStepByPatternId(Integer patternId){
+        return stepByStepRepository.findByPatternId(patternId);
+    }
 }

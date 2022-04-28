@@ -1,4 +1,7 @@
 package com.sewciety.backend.entity;
+
+import java.util.Date;
+
 import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,13 +20,19 @@ public class StepByStep {
     private Integer patternId;
     @Column(name = "author_id")
     private String authorId;
+    @Column(name = "author_username")
+    private String authorUsername;
+    @Column(name = "date")
+    private Date date;
 
     public StepByStep() {
     }
 
-    public StepByStep(Integer patternId, String authorId) {
+    public StepByStep(Integer patternId, String authorId, String authorUsername, Date date) {
         this.patternId = patternId;
         this.authorId = authorId;
+        this.authorUsername = authorUsername;
+        this.date = date;
     }
 
     public Integer getId() {
@@ -48,5 +57,21 @@ public class StepByStep {
 
     public void setAuthorId(String authorId) {
         this.authorId = authorId;
+    }
+
+    public String getAuthorUsername() {
+        return authorUsername;
+    }
+
+    public void setAuthorUsername(String authorUsername) {
+        this.authorUsername = authorUsername;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
