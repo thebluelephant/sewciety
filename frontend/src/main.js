@@ -4,7 +4,7 @@ import router from "./router/router";
 
 import authConfig from "../auth_config.json";
 import { setupAuth } from "./auth/auth";
-import i18n from './i18n'
+import i18n from './i18n';
 
 let app = createApp(App).use(i18n).use(router);
 

@@ -10,9 +10,14 @@ export const userService = {
   // Return user ID without the "auth0|"
   getCurrentUserId: () => {
     const authId = userService.getCurrentAuthUserId();
-    return authId.substring(6)
+    return authId.substring(6);
   },
-  
+  getCurrentUserUsername: async () => {
+    const currentUserData = await userService.getCurrentUserData();
+    if (currentUserData) {
+      return currentUserData.username;
+    }
+  },
   getCurrentUserData: async () => {
     let authUserId = userService.getCurrentAuthUserId();
     const accessToken = await apiCall.getAccessToken();

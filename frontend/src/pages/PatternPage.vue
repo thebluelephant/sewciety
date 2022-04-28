@@ -20,12 +20,7 @@
       v-if="displayedComponent == `${$t('patternpage.step-by-step')}`"
       class="step-by-step"
     >
-      <primary-button
-        class="create-sbs"
-        :title="`${$t('stepbysteppage.create-sbs')}`"
-        @click="redirectToSbsCreationPage()"
-        type="action"
-      />
+      <step-by-step-container :patternId="patternId" />
     </div>
   </div>
 </template>
@@ -34,9 +29,10 @@
 import ChipMenu from "../components/ChipMenu.vue";
 import { apiCall } from "../services/patterns-api";
 import PrimaryButton from "../components/PrimaryButton.vue";
+import StepByStepContainer from "../components/StepByStepContainer.vue";
 
 export default {
-  components: { ChipMenu, PrimaryButton },
+  components: { ChipMenu, PrimaryButton, StepByStepContainer },
   name: "PatternPage",
   data() {
     return {
@@ -55,9 +51,6 @@ export default {
     },
     setVisibleComponent(componentName) {
       this.displayedComponent = componentName;
-    },
-    redirectToSbsCreationPage() {
-      this.$router.push({ path: `/pattern/${this.patternId}/sbs/create` });
     },
   },
   beforeMount() {

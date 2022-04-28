@@ -3,11 +3,13 @@ const apiUrl = "http://localhost:8081/api";
 import { userService } from "./user.service";
 
 export const apiCall = {
-  createNewStepByStep: (patternId, lastStepDone, steps) => {
+  createNewStepByStep: async (patternId, lastStepDone, steps) => {
     const userId = userService.getCurrentUserId();
+    const username = await userService.getCurrentUserUsername();
     const body = {
       patternId: parseFloat(patternId),
       authorId: userId,
+      authorUsername: username,
       lastStepDone: lastStepDone,
     };
 
@@ -19,7 +21,7 @@ export const apiCall = {
         // with the stepByStepID returned by the /create call
         const stepByStepId = response.data;
         return apiCall.submitSteps(steps, stepByStepId);
-      } else console.log("New steps : A problem happened", response);
+      } else console.log("createNewStepByStep : A problem happened", response);
     });
   },
 
@@ -45,7 +47,21 @@ export const apiCall = {
       .then((response) => {
         if (response.status === 200) {
           return response.status;
-        } else console.log("New steps : A problem happened", response);
+        } else console.log("submitSteps : A problem happened", response);
+      });
+  },
+
+  getAllMinimizedStepByStepById: (patternId) => {
+    return axios
+      .post(`${apiUrl}/stepbystep/findAllSbs/${patternId}`)
+      .then((response) => {
+        if (response.status === 200) {
+          return response.data;
+        } else
+          console.log(
+            "getAllMinimizedStepByStepById: A problem happened",
+            response
+          );
       });
   },
 };
