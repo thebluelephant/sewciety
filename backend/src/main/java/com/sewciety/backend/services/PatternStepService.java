@@ -23,4 +23,9 @@ public class PatternStepService {
     public List<PatternStep> postPatternsSteps(List<PatternStep> formatedSteps) {
         return patternStepRepository.saveAll(formatedSteps);
     }
+
+    public List<PatternStep> getListOfStepsBySbsId(Integer id) {
+        return patternStepRepository.getListOfStepsBySbsId(id);
+
+    }
 }

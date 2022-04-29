@@ -1,0 +1,40 @@
+<template>
+  <div class="sbs-details-page">
+    <span v-for="(step, index) of stepByStep" :key="step.id">
+      <step-card :disabled="true" :index="index" :initialValue="step" />
+    </span>
+  </div>
+</template>
+
+<script>
+//import PrimaryButton from "../components/PrimaryButton.vue";
+import { apiCall } from "../services/stepByStep-api";
+import StepCard from "../components/StepCard.vue";
+
+export default {
+  name: "SbsDetailsPage",
+  components: { StepCard },
+  data() {
+    return {
+      stepByStep: null,
+    };
+  },
+  mounted() {
+    this.fetchStepByStep();
+  },
+  methods: {
+    fetchStepByStep() {
+      apiCall.getStepsBySbsId(this.$route.params.sbsId).then((response) => {
+        if (response) {
+          this.stepByStep = response;
+          console.log(this.stepByStep);
+        }
+      });
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+@import "../style/SbsDetailspage";
+</style>

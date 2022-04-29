@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   box-shadow: 1px 4px 3px -4px $grey;
+  margin-bottom: 5%;
 
   &__header {
     min-height: 15%;
@@ -16,6 +17,18 @@
     justify-content: end;
     align-items: center;
 
+    &--disabled {
+      display: flex;
+      justify-content: start;
+
+      .title {
+        &--disabled {
+          display: flex;
+          justify-content: start;
+          margin-left: 5%;
+        }
+      }
+    }
     .number {
       min-width: 25px;
     }
@@ -33,6 +46,12 @@
     max-width: 100%;
     justify-content: space-around;
 
+    .description {
+      &--disabled {
+        text-align: start;
+      }
+    }
+
     .image {
       background-color: #5de8d157;
       min-height: 30%;
@@ -41,6 +60,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
+
+      img {
+        max-height: 200px;
+      }
     }
   }
 }
