@@ -1,9 +1,9 @@
 <template>
-  <div class="sbs-page">
+  <div class="create-sbs-page">
     <div
       v-for="(step, index) in steps.titles"
       :key="index"
-      class="sbs-page__cards-container"
+      class="create-sbs-page__cards-container"
     >
       <step-card
         class="card"
@@ -20,13 +20,13 @@
       </span>
     </div>
 
-    <div class="sbs-page__addStep-container">
-      <primary-button :title="`${$t('stepbysteppage.add-step')}`" @click="addStep()" type="action" />
+    <div class="create-sbs-page__addStep-container">
+      <primary-button :title="`${$t('createsbspage.add-step')}`" @click="addStep()" type="action" />
     </div>
-    <div class="sbs-page__submit-container">
+    <div class="create-sbs-page__submit-container">
       <primary-button
         class="submit"
-        :title="`${$t('stepbysteppage.publish')}`"
+        :title="`${$t('createsbspage.publish')}`"
         @click="submit()"
         type="navigation"
       />
@@ -40,7 +40,7 @@ import PrimaryButton from "../components/PrimaryButton.vue";
 import { apiCall } from "../services/stepByStep-api";
 
 export default {
-  name: "StepByStep",
+  name: "CreateSbsPage",
   components: { StepCard, PrimaryButton },
   data() {
     return {
@@ -106,5 +106,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../style/StepByStepPage";
+@import "../style/CreateSbspage";
 </style>

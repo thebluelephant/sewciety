@@ -24,7 +24,7 @@
     "step-by-step" : "Pas à pas",
     "achievements" : "Réalisations"
   },
-  "stepbysteppage":{
+  "createsbspage":{
     "create-sbs": "Créer un pas à pas",
     "add-step":"Ajouter une étape",
     "publish":"Publier"

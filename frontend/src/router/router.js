@@ -2,9 +2,10 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import Homepage from "../pages/Homepage.vue";
 import Researchpage from "../pages/Researchpage.vue";
 import PatternPage from "../pages/PatternPage.vue";
-import StepByStepPage from "../pages/StepByStepPage.vue";
+import CreateSbsPage from "../pages/CreateSbsPage.vue";
 import Callbackpage from "../pages/Callbackpage.vue";
 import Loginpage from "../pages/Loginpage.vue";
+import SbsDetailsPage from "../pages/SbsDetailsPage.vue";
 import { authGuard } from "../auth/auth";
 
 const routes = [
@@ -34,8 +35,14 @@ const routes = [
   },
   {
     path: "/pattern/:id/sbs/create",
-    name: "StepByStepPage",
-    component: StepByStepPage,
+    name: "CreateSbsPage",
+    component: CreateSbsPage,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/sbs/:sbsId",
+    name: "SbsDetailsPage",
+    component: SbsDetailsPage,
     beforeEnter: authGuard,
   },
   {

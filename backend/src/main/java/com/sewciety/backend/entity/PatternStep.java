@@ -1,7 +1,5 @@
 package com.sewciety.backend.entity;
 
-import java.sql.Blob;
-
 import javax.persistence.*;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -24,12 +22,12 @@ public class PatternStep {
     @Column(name = "explanations")
     private String explanations;
     @Column(name = "image")
-    private Blob image;
+    private byte[] image;
 
     public PatternStep() {
     }
 
-    public PatternStep(Integer sequence, Integer sbsId, String explanations, Blob image, String title) {
+    public PatternStep(Integer sequence, Integer sbsId, String explanations, byte[] image, String title) {
         this.sequence = sequence;
         this.sbsId = sbsId;
         this.explanations = explanations;
@@ -77,11 +75,11 @@ public class PatternStep {
         this.explanations = explanations;
     }
 
-    public Blob getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(Blob image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 }

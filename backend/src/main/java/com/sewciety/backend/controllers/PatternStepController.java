@@ -1,29 +1,19 @@
 package com.sewciety.backend.controllers;
 
-import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.Blob;
-import java.sql.SQLException;
 
-import javax.sql.rowset.serial.SerialBlob;
-import javax.sql.rowset.serial.SerialException;
-
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.sewciety.backend.entity.FePatternStep;
 import com.sewciety.backend.entity.PatternStep;
 import com.sewciety.backend.services.PatternStepService;
 import lombok.extern.slf4j.Slf4j;
@@ -46,15 +36,9 @@ public class PatternStepController {
         List<PatternStep> formatedSteps = new ArrayList<>();
 
         for (int i = 0; i < titles.size(); i++) {
-            Blob blob;
             PatternStep formatedStep = new PatternStep();
             try {
-                blob = new SerialBlob(images[i].getBytes());
-                formatedStep.setImage(blob);
-            } catch (SerialException e) {
-                e.printStackTrace();
-            } catch (SQLException e) {
-                e.printStackTrace();
+                formatedStep.setImage(images[i].getBytes());
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -68,4 +52,9 @@ public class PatternStepController {
         }
         return patternStepService.postPatternsSteps(formatedSteps);
     };
+
+    @RequestMapping("/findAllSteps/{id}")
+    public List<PatternStep> getListOfStepsBySbsId(@PathVariable("id") Integer id) {
+        return patternStepService.getListOfStepsBySbsId(id);
+    }
 }

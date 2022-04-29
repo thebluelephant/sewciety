@@ -25,6 +25,16 @@ export const apiCall = {
     });
   },
 
+  getStepByStepById: (patternId) => {
+    return axios
+      .post(`${apiUrl}/stepbystep/findAllSbs/${patternId}`)
+      .then((response) => {
+        if (response.status === 200) {
+          return response.data;
+        } else console.log("getStepByStepById: A problem happened", response);
+      });
+  },
+
   submitSteps: (steps, sbsId) => {
     const config = {
       headers: {
@@ -51,17 +61,13 @@ export const apiCall = {
       });
   },
 
-  getAllMinimizedStepByStepById: (patternId) => {
+  getStepsBySbsId: (sbsId) => {
     return axios
-      .post(`${apiUrl}/stepbystep/findAllSbs/${patternId}`)
+      .post(`${apiUrl}/patternstep/findAllSteps/${sbsId}`)
       .then((response) => {
         if (response.status === 200) {
           return response.data;
-        } else
-          console.log(
-            "getAllMinimizedStepByStepById: A problem happened",
-            response
-          );
+        } else console.log("getStepsBySbsId: A problem happened", response);
       });
   },
 };

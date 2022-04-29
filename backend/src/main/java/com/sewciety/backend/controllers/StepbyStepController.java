@@ -34,4 +34,6 @@ public class StepbyStepController {
     public List<StepByStep> findAllSbsById(@PathVariable("id") Integer id) {
         return stepByStepService.getListOfStepByStepByPatternId(id);
     }
+
+    
 }

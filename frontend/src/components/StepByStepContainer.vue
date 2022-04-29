@@ -17,7 +17,7 @@
     </div>
     <primary-button
       class="create-sbs"
-      :title="`${$t('stepbysteppage.create-sbs')}`"
+      :title="`${$t('createsbspage.create-sbs')}`"
       @click="redirectToSbsCreationPage()"
       type="action"
     />
@@ -46,13 +46,12 @@ export default {
       this.$router.push(`/pattern/${this.patternId}/sbs/create`);
     },
     redirectToSbsById(sbsId) {
-      this.$router.push(`/sbs/${sbsId}`);
+      this.$router.push({ name: "SbsDetailsPage", params: { sbsId: sbsId } });
     },
     fetchSbsList() {
-      apiCall.getAllMinimizedStepByStepById(this.patternId).then((resp) => {
+      apiCall.getStepByStepById(this.patternId).then((resp) => {
         if (resp) {
           this.stepBySteps = resp;
-          console.log(this.stepBySteps);
         }
       });
     },
