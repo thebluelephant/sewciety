@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.sewciety.backend.entity.FeNewStepByStep;
+import com.sewciety.backend.entity.FePublishAndSavedSbs;
 import com.sewciety.backend.entity.SbsOnProgress;
 import com.sewciety.backend.entity.StepByStep;
 import com.sewciety.backend.repositories.StepByStepRepository;
@@ -28,7 +29,7 @@ public class StepByStepService {
         // automatically close
         // TO DO : Add possibility to set progress value dynamically
         SbsOnProgress progress = new SbsOnProgress(newStepByStep.getPatternId(), newStepByStep.getAuthorId(),
-                false, newStepByStep.getId());
+                feStepByStep.getOnProgress(), newStepByStep.getId());
         sbsOnProgressService.creatNewProgress(progress);
 
         // Finally we return the step by step ID automatically created.
@@ -40,7 +41,14 @@ public class StepByStepService {
         return stepByStepRepository.save(stepByStep);
     }
 
-    public List<StepByStep> getListOfStepByStepByPatternId(Integer patternId) {
-        return stepByStepRepository.findByPatternId(patternId);
+    public FePublishAndSavedSbs getListOfStepByStepByPatternId(Integer patternId, String userId) {
+        List<StepByStep> publishedSbs = stepByStepRepository.getListOfPublishedSbsByPatternId(patternId);
+        List<StepByStep> savedSbs = stepByStepRepository.getListOfSavedSbsByUserIdAndPatternId(patternId, userId);
+        return new FePublishAndSavedSbs(publishedSbs, savedSbs);
+    }
+
+    public List<StepByStep> getListOfSavedSbsByUserIdAndPatternId(Integer patternId, String userId) {
+        return stepByStepRepository.getListOfSavedSbsByUserIdAndPatternId(patternId, userId);
+
     }
 }

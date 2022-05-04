@@ -3,6 +3,7 @@ package com.sewciety.backend.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,10 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.sewciety.backend.entity.FePatternSteps;
 import com.sewciety.backend.entity.PatternStep;
@@ -31,21 +29,38 @@ public class PatternStepController {
     @Autowired
     private PatternStepService patternStepService;
 
-    @PostMapping(value = "/newSteps", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/editSteps", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     List<PatternStep> postMultipleSteps(@RequestParam("steps") List<String> patternSteps,
             @RequestParam("images") MultipartFile[] images)
             throws IOException {
-        
+        Gson gson = new Gson();
         List<PatternStep> deserializedPatternSteps = new ArrayList<>();
+        List<MultipartFile> imageFiles = new ArrayList();
+
+        int index = 0; 
         for (String patternStep : patternSteps) {
-            Gson gson = new Gson();
-            deserializedPatternSteps.add(gson.fromJson(patternStep, PatternStep.class));
+            // For each patternStep string, we re-convert it to Json
+            PatternStep deserializedStep = gson.fromJson(patternStep, PatternStep.class);
+
+            // And we check if the title has a value before pushing it to the
+            // deserializedPatternSteps array
+            // to be sure to save Json with data in the DB
+            if (deserializedStep.getTitle() != null) {
+                imageFiles.add(images[index]);
+                deserializedPatternSteps.add(deserializedStep);
+            }
+            index++;
         }
-        return patternStepService.postPatternsSteps(deserializedPatternSteps, images);
+        return patternStepService.postPatternsSteps(deserializedPatternSteps, imageFiles);
     };
 
     @RequestMapping("/findAllSteps/{id}")
-    public FePatternSteps getListOfStepsBySbsId(@PathVariable("id") Integer id) {
-        return patternStepService.getListOfStepsBySbsId(id);
+    public FePatternSteps getListOfStepsBySbsId(@PathVariable("id") Integer sbsId) {
+        return patternStepService.getListOfStepsBySbsId(sbsId);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletePatternStep(@PathVariable("id") Integer sbsId) {
+        patternStepService.deletePatternStep(sbsId);
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import com.sewciety.backend.entity.FeNewStepByStep;
+import com.sewciety.backend.entity.FePublishAndSavedSbs;
 import com.sewciety.backend.entity.StepByStep;
 import com.sewciety.backend.services.StepByStepService;
 import lombok.extern.slf4j.Slf4j;
@@ -30,9 +31,9 @@ public class StepbyStepController {
         return stepByStepService.postNewStepByStep(feStepByStep);
     }
 
-    @RequestMapping("/findAllSbs/{id}")
-    public List<StepByStep> findAllSbsById(@PathVariable("id") Integer id) {
-        return stepByStepService.getListOfStepByStepByPatternId(id);
+    @RequestMapping("/findAllSbs/{patternId}/{userId}")
+    public FePublishAndSavedSbs findAllSbsById(@PathVariable("patternId") Integer patternId, @PathVariable("userId") String userId) {
+        return stepByStepService.getListOfStepByStepByPatternId(patternId, userId);
     }
 
     

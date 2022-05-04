@@ -1,9 +1,8 @@
 package com.sewciety.backend.services;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
 import com.sewciety.backend.entity.FePatternSteps;
 import com.sewciety.backend.entity.PatternStep;
@@ -12,6 +11,8 @@ import com.sewciety.backend.repositories.PatternStepRepository;
 import com.sewciety.backend.repositories.SbsImageRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,30 +30,60 @@ public class PatternStepService {
 
     }
 
-    public List<PatternStep> postPatternsSteps(List<PatternStep> formatedSteps, MultipartFile[] images) {
+    public List<PatternStep> postPatternsSteps(List<PatternStep> formatedSteps, List<MultipartFile> imageFiles)
+            throws IOException {
 
         for (int i = 0; i < formatedSteps.size(); i++) {
-            PatternStep savedStep = patternStepRepository.save(formatedSteps.get(i));
-            SbsImage stepImage = new SbsImage();
+            PatternStep step = formatedSteps.get(i);
 
-            try {
-                stepImage.setImage(images[i].getBytes());
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+            // If we get the step ID from the FE, it means the step already exist in DB so
+            // we just have to modify it
+            if (step.getId() != null) {
+                Optional<PatternStep> existingStep = patternStepRepository.findById(step.getId());
+
+                if (existingStep.isPresent()) {
+                    PatternStep oldStep = existingStep.get();
+                    oldStep.setTitle(step.getTitle());
+                    oldStep.setExplanations(step.getExplanations());
+                    patternStepRepository.save(oldStep);
+                    System.out.println(imageFiles.get(i).getClass().getSimpleName());
+                    SbsImage oldImage = sbsImageRepository.findByStepId(step.getId());
+                    try {
+                        oldImage.setImage(imageFiles.get(i).getBytes());
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                    sbsImageRepository.save(oldImage);
+                }
+            } else {
+                PatternStep savedStep = patternStepRepository.save(step);
+                SbsImage stepImage = new SbsImage();
+
+                try {
+                    stepImage.setImage(imageFiles.get(i).getBytes());
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                stepImage.setStepId(savedStep.getId());
+                stepImage.setSbsId(savedStep.getSbsId());
+
+                sbsImageRepository.save(stepImage);
             }
-            stepImage.setStepId(savedStep.getId());
-            stepImage.setSbsId(savedStep.getSbsId());
-            sbsImageRepository.save(stepImage);
 
         }
-        return patternStepRepository.getListOfStepsBySbsId(formatedSteps.get(0).getSbsId());
+        return patternStepRepository.findAllBySbsId(formatedSteps.get(0).getSbsId());
     }
 
     public FePatternSteps getListOfStepsBySbsId(Integer id) {
-        List<PatternStep> steps = patternStepRepository.getListOfStepsBySbsId(id);
+        List<PatternStep> steps = patternStepRepository.findAllBySbsId(id);
         List<SbsImage> images = sbsImageRepository.findAllBySbsId(id);
         return new FePatternSteps(steps, images);
+    }
+
+    public void deletePatternStep(Integer sbsId) {
+        patternStepRepository.deleteById(sbsId);
     }
 
 }

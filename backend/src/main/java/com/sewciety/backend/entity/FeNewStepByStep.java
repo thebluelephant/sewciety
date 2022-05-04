@@ -5,14 +5,16 @@ public class FeNewStepByStep {
     private Integer patternId;
     private String authorId;
     private String authorUsername;
+    private Boolean onProgress;
 
     public FeNewStepByStep() {
     }
 
-    public FeNewStepByStep(Integer patternId, String authorId, String authorUsername) {
+    public FeNewStepByStep(Integer patternId, String authorId, String authorUsername, Boolean onProgress) {
         this.patternId = patternId;
         this.authorId = authorId;
         this.authorUsername = authorUsername;
+        this.onProgress = onProgress;
     }
 
     public Integer getPatternId() {
@@ -37,5 +39,13 @@ public class FeNewStepByStep {
 
     public void setAuthorUsername(String authorUsername) {
         this.authorUsername = authorUsername;
+    }
+
+    public Boolean getOnProgress() {
+        return this.onProgress;
+    }
+
+    public void setOnProgress(Boolean onProgress) {
+        this.onProgress = onProgress;
     }
 }

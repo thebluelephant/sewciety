@@ -3,13 +3,32 @@ const apiUrl = "http://localhost:8081/api";
 import { userService } from "./user.service";
 
 export const apiCall = {
-  createNewStepByStep: async (patternId, steps) => {
+  getFileFromBase64(string64, fileName) {
+    const trimmedString = string64.replace("dataimage/jpegbase64", "");
+    const imageContent = atob(trimmedString);
+    const buffer = new ArrayBuffer(imageContent.length);
+    const view = new Uint8Array(buffer);
+
+    for (let n = 0; n < imageContent.length; n++) {
+      view[n] = imageContent.charCodeAt(n);
+    }
+    const type = "image/jpeg";
+    const blob = new Blob([buffer], { type });
+    return new File([blob], fileName, {
+      lastModified: new Date().getTime(),
+      type,
+    });
+  },
+
+  // Create a new Step By Step entry in the DB + new OnProgress entry in the sbsOnProgress table + call the end point to create Steps entries in the DB too.
+  createNewStepByStep: async (patternId, steps, onProgress) => {
     const userId = userService.getCurrentUserId();
     const username = await userService.getCurrentUserUsername();
     const body = {
       patternId: parseFloat(patternId),
       authorId: userId,
       authorUsername: username,
+      onProgress: onProgress,
     };
 
     // We call the step by step creation end point, which combine 2 BE actions :
@@ -25,8 +44,9 @@ export const apiCall = {
   },
 
   getStepByStepById: (patternId) => {
+    const userId = userService.getCurrentUserId();
     return axios
-      .post(`${apiUrl}/stepbystep/findAllSbs/${patternId}`)
+      .post(`${apiUrl}/stepbystep/findAllSbs/${patternId}/${userId}`)
       .then((response) => {
         if (response.status === 200) {
           return response.data;
@@ -43,21 +63,44 @@ export const apiCall = {
     const formData = new FormData();
 
     const formattedSteps = steps.map((step) => {
-      return {
+      let formatStep = {
         title: step.title,
-        explanations: step.explanation,
+        explanations: step.explanations,
         sbsId: sbsId,
       };
+      if (step.id) {
+        formatStep.id = step.id;
+      }
+      return formatStep;
     });
-    const images = steps.map((step) => step.image);
+
+    // We have to always add an empty object in formattedSteps AND images to be sure to have an Array sent to the BE, specially if there's only 1
+    // pattern step sent, FormData will send an uniq object that doesn't fit the expected array of string waited by SpringBoot
+    formattedSteps.push({
+      title: undefined,
+      explanations: undefined,
+      sbsId: undefined,
+    });
+    let images = steps.map((step) => step.image);
+    images.push("");
 
     formattedSteps.forEach((formattedStep, index) => {
       formData.append("steps", JSON.stringify(formattedStep));
-      formData.append("images", images[index]);
+
+      // If the patternStep already exist and the image hasn't been updated once again
+      // we have to format its initial FE value in base64 to re-send it to the DB
+      if (typeof images[index] === "string") {
+        formData.append(
+          "images",
+          apiCall.getFileFromBase64(images[index], "imageStep")
+        );
+      } else {
+        formData.append("images", images[index]);
+      }
     });
 
     return axios
-      .post(`${apiUrl}/patternstep/newSteps`, formData, config)
+      .post(`${apiUrl}/patternstep/editSteps`, formData, config)
       .then((response) => {
         if (response.status === 200) {
           return response.status;
@@ -78,6 +121,28 @@ export const apiCall = {
             return stepValues;
           });
         } else console.log("getStepsBySbsId: A problem happened", response);
+      });
+  },
+
+  deleteStep: (sbsId) => {
+    return axios.delete(`${apiUrl}/patternstep/${sbsId}`).then((response) => {
+      return response;
+    });
+  },
+
+  updateSbsProgress: (sbsId, progress) => {
+    return axios
+      .post(
+        `${apiUrl}/progress/update/${sbsId}`,
+        {},
+        {
+          params: {
+            progress,
+          },
+        }
+      )
+      .then((response) => {
+        return response;
       });
   },
 };

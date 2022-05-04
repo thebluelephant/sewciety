@@ -34,6 +34,12 @@
         @click="submit()"
         type="navigation"
       />
+      <primary-button
+        class="save"
+        :title="`${$t('createsbspage.save')}`"
+        @click="save()"
+        type="navigation"
+      />
     </div>
   </div>
 </template>
@@ -42,6 +48,8 @@
 import StepCard from "../components/StepCard.vue";
 import PrimaryButton from "../components/PrimaryButton.vue";
 import { apiCall } from "../services/stepByStep-api";
+var isEqual = require("lodash/isEqual");
+var cloneDeep = require("lodash/cloneDeep");
 
 export default {
   name: "CreateSbsPage",
@@ -49,30 +57,36 @@ export default {
   data() {
     return {
       steps: [],
+      savedSteps: [],
     };
+  },
+  mounted() {
+    if (this.$route.params.sbsId) {
+      this.fetchStepByStep();
+    }
   },
   methods: {
     addStep() {
       this.steps.push({
         image: "",
         title: "",
-        explanation: "",
+        explanations: "",
       });
     },
     deleteStep(index) {
-      const stepsKeys = Object.keys(this.steps);
-      stepsKeys.forEach((key) => {
-        const initialSteps = { ...this.steps };
-        initialSteps[key].splice(index, 1);
-        this.steps = initialSteps;
+      const stepId = this.steps[index].id;
+      apiCall.deleteStep(stepId).then((response) => {
+        if (response.status === 200) {
+          this.fetchStepByStep();
+        }
       });
     },
     getInitialIndexValues(index) {
       return {
         title: this.steps[index].title,
-        explanations: this.steps[index].explanation,
+        explanations: this.steps[index].explanations,
         //We don't set initial value for image to avoid any bug regarding the type of file and everything
-        image: "",
+        image: this.steps[index].image,
       };
     },
     editTitle(index, title) {
@@ -82,16 +96,58 @@ export default {
       this.steps[index].image = image;
     },
     editExplanations(index, explanations) {
-      this.steps[index].explanation = explanations;
+      this.steps[index].explanations = explanations;
     },
-    async submit() {
-      const response = await apiCall.createNewStepByStep(
-        this.$route.params.id,
-        this.steps
-      );
-      if (response === 200) {
-        this.$router.push({ path: `/pattern/${this.$route.params.id}` });
+    fetchStepByStep() {
+      apiCall.getStepsBySbsId(this.$route.params.sbsId).then((response) => {
+        if (response) {
+          this.steps = response.slice();
+          this.savedSteps = cloneDeep(response);
+        }
+      });
+    },
+    save() {
+      if (this.$route.params.sbsId) {
+        this.saveSteps();
+      } else {
+        this.createNewStepByStep(true);
       }
+    },
+    submit() {
+      if (this.$route.params.sbsId) {
+        apiCall.updateSbsProgress(this.$route.params.sbsId, false).then(() =>{
+          
+        })
+        this.saveSteps();
+      } else {
+        this.createNewStepByStep(false);
+      }
+    },
+    saveSteps() {
+      // We filter steps that are differents (or new) from the initial steps received from the back
+      // To avoid uselessly modify value in DB whereas a step hasn't been modified.
+      const stepsToSave = this.steps.filter((steps, index) => {
+        return !isEqual(steps, this.savedSteps[index]);
+      });
+
+      if (stepsToSave.length > 0) {
+        apiCall
+          .submitSteps(stepsToSave, this.$route.params.sbsId)
+          .then((response) => {
+            if (response === 200) {
+              this.$router.push({ path: `/pattern/${this.$route.params.id}` });
+            }
+          });
+      } else this.$router.push({ path: `/pattern/${this.$route.params.id}` });
+    },
+    createNewStepByStep(onProgress) {
+      apiCall
+        .createNewStepByStep(this.$route.params.id, this.steps, onProgress)
+        .then((response) => {
+          if (response === 200) {
+            this.$router.push({ path: `/pattern/${this.$route.params.id}` });
+          }
+        });
     },
   },
 };

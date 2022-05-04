@@ -2,10 +2,6 @@ package com.sewciety.backend.entity;
 
 import java.util.List;
 
-import javax.persistence.*;
-
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 public class FePatternSteps {
 
     List<PatternStep> steps;

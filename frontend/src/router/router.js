@@ -34,7 +34,7 @@ const routes = [
     beforeEnter: authGuard,
   },
   {
-    path: "/pattern/:id/sbs/create",
+    path: "/pattern/:id/sbs/:sbsId?/create",
     name: "CreateSbsPage",
     component: CreateSbsPage,
     beforeEnter: authGuard,
