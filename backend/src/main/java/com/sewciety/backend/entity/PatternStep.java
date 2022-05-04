@@ -3,6 +3,7 @@ package com.sewciety.backend.entity;
 import javax.persistence.*;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.lang.Nullable;
 
 @Entity
 @Table(name = "pattern_step")
@@ -13,25 +14,19 @@ public class PatternStep {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "sequence") // ordre de la step
-    private Integer sequence;
     @Column(name = "sbs_id")
     private Integer sbsId;
     @Column(name = "title")
     private String title;
     @Column(name = "explanations")
     private String explanations;
-    @Column(name = "image")
-    private byte[] image;
 
     public PatternStep() {
     }
 
-    public PatternStep(Integer sequence, Integer sbsId, String explanations, byte[] image, String title) {
-        this.sequence = sequence;
+    public PatternStep(Integer sbsId, String explanations, String title) {
         this.sbsId = sbsId;
         this.explanations = explanations;
-        this.image = image;
         this.title = title;
     }
 
@@ -51,14 +46,6 @@ public class PatternStep {
         this.title = title;
     }
 
-    public Integer getSequence() {
-        return sequence;
-    }
-
-    public void setSequence(Integer sequence) {
-        this.sequence = sequence;
-    }
-
     public Integer getSbsId() {
         return sbsId;
     }
@@ -73,13 +60,5 @@ public class PatternStep {
 
     public void setExplanations(String explanations) {
         this.explanations = explanations;
-    }
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
     }
 }

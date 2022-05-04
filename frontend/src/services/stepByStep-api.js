@@ -3,14 +3,13 @@ const apiUrl = "http://localhost:8081/api";
 import { userService } from "./user.service";
 
 export const apiCall = {
-  createNewStepByStep: async (patternId, lastStepDone, steps) => {
+  createNewStepByStep: async (patternId, steps) => {
     const userId = userService.getCurrentUserId();
     const username = await userService.getCurrentUserUsername();
     const body = {
       patternId: parseFloat(patternId),
       authorId: userId,
       authorUsername: username,
-      lastStepDone: lastStepDone,
     };
 
     // We call the step by step creation end point, which combine 2 BE actions :
@@ -41,16 +40,21 @@ export const apiCall = {
         "Content-Type": "multipart/form-data;charset=UTF-8",
       },
     };
+    const formData = new FormData();
 
-    let formData = new FormData();
+    const formattedSteps = steps.map((step) => {
+      return {
+        title: step.title,
+        explanations: step.explanation,
+        sbsId: sbsId,
+      };
+    });
+    const images = steps.map((step) => step.image);
 
-    for (let index = 0; index < steps.titles.length; index++) {
-      formData.append(`sequences[]`, steps.sequences[index]);
-      formData.append(`titles[]`, steps.titles[index]);
-      formData.append("sbsId", sbsId);
-      formData.append(`explanations[]`, steps.explanations[index]);
-      formData.append(`images[]`, steps.images[index]);
-    }
+    formattedSteps.forEach((formattedStep, index) => {
+      formData.append("steps", JSON.stringify(formattedStep));
+      formData.append("images", images[index]);
+    });
 
     return axios
       .post(`${apiUrl}/patternstep/newSteps`, formData, config)
@@ -66,7 +70,13 @@ export const apiCall = {
       .post(`${apiUrl}/patternstep/findAllSteps/${sbsId}`)
       .then((response) => {
         if (response.status === 200) {
-          return response.data;
+          return response.data.steps.map((step) => {
+            let stepValues = { ...step };
+            stepValues.image = response.data.images.find(
+              (image) => image.stepId === step.id
+            ).image;
+            return stepValues;
+          });
         } else console.log("getStepsBySbsId: A problem happened", response);
       });
   },

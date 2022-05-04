@@ -17,19 +17,19 @@ public class SbsOnProgress {
     private Integer patternId;
     @Column(name = "user_id")
     private String userId;
-    @Column(name = "last_step_done")
-    private Integer lastStepDone;
     @Column(name = "progress")
     private Boolean progress;
+    @Column(name = "sbs_id")
+    private Integer sbsId;
 
     public SbsOnProgress() {
     }
 
-    public SbsOnProgress(Integer patternId, String userId, Integer lastStepDone, Boolean progress) {
+    public SbsOnProgress(Integer patternId, String userId, Boolean progress, Integer sbsId) {
         this.patternId = patternId;
         this.userId = userId;
-        this.lastStepDone = lastStepDone;
         this.progress = progress;
+        this.sbsId = sbsId;
     }
 
     public Integer getId() {
@@ -55,21 +55,21 @@ public class SbsOnProgress {
     public void setUserId(String userId) {
         this.userId = userId;
     }
-
-    public Integer getLastStepDone() {
-        return lastStepDone;
-    }
-
-    public void setLastStepDone(Integer lastStepDone) {
-        this.lastStepDone = lastStepDone;
-    }
-
+    
     public Boolean getProgress() {
         return progress;
     }
 
     public void setProgress(Boolean progress) {
         this.progress = progress;
+    }
+
+    public Integer getSbsId() {
+        return sbsId;
+    }
+
+    public void setSbsId(Integer sbsId) {
+        this.sbsId = sbsId;
     }
 
 }

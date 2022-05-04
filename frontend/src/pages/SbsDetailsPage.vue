@@ -27,7 +27,6 @@ export default {
       apiCall.getStepsBySbsId(this.$route.params.sbsId).then((response) => {
         if (response) {
           this.stepByStep = response;
-          console.log(this.stepByStep);
         }
       });
     },
