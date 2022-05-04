@@ -22,7 +22,7 @@ public class SbsOnProgressService {
         return sbsOnProgressRepository.save(progress);
     }
 
-    public ResponseEntity<SbsOnProgress> updateProgress(Integer progressId, Optional<Integer> lastStepDone,
+    public ResponseEntity<SbsOnProgress> updateProgress(Integer progressId,
             Optional<Boolean> progress)
             throws RelationNotFoundException {
         Optional<SbsOnProgress> sbsProgress = sbsOnProgressRepository.findById(progressId);
@@ -30,9 +30,6 @@ public class SbsOnProgressService {
         sbsProgress.ifPresent(foundedSbsProgress -> {
             progress.ifPresent(progressVal -> {
                 foundedSbsProgress.setProgress(progressVal);
-            });
-            lastStepDone.ifPresent(lastStepVal -> {
-                foundedSbsProgress.setLastStepDone(lastStepVal);
             });
             sbsOnProgressRepository.save(foundedSbsProgress);
         });

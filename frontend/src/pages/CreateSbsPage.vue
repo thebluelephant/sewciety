@@ -1,7 +1,7 @@
 <template>
   <div class="create-sbs-page">
     <div
-      v-for="(step, index) in steps.titles"
+      v-for="(step, index) in steps"
       :key="index"
       class="create-sbs-page__cards-container"
     >
@@ -21,7 +21,11 @@
     </div>
 
     <div class="create-sbs-page__addStep-container">
-      <primary-button :title="`${$t('createsbspage.add-step')}`" @click="addStep()" type="action" />
+      <primary-button
+        :title="`${$t('createsbspage.add-step')}`"
+        @click="addStep()"
+        type="action"
+      />
     </div>
     <div class="create-sbs-page__submit-container">
       <primary-button
@@ -44,22 +48,16 @@ export default {
   components: { StepCard, PrimaryButton },
   data() {
     return {
-      steps: {
-        images: [],
-        titles: [],
-        explanations: [],
-        sequences: [],
-      },
-      lastIndex: "",
+      steps: [],
     };
   },
   methods: {
     addStep() {
-      this.steps.images.push("");
-      this.steps.titles.push("");
-      this.steps.explanations.push("");
-      this.steps.sequences.push("");
-      this.setSequence();
+      this.steps.push({
+        image: "",
+        title: "",
+        explanation: "",
+      });
     },
     deleteStep(index) {
       const stepsKeys = Object.keys(this.steps);
@@ -71,30 +69,24 @@ export default {
     },
     getInitialIndexValues(index) {
       return {
-        title: this.steps.titles[index],
-        explanations: this.steps.explanations[index],
+        title: this.steps[index].title,
+        explanations: this.steps[index].explanation,
         //We don't set initial value for image to avoid any bug regarding the type of file and everything
         image: "",
       };
     },
-    setSequence() {
-      // If we add a step, the new index (and so, the sequence number) is automatically the last index of the array
-      this.lastIndex = this.steps.titles.length - 1;
-      this.steps.sequences[this.lastIndex] = this.lastIndex;
-    },
     editTitle(index, title) {
-      this.steps.titles[index] = title;
+      this.steps[index].title = title;
     },
     editImage(index, image) {
-      this.steps.images[index] = image;
+      this.steps[index].image = image;
     },
     editExplanations(index, explanations) {
-      this.steps.explanations[index] = explanations;
+      this.steps[index].explanation = explanations;
     },
     async submit() {
       const response = await apiCall.createNewStepByStep(
         this.$route.params.id,
-        this.lastIndex,
         this.steps
       );
       if (response === 200) {

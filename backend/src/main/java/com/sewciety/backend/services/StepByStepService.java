@@ -21,16 +21,17 @@ public class StepByStepService {
 
     public Integer postNewStepByStep(FeNewStepByStep feStepByStep) {
         // First we create a StepByStep and post it
-        StepByStep stepByStep = new StepByStep(feStepByStep.getPatternId(), feStepByStep.getAuthorId(), feStepByStep.getAuthorUsername(), new Date());
-        StepByStep newStepByStep = postStepByStep(stepByStep);
+        StepByStep newStepByStep = postStepByStep(new StepByStep(feStepByStep.getPatternId(),
+                feStepByStep.getAuthorId(), feStepByStep.getAuthorUsername(), new Date()));
 
-        // Then, with the new Step by step created in DB, we create a progress that we automatically close
+        // Then, with the new Step by step created in DB, we create a progress that we
+        // automatically close
         // TO DO : Add possibility to set progress value dynamically
         SbsOnProgress progress = new SbsOnProgress(newStepByStep.getPatternId(), newStepByStep.getAuthorId(),
-                feStepByStep.getLastStepDone(), false);
+                false, newStepByStep.getId());
         sbsOnProgressService.creatNewProgress(progress);
 
-        // Finally we return the step by step ID automatically created. 
+        // Finally we return the step by step ID automatically created.
         return newStepByStep.getId();
 
     }
@@ -39,7 +40,7 @@ public class StepByStepService {
         return stepByStepRepository.save(stepByStep);
     }
 
-    public List<StepByStep> getListOfStepByStepByPatternId(Integer patternId){
+    public List<StepByStep> getListOfStepByStepByPatternId(Integer patternId) {
         return stepByStepRepository.findByPatternId(patternId);
     }
 }

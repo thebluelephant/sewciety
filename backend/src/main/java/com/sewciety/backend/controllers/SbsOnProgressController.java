@@ -35,9 +35,8 @@ public class SbsOnProgressController {
 
     @PatchMapping("update/{progressId}")
     ResponseEntity<SbsOnProgress> updateProgress(@PathVariable(value = "progressId") Integer progressId,
-            @RequestBody Optional<Integer> lastStepDone,
             @RequestBody Optional<Boolean> progress) throws RelationNotFoundException {
 
-        return sbsOnProgressService.updateProgress(progressId, lastStepDone, progress);
+        return sbsOnProgressService.updateProgress(progressId, progress);
     }
 }
