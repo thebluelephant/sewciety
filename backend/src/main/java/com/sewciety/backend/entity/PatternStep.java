@@ -3,7 +3,6 @@ package com.sewciety.backend.entity;
 import javax.persistence.*;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.lang.Nullable;
 
 @Entity
 @Table(name = "pattern_step")

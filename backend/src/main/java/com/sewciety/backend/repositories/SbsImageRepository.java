@@ -12,4 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface SbsImageRepository extends JpaRepository<SbsImage, Integer> {
 
     List<SbsImage> findAllBySbsId(Integer id);
+
+    @Query(value = "SELECT image FROM SbsImage image WHERE image.stepId = :stepId")
+    SbsImage findByStepId(Integer stepId);
 }

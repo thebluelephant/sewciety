@@ -1,6 +1,22 @@
 <template>
   <div class="stepbystep-container">
-    <div class="sbs-list" v-for="sbs of stepBySteps" :key="sbs.id">
+    <div class="sbs-list" v-for="sbs of stepBySteps.saved" :key="sbs.id">
+      <div class="sbs-list__card">
+        <span class="card__header">
+          <p class="username">{{ sbs.authorUsername }}</p>
+          <p class="date">{{ formatedDate(sbs.date) }}</p>
+        </span>
+
+        <primary-button
+          class="sbs-list__redirection"
+          @click="redirectToSbsCreationPage(sbs.id)"
+          type="navigation"
+          :mini="true"
+        />
+      </div>
+    </div>
+    <span class="separator"></span>
+    <div class="sbs-list" v-for="sbs of stepBySteps.published" :key="sbs.id">
       <div class="sbs-list__card">
         <span class="card__header">
           <p class="username">{{ sbs.authorUsername }}</p>
@@ -42,8 +58,11 @@ export default {
     formatedDate(stepByStepDate) {
       return moment(stepByStepDate).format("DD-MM-YYYY");
     },
-    redirectToSbsCreationPage() {
-      this.$router.push(`/pattern/${this.patternId}/sbs/create`);
+    redirectToSbsCreationPage(sbsId) {
+      this.$router.push({
+        name: "CreateSbsPage",
+        params: { patternId: this.patternId, sbsId: sbsId },
+      });
     },
     redirectToSbsById(sbsId) {
       this.$router.push({ name: "SbsDetailsPage", params: { sbsId: sbsId } });

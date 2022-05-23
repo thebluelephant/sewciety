@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Optional;
 
 import javax.management.relation.RelationNotFoundException;
 
@@ -33,10 +32,10 @@ public class SbsOnProgressController {
         return sbsOnProgressService.creatNewProgress(progress);
     }
 
-    @PatchMapping("update/{progressId}")
-    ResponseEntity<SbsOnProgress> updateProgress(@PathVariable(value = "progressId") Integer progressId,
-            @RequestBody Optional<Boolean> progress) throws RelationNotFoundException {
-
-        return sbsOnProgressService.updateProgress(progressId, progress);
+    @PostMapping("update/{sbsId}")
+    SbsOnProgress updateProgress(@PathVariable(value = "sbsId") Integer sbsId,
+            @RequestParam("progress") Boolean progress) throws RelationNotFoundException {
+                System.out.println(progress);
+        return sbsOnProgressService.updateProgress(sbsId, progress);
     }
 }

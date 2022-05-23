@@ -27,7 +27,8 @@
   "createsbspage":{
     "create-sbs": "Create a step by step",
     "add-step":"Add step",
-    "publish":"Publish"
+    "publish":"Publish",
+    "save":"Save"
 
   }
 }

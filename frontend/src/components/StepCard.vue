@@ -1,34 +1,33 @@
 <template>
   <div class="step-card">
     <div
-      :class="[disabled ? `step-card__header--disabled` : 'step-card__header']"
+      :class="[disableTitleEdition ? `step-card__header--disabled` : 'step-card__header']"
     >
       <p class="number">{{ formatedIndex }} -</p>
-      <p v-if="disabled" class="title--disabled ">{{ initialValue.title }}</p>
+      <p v-if="disableTitleEdition" class="title--disabled ">{{ initialValue.title }}</p>
       <input
         class="title input--neumorphic"
         type="text"
         :value="initialValue.title"
         @change="onTitleChange($event)"
-        v-if="!disabled"
+        v-if="!disableTitleEdition"
       />
     </div>
     <div class="step-card__body">
       <div class="image">
         <input
-          v-if="!disabled"
+          v-if="!disableImageUpload"
           type="file"
-          :value="initialValue.image"
           multiple
           @change="onImageChange($event)"
         />
-        <img :src="`data:image/png;base64,${initialValue.image}`" alt="" />
+        <img v-if="disableImageUpload || initialValue.image" :src="`data:image/png;base64,${initialValue.image}`" alt="" />
       </div>
 
-      <p v-if="disabled" class="description--disabled">{{ initialValue.explanations }}</p>
+      <p v-if="disableExplanationsEdition" class="description--disabled">{{ initialValue.explanations }}</p>
 
       <textarea
-        v-if="!disabled"
+        v-if="!disableExplanationsEdition"
         class="description input--neumorphic"
         cols="30"
         rows="10"
@@ -42,7 +41,7 @@
 <script>
 export default {
   name: "StepCard",
-  props: ["index", "initialValue", "disabled"],
+  props: ["index", "initialValue", "disableImageUpload", "disableExplanationsEdition", "disableTitleEdition",  "onProgress"],
   data() {
     return {};
   },

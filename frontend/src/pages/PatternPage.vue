@@ -28,11 +28,10 @@
 <script>
 import ChipMenu from "../components/ChipMenu.vue";
 import { apiCall } from "../services/patterns-api";
-import PrimaryButton from "../components/PrimaryButton.vue";
 import StepByStepContainer from "../components/StepByStepContainer.vue";
 
 export default {
-  components: { ChipMenu, PrimaryButton, StepByStepContainer },
+  components: { ChipMenu, StepByStepContainer },
   name: "PatternPage",
   data() {
     return {
