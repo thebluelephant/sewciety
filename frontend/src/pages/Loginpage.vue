@@ -1,14 +1,14 @@
 <template>
   <div class="login">
     <div v-if="!$auth.loading.value">
-      <primary-button
+      <basic-button
         v-if="!$auth.isAuthenticated.value"
         class="pattern-card__button"
         title="Connexion"
         @click="login"
         type="navigation"
       />
-      <primary-button
+      <basic-button
         v-if="$auth.isAuthenticated.value"
         class="pattern-card__button"
         title="Deconnexion"
@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import PrimaryButton from '../components/PrimaryButton.vue';
+import BasicButton from '../components/Basic-Button.vue';
 
 export default {
-  components: { PrimaryButton },
+  components: { BasicButton },
   name: "Login",
   methods: {
     login() {

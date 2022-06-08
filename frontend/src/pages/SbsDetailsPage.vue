@@ -1,13 +1,12 @@
 <template>
   <div class="sbs-details-page">
-    <span v-for="(step, index) of stepByStep" :key="step.id">
+    <span class="step" v-for="(step, index) of stepByStep" :key="step.id">
       <step-card :disableExplanationsEdition="true" :disableTitleEdition="true" :disableImageUpload="true" :index="index" :initialValue="step" />
     </span>
   </div>
 </template>
 
 <script>
-//import PrimaryButton from "../components/PrimaryButton.vue";
 import { apiCall } from "../services/stepByStep-api";
 import StepCard from "../components/StepCard.vue";
 

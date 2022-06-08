@@ -83,7 +83,6 @@ export default {
   padding: 15px;
   background: #efefef;
   overflow: auto;
-
   .menu {
     height: 30px;
     display: flex;
@@ -96,5 +95,12 @@ export default {
       fill: $green;
     }
   }
+}
+
+body {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
 }
 </style>

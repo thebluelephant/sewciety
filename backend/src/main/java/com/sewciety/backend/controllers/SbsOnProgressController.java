@@ -1,9 +1,7 @@
 package com.sewciety.backend.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,7 +33,6 @@ public class SbsOnProgressController {
     @PostMapping("update/{sbsId}")
     SbsOnProgress updateProgress(@PathVariable(value = "sbsId") Integer sbsId,
             @RequestParam("progress") Boolean progress) throws RelationNotFoundException {
-                System.out.println(progress);
         return sbsOnProgressService.updateProgress(sbsId, progress);
     }
 }

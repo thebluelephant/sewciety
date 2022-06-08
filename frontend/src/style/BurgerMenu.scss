@@ -8,6 +8,10 @@
   left: 0;
   font-weight: bold;
   z-index: 3;
+
+  @media (min-width: 1024px) {
+    width : 20%;
+  }
   
   &__close-button {
     height: 40px;
