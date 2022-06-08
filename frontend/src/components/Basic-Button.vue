@@ -1,9 +1,9 @@
 <template>
   <div
     :class="[
-      'primary-button',
-      `primary-button-${type}`,
-      { 'primary-button--mini': mini },
+      'basic-button',
+      `basic-button-${type}`,
+      { 'basic-button--mini': mini },
     ]"
   >
     <a :href="route">
@@ -17,11 +17,11 @@
 
 <script>
 export default {
-  name: "PrimaryButton",
+  name: "BasicButton",
   props: ["title", "route", "mini", "type"],
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../style/PrimaryButton";
+@import "../style/BasicButton";
 </style>

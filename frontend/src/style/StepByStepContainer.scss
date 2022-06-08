@@ -6,6 +6,11 @@
   flex-direction: column;
   .sbs-list {
     margin-bottom: 5%;
+
+    @media (min-width: 1024px) {
+      margin-bottom: 2%;
+    }
+
     &__card {
       display: flex;
       height: 80px;
@@ -20,7 +25,7 @@
           display: flex;
           width: 70%;
           justify-content: space-between;
-          
+
           .username {
             text-transform: capitalize;
           }
@@ -29,6 +34,11 @@
           }
         }
       }
+    }
+  }
+  .create-sbs {
+    &--centered {
+      align-self: center;
     }
   }
 }

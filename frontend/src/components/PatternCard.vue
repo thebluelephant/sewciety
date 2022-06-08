@@ -1,7 +1,7 @@
 <template>
   <div class="pattern-card">
     <img class="pattern-card__image" alt="pattern img" :src="img" />
-    <primary-button
+    <basic-button
       class="pattern-card__button"
       :mini="true"
       :route="route"
@@ -13,11 +13,11 @@
 </template>
 
 <script>
-import PrimaryButton from "./PrimaryButton.vue";
+import BasicButton from "./Basic-Button.vue";
 import router from "../router/router.js";
 
 export default {
-  components: { PrimaryButton },
+  components: { BasicButton },
   name: "PatternCard",
   props: ["title", "route", "img", "id"],
   data() {

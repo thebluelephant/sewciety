@@ -21,23 +21,23 @@
     </div>
 
     <div class="create-sbs-page__addStep-container">
-      <primary-button
+      <basic-button
         :title="`${$t('createsbspage.add-step')}`"
         @click="addStep()"
         type="action"
       />
     </div>
     <div class="create-sbs-page__submit-container">
-      <primary-button
-        class="submit"
-        :title="`${$t('createsbspage.publish')}`"
-        @click="submit()"
-        type="navigation"
-      />
-      <primary-button
+      <basic-button
         class="save"
         :title="`${$t('createsbspage.save')}`"
         @click="save()"
+        type="secondary-navigation"
+      />
+      <basic-button
+        class="submit"
+        :title="`${$t('createsbspage.publish')}`"
+        @click="submit()"
         type="navigation"
       />
     </div>
@@ -46,14 +46,14 @@
 
 <script>
 import StepCard from "../components/StepCard.vue";
-import PrimaryButton from "../components/PrimaryButton.vue";
+import BasicButton from "../components/Basic-Button.vue";
 import { apiCall } from "../services/stepByStep-api";
 var isEqual = require("lodash/isEqual");
 var cloneDeep = require("lodash/cloneDeep");
 
 export default {
   name: "CreateSbsPage",
-  components: { StepCard, PrimaryButton },
+  components: { StepCard, BasicButton },
   data() {
     return {
       steps: [],
@@ -115,10 +115,9 @@ export default {
     },
     submit() {
       if (this.$route.params.sbsId) {
-        apiCall.updateSbsProgress(this.$route.params.sbsId, false).then(() =>{
-          
-        })
-        this.saveSteps();
+        apiCall.updateSbsProgress(this.$route.params.sbsId, false).then(() => {
+          this.saveSteps();
+        });
       } else {
         this.createNewStepByStep(false);
       }

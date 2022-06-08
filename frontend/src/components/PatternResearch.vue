@@ -43,7 +43,7 @@
           <span v-if="!showMoreCriterias">{{$t('common.more')}}</span>
           <span v-if="showMoreCriterias">{{$t('common.less')}}</span> {{$t('common.criterias')}}
         </p>
-        <primary-button
+        <basic-button
           :title="$t('homepage.research')"
           @click="onResearch"
           type="navigation"
@@ -56,15 +56,15 @@
 
 <script>
 import { apiCall } from "../services/patterns-api";
-import PrimaryButton from "./PrimaryButton.vue";
+import BasicButton from "./Basic-Button.vue";
 import router from "../router/router.js";
 
 export default {
-  components: { PrimaryButton },
+  components: { BasicButton },
   name: "PatternResearch",
   props: ["minimized"],
   component: {
-    PrimaryButton,
+    BasicButton,
   },
   data() {
     return {

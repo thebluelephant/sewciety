@@ -11,8 +11,6 @@ import com.sewciety.backend.repositories.PatternStepRepository;
 import com.sewciety.backend.repositories.SbsImageRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -46,7 +44,6 @@ public class PatternStepService {
                     oldStep.setTitle(step.getTitle());
                     oldStep.setExplanations(step.getExplanations());
                     patternStepRepository.save(oldStep);
-                    System.out.println(imageFiles.get(i).getClass().getSimpleName());
                     SbsImage oldImage = sbsImageRepository.findByStepId(step.getId());
                     try {
                         oldImage.setImage(imageFiles.get(i).getBytes());
