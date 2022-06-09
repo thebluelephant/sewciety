@@ -20,18 +20,14 @@ export default {
   components: { BasicButton },
   name: "PatternCard",
   props: ["title", "route", "img", "id"],
-  data() {
-    return {};
-  },
   methods: {
-    onRedirect: function() {
+    onRedirect: () => {
       router.push({
         name: "Patternpage",
         params: { id: this.id },
       });
     },
   },
-  beforeMount() {},
 };
 </script>
 

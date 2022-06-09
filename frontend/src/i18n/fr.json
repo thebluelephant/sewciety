@@ -1,33 +1,39 @@
 {
-  "common" : {
-    "hello" : "Bonjour",
-    "more" : "Plus",
-    "less" : "Moins",
-    "criterias" : "de critères"
+  "common": {
+    "hello": "Bonjour",
+    "more": "Plus",
+    "less": "Moins",
+    "criterias": "de critères",
+    "upload": "Téléverser",
+    "cancel": "Annuler",
+    "confirm": "Confirmer"
   },
-  "homepage" : {
-    "find-pattern" : "Rechercher un patron",
-    "research-placeholder" : "Titre d'un patron, numero, marque ...",
-    "select-brand" : "Selectionner une marque",
-    "research" : "Rechercher",
-    "quick-access" : "Accès rapide"
+  "homepage": {
+    "find-pattern": "Rechercher un patron",
+    "research-placeholder": "Titre d'un patron, numero, marque ...",
+    "select-brand": "Selectionner une marque",
+    "research": "Rechercher",
+    "quick-access": "Accès rapide"
   },
-  "burgermenu" : {
+  "burgermenu": {
     "homepage": "Accueil",
-    "research" : "Recherche",
-    "inventory" : "Inventaire",
-    "tools" : "Outils",
+    "research": "Recherche",
+    "inventory": "Inventaire",
+    "tools": "Outils",
     "logout": "Déconnexion"
   },
-  "patternpage" : {
-    "pattern" : "Patron",
-    "step-by-step" : "Pas à pas",
-    "achievements" : "Réalisations"
+  "patternpage": {
+    "pattern": "Patron",
+    "step-by-step": "Pas à pas",
+    "achievements": "Réalisations"
   },
-  "createsbspage":{
+  "createsbspage": {
     "create-sbs": "Créer un pas à pas",
-    "add-step":"Ajouter une étape",
-    "publish":"Publier",
-    "save":"Sauvegarder"
+    "add-step": "Ajouter une étape",
+    "publish": "Publier",
+    "save": "Sauvegarder"
+  },
+  "stepbystep": {
+    "delete-step": "Êtes-vous sûr de vouloir supprimer cette étape ? Cette action est définitive"
   }
 }
