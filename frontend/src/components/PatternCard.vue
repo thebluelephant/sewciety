@@ -21,7 +21,7 @@ export default {
   name: "PatternCard",
   props: ["title", "route", "img", "id"],
   methods: {
-    onRedirect: () => {
+    onRedirect(){
       router.push({
         name: "Patternpage",
         params: { id: this.id },

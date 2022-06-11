@@ -23,6 +23,7 @@
     <div class="step-card__body">
       <div class="image">
         <image-input
+          v-if="!disableImageUpload"
           :index="index"
           :initialValue="initialValue.image"
           @imageChange="onImageChange($event)"
@@ -62,7 +63,6 @@ export default {
     "disableImageUpload",
     "disableExplanationsEdition",
     "disableTitleEdition",
-    "onProgress",
   ],
   computed: {
     formatedIndex() {

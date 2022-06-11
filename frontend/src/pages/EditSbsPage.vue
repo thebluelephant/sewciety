@@ -72,7 +72,7 @@ var isEqual = require("lodash/isEqual");
 var cloneDeep = require("lodash/cloneDeep");
 
 export default {
-  name: "CreateSbsPage",
+  name: "EditSbsPage",
   components: { StepCard, BasicButton, Popin },
   data() {
     return {
@@ -182,5 +182,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../style/CreateSbspage";
+@import "../style/EditSbspage";
 </style>

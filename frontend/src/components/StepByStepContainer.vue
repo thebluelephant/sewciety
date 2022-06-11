@@ -72,7 +72,7 @@ export default {
     },
     redirectToSbsCreationPage(sbsId) {
       this.$router.push({
-        name: "CreateSbsPage",
+        name: "EditSbsPage",
         params: { patternId: this.patternId, sbsId: sbsId },
       });
     },
