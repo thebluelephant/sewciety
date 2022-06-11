@@ -1,5 +1,16 @@
 <template>
   <div class="create-sbs-page">
+    <popin
+      :description="$t('stepbystep.delete-step')"
+      :showPopin="showDeletePopin"
+      @onConfirm="deleteStep()"
+      @onCancel="
+        () => {
+          showDeletePopin = false;
+          this.itemToDeleteIndex = null;
+        }
+      "
+    />
     <div
       v-for="(step, index) in steps"
       :key="index"
@@ -13,7 +24,15 @@
         @imageChange="editImage(index, $event)"
         @explanationsChange="editExplanations(index, $event)"
       />
-      <span @click="deleteStep(index)" class="delete-button">
+      <span
+        @click="
+          () => {
+            itemToDeleteIndex = index;
+            showDeletePopin = true;
+          }
+        "
+        class="delete-button"
+      >
         <svg>
           <use class="open-icon" xlink:href="#close" />
         </svg>
@@ -47,17 +66,20 @@
 <script>
 import StepCard from "../components/StepCard.vue";
 import BasicButton from "../components/Basic-Button.vue";
+import Popin from "../components/Popin.vue";
 import { apiCall } from "../services/stepByStep-api";
 var isEqual = require("lodash/isEqual");
 var cloneDeep = require("lodash/cloneDeep");
 
 export default {
   name: "CreateSbsPage",
-  components: { StepCard, BasicButton },
+  components: { StepCard, BasicButton, Popin },
   data() {
     return {
       steps: [],
       savedSteps: [],
+      showDeletePopin: false,
+      itemToDeleteIndex: null,
     };
   },
   mounted() {
@@ -73,19 +95,26 @@ export default {
         explanations: "",
       });
     },
-    deleteStep(index) {
-      const stepId = this.steps[index].id;
-      apiCall.deleteStep(stepId).then((response) => {
-        if (response.status === 200) {
-          this.fetchStepByStep();
-        }
-      });
+    deleteStep() {
+      this.showDeletePopin = false;
+      const stepId = this.steps[this.itemToDeleteIndex].id;
+
+      if (stepId) {
+        apiCall.deleteStep(stepId).then((response) => {
+          if (response.status === 200) {
+            this.steps.splice(this.itemToDeleteIndex, 1);
+            this.itemToDeleteIndex = null;
+          }
+        });
+      } else {
+        this.steps.splice(this.itemToDeleteIndex, 1);
+        this.itemToDeleteIndex = null;
+      }
     },
     getInitialIndexValues(index) {
       return {
         title: this.steps[index].title,
         explanations: this.steps[index].explanations,
-        //We don't set initial value for image to avoid any bug regarding the type of file and everything
         image: this.steps[index].image,
       };
     },

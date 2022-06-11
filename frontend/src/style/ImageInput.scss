@@ -1,0 +1,37 @@
+@import "./Global.scss";
+
+.image-input {
+  display: flex;
+  align-items: center;
+  height: 200px;
+
+  &__upload-button{
+    margin : 20px;
+    padding: 10px;
+    border-radius: 30px;
+    background: $green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+
+    svg {
+      height: 25px;
+      width: 25px;
+    }
+  }
+
+  label {
+    cursor: pointer;
+  }
+  input {
+    display: none;
+  }
+  .preview {
+    display: flex;
+    &--hidden {
+      display: none;
+    }
+  }
+}
