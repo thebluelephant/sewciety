@@ -1,7 +1,13 @@
 <template>
   <div class="sbs-details-page">
     <span class="step" v-for="(step, index) of stepByStep" :key="step.id">
-      <step-card :disableExplanationsEdition="true" :disableTitleEdition="true" :disableImageUpload="true" :index="index" :initialValue="step" />
+      <step-card
+        :disableExplanationsEdition="true"
+        :disableTitleEdition="true"
+        :disableImageUpload="true"
+        :index="index"
+        :initialValue="step"
+      />
     </span>
   </div>
 </template>
