@@ -79,8 +79,15 @@ public class PatternStepService {
         return new FePatternSteps(steps, images);
     }
 
-    public void deletePatternStep(Integer sbsId) {
-        patternStepRepository.deleteById(sbsId);
+    public void deletePatternStep(Integer patternStepId) {
+        sbsImageRepository.deleteByStepId(patternStepId);
+        patternStepRepository.deleteById(patternStepId);
+        
+    }
+
+    public void deleteAllPatternStepBySbsId(Integer sbsId){
+        patternStepRepository.deleteAllPatternStepBySbsId(sbsId);
+        
     }
 
 }

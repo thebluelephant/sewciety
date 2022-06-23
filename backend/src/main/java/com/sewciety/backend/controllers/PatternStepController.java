@@ -60,7 +60,7 @@ public class PatternStepController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletePatternStep(@PathVariable("id") Integer sbsId) {
-        patternStepService.deletePatternStep(sbsId);
+    public void deletePatternStep(@PathVariable("id") Integer patternStepId) {
+        patternStepService.deletePatternStep(patternStepId);
     }
 }

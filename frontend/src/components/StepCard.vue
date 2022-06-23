@@ -64,6 +64,7 @@ export default {
     "disableExplanationsEdition",
     "disableTitleEdition",
   ],
+
   computed: {
     formatedIndex() {
       return this.index + 1;

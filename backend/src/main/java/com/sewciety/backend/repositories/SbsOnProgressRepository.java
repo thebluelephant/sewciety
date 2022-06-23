@@ -16,4 +16,8 @@ public interface SbsOnProgressRepository extends JpaRepository<SbsOnProgress, In
     @Query(value = "SELECT progress FROM SbsOnProgress progress WHERE progress.sbsId = :sbsId")    
     Optional<SbsOnProgress> findBySbsId(Integer sbsId);
 
+    @Query(value = "DELETE FROM progress WHERE sbs_id = :sbsId", nativeQuery = true)
+    void deleteBySbsId(Integer sbsId);
+    
+
 }
