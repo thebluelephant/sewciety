@@ -7,7 +7,7 @@
       @onCancel="
         () => {
           showDeletePopin = false;
-          this.itemToDeleteIndex = null;
+          itemToDeleteIndex = null;
         }
       "
     />
@@ -54,9 +54,9 @@
         type="secondary-navigation"
       />
       <basic-button
-        class="submit"
+        class="publish"
         :title="`${$t('createsbspage.publish')}`"
-        @click="submit()"
+        @click="publish()"
         type="navigation"
       />
     </div>
@@ -142,7 +142,7 @@ export default {
         this.createNewStepByStep(true);
       }
     },
-    submit() {
+    publish() {
       if (this.$route.params.sbsId) {
         apiCall.updateSbsProgress(this.$route.params.sbsId, false).then(() => {
           this.saveSteps();

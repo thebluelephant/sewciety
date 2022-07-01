@@ -43,6 +43,15 @@ export const apiCall = {
     });
   },
 
+  deleteStepByStep: (sbsId) => {
+    return axios
+      .delete(`${apiUrl}/stepbystep/delete/${sbsId}`)
+      .then((response) => {
+        if (response.status === 200) {
+          return response.data;
+        } else console.log("deleteStepByStep: A problem happened", response);
+      });
+  },
   getStepByStepById: (patternId) => {
     const userId = userService.getCurrentUserId();
     return axios
@@ -131,9 +140,11 @@ export const apiCall = {
   },
 
   deleteStepByStep: (sbsId) => {
-    return axios.delete(`${apiUrl}/stepbystep/delete/${sbsId}`).then((response) => {
-      return response;
-    });
+    return axios
+      .delete(`${apiUrl}/stepbystep/delete/${sbsId}`)
+      .then((response) => {
+        return response;
+      });
   },
 
   updateSbsProgress: (sbsId, progress) => {
