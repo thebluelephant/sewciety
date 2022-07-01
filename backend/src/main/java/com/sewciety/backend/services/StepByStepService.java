@@ -7,6 +7,9 @@ import com.sewciety.backend.entity.FeNewStepByStep;
 import com.sewciety.backend.entity.FePublishAndSavedSbs;
 import com.sewciety.backend.entity.SbsOnProgress;
 import com.sewciety.backend.entity.StepByStep;
+import com.sewciety.backend.repositories.PatternStepRepository;
+import com.sewciety.backend.repositories.SbsImageRepository;
+import com.sewciety.backend.repositories.SbsOnProgressRepository;
 import com.sewciety.backend.repositories.StepByStepRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +21,13 @@ public class StepByStepService {
     @Autowired
     private StepByStepRepository stepByStepRepository;
     @Autowired
+    private SbsOnProgressRepository sbsOnProgressRepository;
+    @Autowired
+    private SbsImageRepository sbsImageRepository;
+    @Autowired
     private SbsOnProgressService sbsOnProgressService;
+    @Autowired
+    private PatternStepService patternStepService;
 
     public Integer postNewStepByStep(FeNewStepByStep feStepByStep) {
         // First we create a StepByStep and post it
@@ -50,5 +59,12 @@ public class StepByStepService {
     public List<StepByStep> getListOfSavedSbsByUserIdAndPatternId(Integer patternId, String userId) {
         return stepByStepRepository.getListOfSavedSbsByUserIdAndPatternId(patternId, userId);
 
+    }
+
+    public void deleteSbs(Integer sbsId) { 
+        patternStepService.deleteAllPatternStepBySbsId(sbsId); 
+        sbsOnProgressRepository.deleteBySbsId(sbsId); 
+        stepByStepRepository.deleteById(sbsId);
+        sbsImageRepository.deleteBySbsId(sbsId);
     }
 }

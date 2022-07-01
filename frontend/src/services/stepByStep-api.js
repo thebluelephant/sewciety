@@ -130,6 +130,12 @@ export const apiCall = {
     });
   },
 
+  deleteStepByStep: (sbsId) => {
+    return axios.delete(`${apiUrl}/stepbystep/delete/${sbsId}`).then((response) => {
+      return response;
+    });
+  },
+
   updateSbsProgress: (sbsId, progress) => {
     return axios
       .post(
