@@ -34,6 +34,8 @@
     "save": "Sauvegarder"
   },
   "stepbystep": {
-    "delete-step": "Êtes-vous sûr de vouloir supprimer cette étape ? Cette action est définitive"
+    "my-saved-sbs": "Mes pas à pas sauvegardés", 
+    "delete-step": "Êtes-vous sûr de vouloir supprimer cette étape ? Cette action est définitive",
+    "delete-stepbystep": "Êtes-vous sûr de vouloir supprimer ce pas à pas ? Cette action est définitive"
   }
 }

@@ -9,7 +9,7 @@
     <a :href="route">
       <span v-if="!mini" class="title">{{ title }}</span>
       <svg v-if="mini">
-        <use class="icon" xlink:href="#chevron-right" />
+        <use class="icon" :xlink:href="icon ?? '#chevron-right'" />
       </svg>
     </a>
   </div>
@@ -18,7 +18,7 @@
 <script>
 export default {
   name: "BasicButton",
-  props: ["title", "route", "mini", "type"],
+  props: ["title", "route", "mini", "type", "icon"],
 };
 </script>
 

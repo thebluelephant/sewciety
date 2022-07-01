@@ -1,6 +1,7 @@
 package com.sewciety.backend.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +16,8 @@ public interface PatternStepRepository extends JpaRepository<PatternStep, Intege
 
     List<PatternStep> findAllBySbsId(Integer id);
 
-    @Transactional 
+    @Transactional
+    @Modifying
     @Query(value = "DELETE FROM pattern_step WHERE sbs_id = :sbsId", nativeQuery = true)
     void deleteAllPatternStepBySbsId(Integer sbsId);
 

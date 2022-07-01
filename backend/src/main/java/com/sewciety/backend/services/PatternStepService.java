@@ -11,7 +11,9 @@ import com.sewciety.backend.repositories.PatternStepRepository;
 import com.sewciety.backend.repositories.SbsImageRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
@@ -85,6 +87,8 @@ public class PatternStepService {
         
     }
 
+    @Transactional
+    @Modifying
     public void deleteAllPatternStepBySbsId(Integer sbsId){
         patternStepRepository.deleteAllPatternStepBySbsId(sbsId);
         
