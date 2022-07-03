@@ -1,7 +1,7 @@
 <template>
   <div class="research-page">
     <span class="research-page__research">
-      <PatternResearch :minimized="true" @research-pattern="findPattern" />
+      <PatternResearch :minimized="true" @research-pattern="fetchPatterns" />
     </span>
     <span class="research-page__cards">
       <PatternCard
@@ -30,20 +30,22 @@ export default {
       patterns: [],
     };
   },
+  beforeMount() {
+    this.emitter.emit("displayLoader");
+    this.fetchPatterns();
+  },
   methods: {
-    findPattern(researchTerm, brandTerm) {
+    fetchPatterns(researchTerm, brandTerm) {
       const research = researchTerm ?? this.$route.query.research;
       const brand = brandTerm ?? this.$route.query.brand;
 
       apiCall.findPattern(research, brand).then((resp) => {
         if (resp.length) {
           this.patterns = resp;
+          this.emitter.emit("hideLoader");
         }
       });
     },
-  },
-  beforeMount() {
-    this.findPattern();
   },
 };
 </script>

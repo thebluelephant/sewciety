@@ -152,6 +152,8 @@ export default {
       }
     },
     saveSteps() {
+      this.emitter.emit("displayLoader");
+
       // We filter steps that are differents (or new) from the initial steps received from the back
       // To avoid uselessly modify value in DB whereas a step hasn't been modified.
       const stepsToSave = this.steps.filter((steps, index) => {
@@ -169,6 +171,8 @@ export default {
       } else this.$router.push({ path: `/pattern/${this.$route.params.id}` });
     },
     createNewStepByStep(onProgress) {
+      this.emitter.emit("displayLoader");
+
       apiCall
         .createNewStepByStep(this.$route.params.id, this.steps, onProgress)
         .then((response) => {

@@ -40,22 +40,24 @@ export default {
       patternId: "",
     };
   },
+  beforeMount() {
+    this.emitter.emit("displayLoader");
+    this.fetchPatternData();
+    this.displayedComponent = "Patron";
+    this.patternId = this.$route.params.id;
+  },
   methods: {
     fetchPatternData() {
       apiCall.findPatternById(this.$route.params.id).then((resp) => {
         if (resp) {
           this.pattern = resp;
+          this.emitter.emit("hideLoader");
         }
       });
     },
     setVisibleComponent(componentName) {
       this.displayedComponent = componentName;
     },
-  },
-  beforeMount() {
-    this.fetchPatternData();
-    this.displayedComponent = "Patron";
-    this.patternId = this.$route.params.id;
   },
 };
 </script>
