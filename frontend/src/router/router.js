@@ -3,7 +3,7 @@ import Homepage from "../pages/Homepage.vue";
 import Researchpage from "../pages/Researchpage.vue";
 import PatternPage from "../pages/PatternPage.vue";
 import EditSbsPage from "../pages/EditSbsPage.vue";
-import Callbackpage from "../pages/Callbackpage.vue";
+import Callbackpage from "../pages/Authentication/Callbackpage.vue";
 import Loginpage from "../pages/Loginpage.vue";
 import SbsDetailsPage from "../pages/SbsDetailsPage.vue";
 import { authGuard } from "../auth/auth";

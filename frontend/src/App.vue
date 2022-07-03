@@ -1,5 +1,6 @@
 <template>
   <span>
+    <Loader v-if="showLoader" class="loader" />
     <div class="menu">
       <svg @click="toggleMenu">
         <use class="open-icon" xlink:href="#burgerMenu" />
@@ -12,17 +13,34 @@
 
 <script>
 import BurgerMenu from "./components/BurgerMenu.vue";
+import Loader from "./components/Loader.vue";
 import { userService } from "./services/user.service";
 
 export default {
   name: "App",
   components: {
+    Loader,
     BurgerMenu,
   },
   data() {
     return {
       showMenu: false,
+      showLoader: false,
     };
+  },
+  mounted() {
+    this.setLang();
+    this.emitter.on("displayLoader", () => {
+      this.showLoader = true;
+    });
+    this.emitter.on("hideLoader", () => {
+      this.showLoader = false;
+    });
+  },
+  watch: {
+    $route() {
+      this.showMenu = false;
+    },
   },
   methods: {
     toggleMenu() {
@@ -37,14 +55,6 @@ export default {
         }
       });
     },
-  },
-  watch: {
-    $route() {
-      this.showMenu = false;
-    },
-  },
-  mounted() {
-    this.setLang();
   },
 };
 </script>
@@ -83,6 +93,10 @@ export default {
   padding: 15px;
   background: #efefef;
   overflow: auto;
+
+  .loader {
+    z-index: 1000;
+  }
   .menu {
     height: 30px;
     display: flex;
