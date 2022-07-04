@@ -28,12 +28,25 @@
     );
   }
   &-secondary-navigation {
-    background : none;
+    background: none;
     border: solid 3px $green;
     box-shadow: none;
-    
+
     a {
       color: $green !important;
+    }
+  }
+
+  &--disable {
+    border: solid 3px lightgrey;
+    cursor: initial;
+    pointer-events: none;
+    background: transparent;
+    box-shadow: none;
+
+    a {
+      color: lightgrey !important;
+      pointer-events: none;
     }
   }
 
@@ -41,6 +54,7 @@
     width: 30px;
     height: 30px;
   }
+
   a {
     text-decoration: none;
     color: black;

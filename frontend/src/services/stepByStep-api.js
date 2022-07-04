@@ -48,7 +48,7 @@ export const apiCall = {
       .delete(`${apiUrl}/stepbystep/delete/${sbsId}`)
       .then((response) => {
         if (response.status === 200) {
-          return response.data;
+          return response;
         } else console.log("deleteStepByStep: A problem happened", response);
       });
   },
