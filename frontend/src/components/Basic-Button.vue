@@ -4,6 +4,7 @@
       'basic-button',
       `basic-button-${type}`,
       { 'basic-button--mini': mini },
+      { 'basic-button--disable': disable },
     ]"
   >
     <a :href="route">
@@ -18,7 +19,7 @@
 <script>
 export default {
   name: "BasicButton",
-  props: ["title", "route", "mini", "type", "icon"],
+  props: ["title", "route", "mini", "type", "icon", "disable"],
 };
 </script>
 

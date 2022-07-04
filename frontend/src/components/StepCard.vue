@@ -64,7 +64,11 @@ export default {
     "disableExplanationsEdition",
     "disableTitleEdition",
   ],
-
+  watch: {
+    initialValue() {
+      this.validateFields();
+    },
+  },
   computed: {
     formatedIndex() {
       return this.index + 1;
@@ -79,6 +83,17 @@ export default {
     },
     onExplanationsChange(e) {
       this.$emit("explanationsChange", e.target.value);
+    },
+    validateFields() {
+      const hasTitle = this.initialValue.title.length > 0;
+      const hasExplanations = this.initialValue.explanations.length > 0;
+      const hasImage = this.initialValue.image !== null;
+
+      if (hasTitle && hasExplanations && hasImage) {
+        this.$emit("isFieldValid", true);
+      } else {
+        this.$emit("isFieldValid", false);
+      }
     },
   },
 };
