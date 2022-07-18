@@ -2,7 +2,6 @@ package com.sewciety.backend.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,10 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sewciety.backend.entity.FeNewStepByStep;
 import com.sewciety.backend.entity.FePublishAndSavedSbs;
 import com.sewciety.backend.services.StepByStepService;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
-@CrossOrigin(origins = "https://localhost:8080")
 @RestController
 @RequestMapping("/api/stepbystep")
 public class StepbyStepController {

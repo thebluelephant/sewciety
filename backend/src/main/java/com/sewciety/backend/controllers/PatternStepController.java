@@ -2,7 +2,6 @@ package com.sewciety.backend.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,10 +17,7 @@ import com.google.gson.Gson;
 import com.sewciety.backend.entity.FePatternSteps;
 import com.sewciety.backend.entity.PatternStep;
 import com.sewciety.backend.services.PatternStepService;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
-@CrossOrigin(origins = "https://localhost:8080")
 @RestController
 @RequestMapping("/api/patternstep")
 public class PatternStepController {
@@ -37,7 +33,7 @@ public class PatternStepController {
         List<PatternStep> deserializedPatternSteps = new ArrayList<>();
         List<MultipartFile> imageFiles = new ArrayList();
 
-        int index = 0; 
+        int index = 0;
         for (String patternStep : patternSteps) {
             // For each patternStep string, we re-convert it to Json
             PatternStep deserializedStep = gson.fromJson(patternStep, PatternStep.class);
