@@ -1,7 +1,6 @@
 package com.sewciety.backend.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,10 +13,6 @@ import javax.management.relation.RelationNotFoundException;
 import com.sewciety.backend.entity.SbsOnProgress;
 import com.sewciety.backend.services.SbsOnProgressService;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
-@CrossOrigin(origins = "https://localhost:8080")
 @RestController
 @RequestMapping("/api/progress")
 public class SbsOnProgressController {

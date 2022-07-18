@@ -1,7 +1,6 @@
 package com.sewciety.backend.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import com.sewciety.backend.entity.Pattern;
 
-@CrossOrigin(origins = "https://localhost:8080")
+
 @RestController
 @RequestMapping("/api/pattern")
 public class PatternController {

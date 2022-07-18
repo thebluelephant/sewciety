@@ -8,8 +8,9 @@ auth_config.json
 
 # local env files
 .env.local
-.env.*.local
-.env
+.env.development
+.env.production
+.auth_config-*
 
 # Log files
 npm-debug.log*

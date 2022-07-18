@@ -27,7 +27,6 @@ async function loginWithPopup() {
 
 async function handleRedirectCallback() {
   state.loading = true;
-
   try {
     await client.handleRedirectCallback();
     state.user = await client.getUser();
@@ -82,7 +81,6 @@ export const authGuard = (to, from, next) => {
     if (isAuthenticated.value) {
       return next();
     }
-
     // Otherwise, log in
     loginWithRedirect({ appState: { targetUrl: to.fullPath } });
   };

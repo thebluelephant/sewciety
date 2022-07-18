@@ -18,7 +18,7 @@
         class="container__brand-select"
         name="brand-selector"
         v-model="brand"
-        v-if="!minimized || (minimized && showMoreCriterias)"
+        v-if="!minimized && brands.length > 0 || (minimized && showMoreCriterias) && brands.length > 0"
       >
         <option value="" disabled>{{$t('homepage.select-brand')}}</option>
         <option
@@ -90,6 +90,8 @@ export default {
   beforeMount() {
     apiCall.getBrands().then((resp) => {
       this.brands = resp;
+      console.log(this.brand.length > 0);
+      
     });
   },
 };
