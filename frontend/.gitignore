@@ -3,14 +3,14 @@ node_modules
 /dist
 backend/src/main/resources/
 backend/src/main/resources/application.properties
-frontend/auth_config.json 
 auth_config.json
 
 # local env files
 .env.local
 .env.development
 .env.production
-.auth_config-*
+auth_config-production.json 
+auth_config-development.json 
 
 # Log files
 npm-debug.log*
