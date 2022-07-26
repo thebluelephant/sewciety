@@ -20,14 +20,16 @@
 </template>
 
 <script>
-import BasicButton from '../components/Basic-Button.vue';
+import BasicButton from "../components/Basic-Button.vue";
 
 export default {
   components: { BasicButton },
   name: "Login",
   methods: {
     login() {
-      this.$auth.loginWithRedirect();
+      this.$auth.loginWithRedirect({
+        appState: { target: process.env.VUE_APP_FRONTEND_URL },
+      });
     },
     // Log the user out
     logout() {

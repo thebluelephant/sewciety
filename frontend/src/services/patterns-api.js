@@ -1,5 +1,5 @@
 import axios from "axios";
-const apiUrl = "http://localhost:8081/api";
+const apiUrl = process.env.VUE_APP_API_URL;
 
 export const apiCall = {
   // Find pattern by input or brand
