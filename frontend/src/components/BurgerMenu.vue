@@ -1,73 +1,76 @@
 <template>
-  <div class="burger-menu" v-if="showMenu">
-    <transition name="slide-fade">
-      <div class="container" v-if="showMenu">
-        <div class="container__close-button">
-          <svg @click="hideMenu()">
-            <use class="icon" xlink:href="#close" />
-          </svg>
-        </div>
-        <ul>
-          <router-link class="container__routerlink" to="/" exact>
-            <span class="routerlink__box">
-              <svg>
-                <use class="icon" xlink:href="#home" />
-              </svg>
-              <span>{{$t('burgermenu.homepage')}}</span>
-            </span>
+  <content>
+    <input id="hamburger" class="hamburger" type="checkbox" />
+    <label class="hamburger" for="hamburger">
+      <i></i>
+    </label>
+    <section class="drawer-list">
+      <ul>
+        <li>
+          <router-link class="routerlink" to="/" exact>
+            <svg>
+              <use class="icon" xlink:href="#home" />
+            </svg>
+            <a>{{ $t("burgermenu.homepage") }}</a>
           </router-link>
-          <router-link class="container__routerlink" to="/research" exact>
-            <span class="routerlink__box">
-              <svg>
-                <use class="icon" xlink:href="#search" />
-              </svg>
-              <span>{{$t('burgermenu.research')}}</span>
-            </span>
+        </li>
+
+        <li>
+          <router-link class="routerlink" to="/research" exact>
+            <svg>
+              <use class="icon" xlink:href="#search" />
+            </svg>
+            <a>{{ $t("burgermenu.research") }}</a>
           </router-link>
-          <router-link class="container__routerlink" to="/inventory" exact>
-            <span class="routerlink__box">
-              <svg>
-                <use class="icon" xlink:href="#inventory" />
-              </svg>
-              <span>{{$t('burgermenu.inventory')}}</span>
-            </span>
+        </li>
+
+        <li>
+          <router-link class="routerlink" to="/inventory" exact>
+            <svg>
+              <use class="icon" xlink:href="#inventory" />
+            </svg>
+            <a>{{ $t("burgermenu.inventory") }}</a>
           </router-link>
-          <router-link class="container__routerlink" to="/tools" exact>
-            <span class="routerlink__box">
-              <svg>
-                <use class="icon" xlink:href="#tool" />
-              </svg>
-              <span>{{$t('burgermenu.tools')}}</span>
-            </span>
+        </li>
+
+        <li>
+          <router-link class="routerlink" to="/tools" exact>
+            <svg>
+              <use class="icon" xlink:href="#tool" />
+            </svg>
+            <a>{{ $t("burgermenu.tools") }}</a>
           </router-link>
-          <span v-if="$auth.isAuthenticated.value" class="container__routerlink" @click="logout">
-            <span class="routerlink__box">
-              <svg>
-                <use class="icon" xlink:href="#logout" />
-              </svg>
-              <span>{{$t('burgermenu.logout')}}</span>
-            </span>
-          </span>
-        </ul>
-      </div>
-    </transition>
-  </div>
+        </li>
+
+        <span
+          v-if="$auth.isAuthenticated.value"
+          class="container__routerlink"
+          @click="logout"
+        >
+          <li>
+            <svg>
+              <use class="icon" xlink:href="#logout" />
+            </svg>
+            <a>{{ $t("burgermenu.logout") }}</a>
+          </li>
+        </span>
+      </ul>
+    </section>
+  </content>
 </template>
 
 <script>
 export default {
-  name: "BurgerMenu",
-  props: ["showMenu"],
-  components: {},
-  data() {
-    return {
-      show: false,
-    };
+  name: "NewBurgerMenu",
+  watch: {
+    $route() {
+      const burgerMenu = document.getElementById("hamburger");
+      if (burgerMenu.checked) {
+        burgerMenu.checked = false;
+      }
+    },
   },
   methods: {
-    hideMenu() {
-      this.$emit("hide-menu");
-    },
     logout() {
       this.$auth.logout({
         returnTo: window.location.origin,

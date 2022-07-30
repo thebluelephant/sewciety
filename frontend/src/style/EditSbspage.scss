@@ -69,6 +69,11 @@
     display: flex;
     justify-content: space-between;
     min-width: 100%;
+    flex-wrap: wrap;
+
+    .basic-button{
+      margin-bottom: 10px;
+    }
 
     @media (min-width: 1024px) {
       min-width: 50%;

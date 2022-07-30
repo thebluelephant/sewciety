@@ -31,8 +31,10 @@ export default {
     };
   },
   beforeMount() {
-    this.emitter.emit("displayLoader");
-    this.fetchPatterns();
+    if (this.$route.query.research || this.$route.query.brand) {
+      this.emitter.emit("displayLoader"); 
+      this.fetchPatterns();
+    }
   },
   methods: {
     fetchPatterns(researchTerm, brandTerm) {

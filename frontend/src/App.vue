@@ -2,10 +2,7 @@
   <span>
     <Loader v-if="showLoader" class="loader" />
     <div class="menu">
-      <svg @click="toggleMenu">
-        <use class="open-icon" xlink:href="#burgerMenu" />
-      </svg>
-      <BurgerMenu @hide-menu="toggleMenu" :showMenu="showMenu" />
+      <BurgerMenu />
     </div>
     <router-view />
   </span>
@@ -24,7 +21,6 @@ export default {
   },
   data() {
     return {
-      showMenu: false,
       showLoader: false,
     };
   },
@@ -43,9 +39,6 @@ export default {
     },
   },
   methods: {
-    toggleMenu() {
-      this.showMenu = !this.showMenu;
-    },
     setLang() {
       userService.getUserLang().then((userLangPreference) => {
         const i18n = this.$root.$i18n.locale;
@@ -79,6 +72,10 @@ export default {
   src: url("assets/fonts/Quicksand_Dash.otf") format("opentype");
 }
 
+html {
+  background: #efefef;
+}
+
 #app {
   font-family: QuickSand-bold;
   -webkit-font-smoothing: antialiased;
@@ -92,27 +89,20 @@ export default {
   right: 0;
   padding: 15px;
   background: #efefef;
-  overflow: auto;
+  overflow: hidden;
 
   .loader {
     z-index: 1000;
   }
-  .menu {
-    height: 30px;
-    display: flex;
+}
 
-    svg {
-      height: 25px;
-      width: 25px;
-    }
-    .open-icon {
-      fill: $green;
-    }
-  }
+.menu {
+  height: 40px;
+  width: 40px;
 }
 
 body {
-  position: absolute;
+  position: fixed;
   height: 100vh;
   width: 100vw;
   margin: 0;

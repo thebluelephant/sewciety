@@ -3,8 +3,7 @@
     <ChipMenu
       :chips="[
         `${$t('patternpage.pattern')}`,
-        `${$t('patternpage.step-by-step')}`,
-        `${$t('patternpage.achievements')}`,
+        `${$t('patternpage.step-by-step')}`
       ]"
       @chip-clicked="setVisibleComponent"
     />

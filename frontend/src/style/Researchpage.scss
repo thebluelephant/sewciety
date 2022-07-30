@@ -1,12 +1,13 @@
 @import "./Global.scss";
 
+$researchHeader : 150px; 
+
 .research-page {
   height: 100%;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  overflow: auto;
 
   &__research {
     width: 100%;
@@ -19,10 +20,11 @@
 
   &__cards {
     display: flex;
-    height: 100%;
+    height: calc(100% - #{$researchHeader});
     width: 100%;
     justify-content: center;
     flex-wrap: wrap;
+    overflow: auto;
 
     .card {
       margin: 0 15px 10px 0;

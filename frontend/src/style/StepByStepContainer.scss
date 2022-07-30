@@ -33,6 +33,11 @@
             font-family: "QuickSand-light";
           }
         }
+        &__buttons{
+          display: flex;
+          min-width: 120px;
+          justify-content: space-around;
+        }
       }
     }
   }
