@@ -24,25 +24,26 @@
           <p class="username">{{ sbs.authorUsername }}</p>
           <p class="date">{{ formatedDate(sbs.date) }}</p>
         </span>
-
-        <basic-button
-          class="sbs-list__delete"
-          @click="
-            () => {
-              sbsIdToDelete = sbs.id;
-              showDeletePopin = true;
-            }
-          "
-          type="action"
-          :mini="true"
-          :icon="'#delete'"
-        />
-        <basic-button
-          class="sbs-list__redirection"
-          @click="redirectToSbsCreationPage(sbs.id)"
-          type="navigation"
-          :mini="true"
-        />
+        <span class="card__buttons">
+          <basic-button
+            class="sbs-list__delete"
+            @click="
+              () => {
+                sbsIdToDelete = sbs.id;
+                showDeletePopin = true;
+              }
+            "
+            type="action"
+            :mini="true"
+            :icon="'#delete'"
+          />
+          <basic-button
+            class="sbs-list__redirection"
+            @click="redirectToSbsCreationPage(sbs.id)"
+            type="navigation"
+            :mini="true"
+          />
+        </span>
       </div>
     </div>
     <span class="separator" v-if="hasSavedSbs && hasPublishedSbs"></span>

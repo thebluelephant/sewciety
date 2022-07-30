@@ -1,13 +1,23 @@
 <template>
   <div class="chip-menu">
-    <p
-      :class="[`chip`, chip.active ? `chip--active` : '']"
+    <!--  We can't encapsulate the input + label in a span (and avoid 2 v-for) because it will break the CSS parent/child relation 
+    and push us to use JS to realize the tabs animation-->
+    <input
       v-for="(chip, index) in statedChips"
       :key="chip"
       @click="onChipClick(index, chip)"
+      type="radio"
+      :id="`radio-${index}`"
+      name="tabs"
+    />
+    <label
+      v-for="(chip, index) in statedChips"
+      :key="chip"
+      :class="[chip.active ? 'tab tab--active' : 'tab']"
+      :for="`radio-${index}`"
+      >{{ chip.name }}</label
     >
-      {{ chip.name }}
-    </p>
+    <span class="glider"></span>
   </div>
 </template>
 
