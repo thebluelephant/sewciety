@@ -1,0 +1,45 @@
+@import "./Global.scss";
+
+.pattern-submission-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .form-container {
+    background: white;
+    box-shadow: 7px 7px 16px 0 rgba(0, 0, 0, 0.25),
+      -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+    height: 60vh;
+    width: 60vw;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    padding: 30px;
+
+    &__field {
+      display: flex;
+      min-width: 100%;
+      margin-bottom: 25px;
+
+      &--column {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      label {
+        margin-right: 20px;
+      }
+      .input {
+        height: 20px;
+        width: 100%;
+      }
+      .textarea{
+        height: 200px;
+        width: 100%;
+        margin-top: 15px;
+      }
+    }
+  }
+}

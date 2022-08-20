@@ -3,7 +3,7 @@
     <ChipMenu
       :chips="[
         `${$t('patternpage.pattern')}`,
-        `${$t('patternpage.step-by-step')}`
+        `${$t('patternpage.step-by-step')}`,
       ]"
       @chip-clicked="setVisibleComponent"
     />
@@ -11,7 +11,11 @@
       v-if="displayedComponent == `${$t('patternpage.pattern')}`"
       class="pattern"
     >
-      <img class="pattern__image" alt="pattern img" :src="pattern.imageUrl" />
+      <img
+        class="pattern__image"
+        alt="pattern img"
+        :src="pattern.image"
+      />
       <p class="pattern__title title--primary">{{ pattern.name }}</p>
       <p class="pattern__description">{{ pattern.description }}</p>
     </div>
@@ -40,16 +44,17 @@ export default {
     };
   },
   beforeMount() {
+    this.patternId = this.$route.params.id;
     this.emitter.emit("displayLoader");
     this.fetchPatternData();
     this.displayedComponent = "Patron";
-    this.patternId = this.$route.params.id;
+    
   },
   methods: {
     fetchPatternData() {
-      apiCall.findPatternById(this.$route.params.id).then((resp) => {
+      apiCall.findPatternById(this.patternId).then((resp) => {
         if (resp) {
-          this.pattern = resp;
+          this.pattern = resp.data;
           this.emitter.emit("hideLoader");
         }
       });

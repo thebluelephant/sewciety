@@ -19,12 +19,28 @@ public class Pattern {
     private String description;
     @Column(name = "difficulty_level")
     private Integer difficulty_level;
-    @Column(name = "image_url")
-    private String image_url;
+    @Column(name = "image")
+    private String image;
     @Column(name = "name")
     private String name;
-    @Column(name = "url")
+    @Column(name = "url", nullable = true)
     private String url;
+    @Column(name = "verified", nullable = true)
+    private Boolean verified;
+
+    public Pattern() {
+    }
+
+    public Pattern(String brand, String description, Integer difficulty_level, String name, String image, String url,
+            Boolean verified) {
+        this.brand = brand;
+        this.description = description;
+        this.difficulty_level = difficulty_level;
+        this.image = image;
+        this.name = name;
+        this.url = url;
+        this.verified = verified;
+    }
 
     public Integer getId() {
         return id;
@@ -58,12 +74,12 @@ public class Pattern {
         this.difficulty_level = difficulty;
     }
 
-    public String getImageUrl() {
-        return image_url;
+    public String getimage() {
+        return image;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.image_url = imageUrl;
+    public void setimage(String image) {
+        this.image = image;
     }
 
     public String getName() {
@@ -80,6 +96,14 @@ public class Pattern {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Boolean getVerified() {
+        return verified;
+    }
+
+    public void setVerified(Boolean verified) {
+        this.verified = verified;
     }
 
 }

@@ -89,9 +89,7 @@ export default {
   },
   beforeMount() {
     apiCall.getBrands().then((resp) => {
-      this.brands = resp;
-      console.log(this.brand.length > 0);
-      
+      this.brands = resp;      
     });
   },
 };
