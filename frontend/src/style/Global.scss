@@ -29,6 +29,13 @@ $white: #f8f8f8;
     border-radius: 5px;
   }
 }
+.textarea {
+  &--neumorphic {
+    border: 0px;
+    box-shadow: inset 0px 0px 3px 1px #cbced185, inset -4px -5px 8px #cbced185;
+    border-radius: 5px;
+  }
+}
 
 .separator{
   width: 100%;

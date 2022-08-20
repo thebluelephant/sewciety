@@ -1,10 +1,16 @@
 package com.sewciety.backend.services;
 
+import com.google.cloud.storage.Bucket;
+import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.StorageOptions;
 import com.sewciety.backend.entity.Pattern;
 import com.sewciety.backend.repositories.PatternRepository;
+import com.sewciety.backend.utils.GoogleCloudStorage.GoogleCloudStorage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,5 +41,12 @@ public class PatternService {
 
     public Pattern findPatternById(Integer id) {
         return patternRepository.findPatternById(id);
+    }
+
+    public Pattern submitNewPattern(Pattern pattern) throws IOException {
+        String ImageUrl = GoogleCloudStorage.upload(pattern.getimage());
+        pattern.setimage(ImageUrl);
+        pattern.setVerified(false);
+        return patternRepository.save(pattern);
     }
 }

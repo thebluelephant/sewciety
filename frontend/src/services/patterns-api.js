@@ -21,8 +21,16 @@ export const apiCall = {
   findPatternById: (id) => {
     return axios.get(`${apiUrl}/pattern/${id}`).then((response) => {
       if (response.status === 200) {
-        return response.data;
+        return response;
       } else console.log("Find Pattern by ID : A problem happened", response);
+    });
+  },
+
+  submitNewPattern: (pattern) => {
+    return axios.post(`${apiUrl}/pattern/new`, pattern).then((response) => {
+      if (response.status === 200) {
+        return response.data;
+      } else console.log("Submit a new pattern : A problem happened", response);
     });
   },
 
@@ -34,5 +42,4 @@ export const apiCall = {
       } else console.log("Get brands : A problem happened", response);
     });
   },
-
 };

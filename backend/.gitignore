@@ -6,6 +6,7 @@ target/
 !**/src/main/resources/application.properties
 src/main/resources/application.properties
 src/main/resources/application-prod.properties
+src/main/java/com/sewciety/backend/utils/GoogleCloudStorage/sewciety-springboot-google-auth.json
 
 ### STS ###
 .apt_generated

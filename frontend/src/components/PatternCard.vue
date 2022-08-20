@@ -1,6 +1,6 @@
 <template>
   <div class="pattern-card">
-    <img class="pattern-card__image" alt="pattern img" :src="img" />
+    <img class="pattern-card__image" alt="pattern img" :src="img"/>
     <basic-button
       class="pattern-card__button"
       :mini="true"

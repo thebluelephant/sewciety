@@ -2,13 +2,18 @@
   <div class="research-page">
     <span class="research-page__research">
       <PatternResearch :minimized="true" @research-pattern="fetchPatterns" />
+      <basic-button
+        title="Submit a pattern"
+        @click="redirectOnPatternSubmission"
+        type="navigation"
+      />
     </span>
     <span class="research-page__cards">
       <PatternCard
         v-for="pattern in patterns"
         :key="pattern.id"
         :title="pattern.name"
-        :img="pattern.imageUrl"
+        :img="pattern.image"
         :id="pattern.id"
         class="card"
       />
@@ -20,10 +25,12 @@
 <script>
 import PatternCard from "../components/PatternCard.vue";
 import PatternResearch from "../components/PatternResearch.vue";
+import BasicButton from "../components/Basic-Button.vue";
+import router from "../router/router.js";
 import { apiCall } from "../services/patterns-api";
 
 export default {
-  components: { PatternCard, PatternResearch },
+  components: { PatternCard, PatternResearch, BasicButton },
   name: "Research",
   data() {
     return {
@@ -32,7 +39,7 @@ export default {
   },
   beforeMount() {
     if (this.$route.query.research || this.$route.query.brand) {
-      this.emitter.emit("displayLoader"); 
+      this.emitter.emit("displayLoader");
       this.fetchPatterns();
     }
   },
@@ -46,6 +53,11 @@ export default {
           this.patterns = resp;
           this.emitter.emit("hideLoader");
         }
+      });
+    },
+    redirectOnPatternSubmission() {
+      router.push({
+        name: "PatternSubmissionPage",
       });
     },
   },

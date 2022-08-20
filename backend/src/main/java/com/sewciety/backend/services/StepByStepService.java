@@ -7,7 +7,6 @@ import com.sewciety.backend.entity.FeNewStepByStep;
 import com.sewciety.backend.entity.FePublishAndSavedSbs;
 import com.sewciety.backend.entity.SbsOnProgress;
 import com.sewciety.backend.entity.StepByStep;
-import com.sewciety.backend.repositories.PatternStepRepository;
 import com.sewciety.backend.repositories.SbsImageRepository;
 import com.sewciety.backend.repositories.SbsOnProgressRepository;
 import com.sewciety.backend.repositories.StepByStepRepository;
