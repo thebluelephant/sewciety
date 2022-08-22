@@ -19,14 +19,17 @@ public class PatternStep {
     private String title;
     @Column(name = "explanations")
     private String explanations;
+    @Column(name = "image")
+    private String image;
 
     public PatternStep() {
     }
 
-    public PatternStep(Integer sbsId, String explanations, String title) {
+    public PatternStep(Integer sbsId, String explanations, String title, String image) {
         this.sbsId = sbsId;
         this.explanations = explanations;
         this.title = title;
+        this.image = image;
     }
 
     public Integer getId() {
@@ -59,5 +62,13 @@ public class PatternStep {
 
     public void setExplanations(String explanations) {
         this.explanations = explanations;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

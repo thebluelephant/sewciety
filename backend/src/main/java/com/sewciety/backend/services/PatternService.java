@@ -1,8 +1,5 @@
 package com.sewciety.backend.services;
 
-import com.google.cloud.storage.Bucket;
-import com.google.cloud.storage.Storage;
-import com.google.cloud.storage.StorageOptions;
 import com.sewciety.backend.entity.Pattern;
 import com.sewciety.backend.repositories.PatternRepository;
 import com.sewciety.backend.utils.GoogleCloudStorage.GoogleCloudStorage;
@@ -44,7 +41,7 @@ public class PatternService {
     }
 
     public Pattern submitNewPattern(Pattern pattern) throws IOException {
-        String ImageUrl = GoogleCloudStorage.upload(pattern.getimage());
+        String ImageUrl = GoogleCloudStorage.uploadImage(pattern.getimage(), "sewciety-pattern-images");
         pattern.setimage(ImageUrl);
         pattern.setVerified(false);
         return patternRepository.save(pattern);

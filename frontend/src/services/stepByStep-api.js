@@ -1,4 +1,5 @@
 import axios from "axios";
+import { imageService } from "../services/image.service";
 const apiUrl = process.env.VUE_APP_API_URL;
 import { userService } from "./user.service";
 
@@ -63,25 +64,32 @@ export const apiCall = {
       });
   },
 
-  submitSteps: (steps, sbsId) => {
+  submitSteps: async (steps, sbsId) => {
     const config = {
       headers: {
         "Content-Type": "multipart/form-data;charset=UTF-8",
       },
     };
     const formData = new FormData();
-
-    const formattedSteps = steps.map((step) => {
-      let formatStep = {
-        title: step.title,
-        explanations: step.explanations,
-        sbsId: sbsId,
-      };
-      if (step.id) {
-        formatStep.id = step.id;
-      }
-      return formatStep;
-    });
+    const formattedSteps = await Promise.all(
+      steps.map(async (step) => {
+        console.log(step.image);
+        let formatStep = {
+          title: step.title,
+          explanations: step.explanations,
+          sbsId: sbsId,
+          // If image didn't change, we don't need to format it to base64 because the value is already the image URL
+          image:
+            typeof step.image === "object"
+              ? await imageService.fileToBase64(step.image)
+              : step.image,
+        };
+        if (step.id) {
+          formatStep.id = step.id;
+        }
+        return formatStep;
+      })
+    );
 
     // We have to always add an empty object in formattedSteps AND images to be sure to have an Array sent to the BE, specially if there's only 1
     // pattern step sent, FormData will send an uniq object that doesn't fit the expected array of string waited by SpringBoot
@@ -89,25 +97,12 @@ export const apiCall = {
       title: undefined,
       explanations: undefined,
       sbsId: undefined,
+      image: undefined,
     });
-    let images = steps.map((step) => step.image);
-    images.push("");
 
-    formattedSteps.forEach((formattedStep, index) => {
+    formattedSteps.forEach((formattedStep) => {
       formData.append("steps", JSON.stringify(formattedStep));
-
-      // If the patternStep already exist and the image hasn't been updated once again
-      // we have to format its initial FE value in base64 to re-send it to the DB
-      if (typeof images[index] === "string") {
-        formData.append(
-          "images",
-          apiCall.getFileFromBase64(images[index], "imageStep")
-        );
-      } else {
-        formData.append("images", images[index]);
-      }
     });
-
     return axios
       .post(`${apiUrl}/patternstep/editSteps`, formData, config)
       .then((response) => {
@@ -122,13 +117,7 @@ export const apiCall = {
       .post(`${apiUrl}/patternstep/findAllSteps/${sbsId}`)
       .then((response) => {
         if (response.status === 200) {
-          return response.data.steps.map((step) => {
-            let stepValues = { ...step };
-            stepValues.image = response.data.images.find(
-              (image) => image.stepId === step.id
-            ).image;
-            return stepValues;
-          });
+          return response.data;
         } else console.log("getStepsBySbsId: A problem happened", response);
       });
   },

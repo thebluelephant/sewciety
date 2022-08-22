@@ -64,6 +64,5 @@ public class StepByStepService {
         patternStepService.deleteAllPatternStepBySbsId(sbsId); 
         sbsOnProgressRepository.deleteBySbsId(sbsId); 
         stepByStepRepository.deleteById(sbsId);
-        sbsImageRepository.deleteBySbsId(sbsId);
     }
 }

@@ -89,7 +89,7 @@ html {
   right: 0;
   padding: 15px;
   background: #efefef;
-  overflow: hidden;
+  overflow: auto;
 
   .loader {
     z-index: 1000;
