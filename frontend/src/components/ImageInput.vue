@@ -9,7 +9,7 @@
       />
     </div>
     <img
-      :src="`data:image/png;base64,${initialValue}`"
+      :src="initialValue"
       height="200"
       alt="preview of initial value image"
       v-if="!isPreviewVisible && initialValue"
@@ -50,7 +50,7 @@ export default {
       ).files[0];
 
       // Those 2 inputs have not the same values when we delete a card and the card image changed automatically
-      // in the steps array (from parent component ) and not manually in this component's input.
+      // in the steps array (from parent component) and not manually in this component's input.
       // In this situation we have to reload the image with the new initial value given from the parent.
       if (this.initialValue !== currentInputImage) {
         this.previewImage(true);
@@ -81,11 +81,13 @@ export default {
         // Else (If the user just put the image manually in the input), we use the reader to convert it in something readable.
         preview.src = imageService.isBase64(file)
           ? `data:image/png;base64,${file}`
+          : imageService.isUrl(file)
+          ? file
           : reader.result;
       });
 
       // If the image needed to be convert to base64, we need the reader to read it correctly in the input
-      if (file && !imageService.isBase64(file)) {
+      if (file && !imageService.isBase64(file) && !imageService.isUrl(file)) {
         reader.readAsDataURL(file);
       }
     },

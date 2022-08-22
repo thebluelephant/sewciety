@@ -98,11 +98,6 @@ export default {
       itemToDeleteIndex: null,
     };
   },
-  watch: {
-    "steps.length"() {
-      this.updatedNewStepsToSave();
-    },
-  },
   mounted() {
     if (this.$route.params.sbsId) {
       this.fetchStepByStep();
@@ -246,6 +241,8 @@ export default {
     },
     saveSteps() {
       this.emitter.emit("displayLoader");
+      this.updatedNewStepsToSave();
+      
       if (this.newStepsToSave.length > 0) {
         apiCall
           .submitSteps(this.newStepsToSave, this.$route.params.sbsId)

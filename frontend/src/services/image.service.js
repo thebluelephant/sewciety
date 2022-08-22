@@ -5,6 +5,10 @@ export const imageService = {
     return base64regex.test(stringToTest);
   },
 
+  isUrl: (stringToTest) => {
+    return stringToTest.toString().startsWith("http");
+  },
+
   fileToBase64: (file) => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();

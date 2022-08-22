@@ -4,17 +4,15 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
-import com.sewciety.backend.entity.FePatternSteps;
 import com.sewciety.backend.entity.PatternStep;
-import com.sewciety.backend.entity.SbsImage;
 import com.sewciety.backend.repositories.PatternStepRepository;
 import com.sewciety.backend.repositories.SbsImageRepository;
+import com.sewciety.backend.utils.GoogleCloudStorage.GoogleCloudStorage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class PatternStepService {
@@ -25,12 +23,10 @@ public class PatternStepService {
     private SbsImageRepository sbsImageRepository;
 
     public PatternStep postPatternStep(PatternStep patternStep) {
-
         return patternStepRepository.save(patternStep);
-
     }
 
-    public List<PatternStep> postPatternsSteps(List<PatternStep> formatedSteps, List<MultipartFile> imageFiles)
+    public List<PatternStep> postPatternsSteps(List<PatternStep> formatedSteps)
             throws IOException {
 
         for (int i = 0; i < formatedSteps.size(); i++) {
@@ -45,53 +41,48 @@ public class PatternStepService {
                     PatternStep oldStep = existingStep.get();
                     oldStep.setTitle(step.getTitle());
                     oldStep.setExplanations(step.getExplanations());
+
+                    // We delete the image in GCP before uploading the new (or not) one to have its new URL
+                    String imageName = GoogleCloudStorage.getFileNameByUrl(oldStep.getImage());
+                    GoogleCloudStorage.deleteImage("sewciety-patternsteps-images", imageName);
+                    String ImageUrl = GoogleCloudStorage.uploadImage(step.getImage(), "sewciety-patternsteps-images");
+                    oldStep.setImage(ImageUrl);
+
                     patternStepRepository.save(oldStep);
-                    SbsImage oldImage = sbsImageRepository.findByStepId(step.getId());
-                    try {
-                        oldImage.setImage(imageFiles.get(i).getBytes());
-                    } catch (IOException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-                    sbsImageRepository.save(oldImage);
                 }
             } else {
-                PatternStep savedStep = patternStepRepository.save(step);
-                SbsImage stepImage = new SbsImage();
-
-                try {
-                    stepImage.setImage(imageFiles.get(i).getBytes());
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                stepImage.setStepId(savedStep.getId());
-                stepImage.setSbsId(savedStep.getSbsId());
-
-                sbsImageRepository.save(stepImage);
+                String ImageUrl = GoogleCloudStorage.uploadImage(step.getImage(), "sewciety-patternsteps-images");
+                step.setImage(ImageUrl);
+                patternStepRepository.save(step);
             }
-
         }
         return patternStepRepository.findAllBySbsId(formatedSteps.get(0).getSbsId());
     }
 
-    public FePatternSteps getListOfStepsBySbsId(Integer id) {
-        List<PatternStep> steps = patternStepRepository.findAllBySbsId(id);
-        List<SbsImage> images = sbsImageRepository.findAllBySbsId(id);
-        return new FePatternSteps(steps, images);
+    public List<PatternStep> getListOfStepsBySbsId(Integer id) {
+        return patternStepRepository.findAllBySbsId(id);
     }
 
     public void deletePatternStep(Integer patternStepId) {
-        sbsImageRepository.deleteByStepId(patternStepId);
+        PatternStep patternStep = patternStepRepository.getById(patternStepId);
+
+        String imageName = GoogleCloudStorage.getFileNameByUrl(patternStep.getImage());
+        GoogleCloudStorage.deleteImage("sewciety-patternsteps-images", imageName);
+
         patternStepRepository.deleteById(patternStepId);
-        
+
     }
 
     @Transactional
     @Modifying
-    public void deleteAllPatternStepBySbsId(Integer sbsId){
+    public void deleteAllPatternStepBySbsId(Integer sbsId) {
+        List<PatternStep> steps = getListOfStepsBySbsId(sbsId);
+        steps.forEach((step) -> {
+            String imageName = GoogleCloudStorage.getFileNameByUrl(step.getImage());
+            GoogleCloudStorage.deleteImage("sewciety-patternsteps-images", imageName);
+        });
         patternStepRepository.deleteAllPatternStepBySbsId(sbsId);
-        
+
     }
 
 }

@@ -25,13 +25,11 @@ public class PatternStepController {
     @Autowired
     private PatternStepService patternStepService;
 
-    @PostMapping(value = "/editSteps", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    List<PatternStep> postMultipleSteps(@RequestParam("steps") List<String> patternSteps,
-            @RequestParam("images") MultipartFile[] images)
+    @PostMapping(value = "/editSteps")
+    List<PatternStep> postMultipleSteps(@RequestParam("steps") List<String> patternSteps)
             throws IOException {
         Gson gson = new Gson();
         List<PatternStep> deserializedPatternSteps = new ArrayList<>();
-        List<MultipartFile> imageFiles = new ArrayList();
 
         int index = 0;
         for (String patternStep : patternSteps) {
@@ -42,16 +40,15 @@ public class PatternStepController {
             // deserializedPatternSteps array
             // to be sure to save Json with data in the DB
             if (deserializedStep.getTitle() != null) {
-                imageFiles.add(images[index]);
                 deserializedPatternSteps.add(deserializedStep);
             }
             index++;
         }
-        return patternStepService.postPatternsSteps(deserializedPatternSteps, imageFiles);
+        return patternStepService.postPatternsSteps(deserializedPatternSteps);
     };
 
     @RequestMapping("/findAllSteps/{id}")
-    public FePatternSteps getListOfStepsBySbsId(@PathVariable("id") Integer sbsId) {
+    public List<PatternStep> getListOfStepsBySbsId(@PathVariable("id") Integer sbsId) {
         return patternStepService.getListOfStepsBySbsId(sbsId);
     }
 

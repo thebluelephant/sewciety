@@ -30,7 +30,7 @@
         />
         <img
           v-if="disableImageUpload && initialValue.image"
-          :src="`data:image/png;base64,${initialValue?.image}`"
+          :src="initialValue?.image"
           alt=""
         />
       </div>
