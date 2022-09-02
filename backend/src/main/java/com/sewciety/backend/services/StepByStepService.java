@@ -7,7 +7,6 @@ import com.sewciety.backend.entity.FeNewStepByStep;
 import com.sewciety.backend.entity.FePublishAndSavedSbs;
 import com.sewciety.backend.entity.SbsOnProgress;
 import com.sewciety.backend.entity.StepByStep;
-import com.sewciety.backend.repositories.SbsImageRepository;
 import com.sewciety.backend.repositories.SbsOnProgressRepository;
 import com.sewciety.backend.repositories.StepByStepRepository;
 
@@ -21,8 +20,6 @@ public class StepByStepService {
     private StepByStepRepository stepByStepRepository;
     @Autowired
     private SbsOnProgressRepository sbsOnProgressRepository;
-    @Autowired
-    private SbsImageRepository sbsImageRepository;
     @Autowired
     private SbsOnProgressService sbsOnProgressService;
     @Autowired

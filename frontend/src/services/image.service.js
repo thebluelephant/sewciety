@@ -22,4 +22,9 @@ export const imageService = {
       reader.onerror = (error) => reject(error);
     });
   },
+
+  // Return html element (an image with src as params) with default logo image
+  setAlternateImage: (event) => {
+    return (event.target.src = require("../assets/image/image-unavailable.png"));
+  },
 };

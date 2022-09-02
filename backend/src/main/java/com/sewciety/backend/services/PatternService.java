@@ -29,7 +29,7 @@ public class PatternService {
     }
 
     public List<Pattern> findPatternByInputAndBrand(Optional<String> input, Optional<String> brand) {
-        return findPatternByInputAndBrand(input, brand);
+        return patternRepository.findPatternByInputAndBrand(input, brand);
     }
 
     public List<Pattern> findPatternByBrandContaining(Optional<String> brand) {

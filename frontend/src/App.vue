@@ -1,6 +1,7 @@
 <template>
   <span>
     <Loader v-if="showLoader" class="loader" />
+    <Alert />
     <div class="menu">
       <BurgerMenu />
     </div>
@@ -11,6 +12,7 @@
 <script>
 import BurgerMenu from "./components/BurgerMenu.vue";
 import Loader from "./components/Loader.vue";
+import Alert from "./components/Alert.vue";
 import { userService } from "./services/user.service";
 
 export default {
@@ -18,6 +20,7 @@ export default {
   components: {
     Loader,
     BurgerMenu,
+    Alert,
   },
   data() {
     return {
@@ -89,7 +92,7 @@ html {
   right: 0;
   padding: 15px;
   background: #efefef;
-  overflow: auto;
+  overflow: hidden;
 
   .loader {
     z-index: 1000;

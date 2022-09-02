@@ -4,23 +4,39 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 90vh;
+  overflow: auto;
+  padding-bottom: 20px;
 
   .form-container {
     background: white;
     box-shadow: 7px 7px 16px 0 rgba(0, 0, 0, 0.25),
       -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
-    height: 60vh;
+    height: auto;
     width: 60vw;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: baseline;
     padding: 30px;
+    margin-bottom: 20px;
+
+    @media (max-width: 700px) {
+      width: 70vw;
+      box-shadow: 4px 4px 6px 0 rgb(0 0 0 / 15%),
+        -8px -8px 12px 0 rgb(255 255 255 / 30%);
+    }
 
     &__field {
       display: flex;
       min-width: 100%;
       margin-bottom: 25px;
+      flex-wrap: wrap;
+
+      @media (max-width: 700px) {
+        flex-direction: column;
+        align-items: start;
+      }
 
       &--column {
         display: flex;
@@ -30,16 +46,29 @@
 
       label {
         margin-right: 20px;
+        margin-bottom: 5px;
+        @media (max-width: 700px) {
+          margin-bottom: 5px;
+        }
       }
       .input {
         height: 20px;
         width: 100%;
       }
-      .textarea{
-        height: 200px;
+      .textarea {
+        height: 170px;
         width: 100%;
         margin-top: 15px;
       }
     }
+    #difficulty-level {
+      flex-direction: row;
+      align-items: baseline;
+    }
+  }
+  .submit-container {
+    display: flex;
+    width: 65vw;
+    justify-content: end;
   }
 }

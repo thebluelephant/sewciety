@@ -3,7 +3,7 @@
     <span class="research-page__research">
       <PatternResearch :minimized="true" @research-pattern="fetchPatterns" />
       <basic-button
-        title="Submit a pattern"
+        :title="$t('patternsubmissionpage.submit-pattern')"
         @click="redirectOnPatternSubmission"
         type="navigation"
       />
@@ -18,7 +18,9 @@
         class="card"
       />
     </span>
-    <p v-if="!this.patterns.length">Aucun patron disponible</p>
+    <p v-if="!this.patterns.length">
+      {{ $t("patternresearchpage.no-pattern-available") }}
+    </p>
   </div>
 </template>
 
@@ -59,7 +61,7 @@ export default {
       router.push({
         name: "PatternSubmissionPage",
       });
-    },
+    }
   },
 };
 </script>

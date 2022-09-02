@@ -1,22 +1,41 @@
 <template>
   <div class="homepage">
-    <div class="title title--primary" v-if="username">
-      {{ $t("common.hello") }}
-      <span class="title__username">{{ username }}</span
-      >!
+    <span class="homepage__header">
+      <div class="title title--primary" v-if="username">
+        {{ $t("common.hello") }}
+        <span class="title__username">{{ username }}</span
+        >!
+      </div>
+    </span>
+
+    <span class="homepage__pattern-research">
+      <PatternResearch />
+    </span>
+
+    <div class="homepage__quickaccess">
+      <span class="title title--secondary">{{
+        $t("homepage.quick-access")
+      }}</span>
+      <basic-button
+        :title="$t('patternsubmissionpage.submit-pattern')"
+        @click="redirectOnPatternSubmission"
+        type="navigation"
+      />
     </div>
-    <PatternResearch />
   </div>
 </template>
 
 <script>
 import PatternResearch from "../components/PatternResearch.vue";
+import BasicButton from "../components/Basic-Button.vue";
 import { userService } from "../services/user.service";
+import router from "../router/router.js";
 
 export default {
   name: "Homepage",
   components: {
     PatternResearch,
+    BasicButton,
   },
   data() {
     return {
@@ -28,6 +47,13 @@ export default {
     userService
       .getCurrentUserUsername()
       .then((username) => (this.username = username));
+  },
+  methods: {
+    redirectOnPatternSubmission() {
+      router.push({
+        name: "PatternSubmissionPage",
+      });
+    },
   },
 };
 </script>

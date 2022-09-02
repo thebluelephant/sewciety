@@ -1,20 +1,5 @@
 <template>
   <span class="image-input">
-    <div :class="[isPreviewVisible ? 'preview' : 'preview--hidden']">
-      <img
-        :id="`imageinput-preview-${index}`"
-        src=""
-        height="200"
-        alt="preview of changed input image"
-      />
-    </div>
-    <img
-      :src="initialValue"
-      height="200"
-      alt="preview of initial value image"
-      v-if="!isPreviewVisible && initialValue"
-    />
-
     <div class="image-input__upload-button">
       <label :for="`imageinput-input-${index}`">
         <svg>
@@ -28,6 +13,20 @@
       type="file"
       :id="`imageinput-input-${index}`"
       @change="onInputValueChange($event)"
+    />
+    <div :class="[isPreviewVisible ? 'preview' : 'preview--hidden']">
+      <img
+        :id="`imageinput-preview-${index}`"
+        src=""
+        height="200"
+        alt="preview of changed input image"
+      />
+    </div>
+    <img
+      :src="initialValue"
+      height="200"
+      alt="preview of initial value image"
+      v-if="!isPreviewVisible && initialValue"
     />
   </span>
 </template>

@@ -73,7 +73,6 @@ export const apiCall = {
     const formData = new FormData();
     const formattedSteps = await Promise.all(
       steps.map(async (step) => {
-        console.log(step.image);
         let formatStep = {
           title: step.title,
           explanations: step.explanations,

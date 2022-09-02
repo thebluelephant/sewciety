@@ -1,9 +1,11 @@
 <template>
   <div class="pattern-submission-page">
-    <p class="title title--primary">Submit a pattern</p>
+    <p class="title title--primary">
+      {{ $t("patternsubmissionpage.submit-pattern") }}
+    </p>
     <div class="form-container">
       <span class="form-container__field">
-        <label for="name">Name</label>
+        <label for="name">{{ $t("patternsubmissionpage.name") }}</label>
         <input
           id="name"
           class="input input--neumorphic"
@@ -12,7 +14,7 @@
         />
       </span>
       <span class="form-container__field">
-        <label for="brand">Brand</label>
+        <label for="brand">{{ $t("patternsubmissionpage.brand") }}</label>
         <input
           id="brand"
           class="input input--neumorphic"
@@ -21,11 +23,13 @@
         />
       </span>
       <span class="form-container__field">
-        <label for="brand">Image</label>
+        <label for="brand">{{ $t("patternsubmissionpage.image") }}</label>
         <image-input @imageChange="onImageChange($event)" />
       </span>
       <span class="form-container__field form-container__field--column">
-        <label for="description">Description</label>
+        <label for="description">{{
+          $t("patternsubmissionpage.description")
+        }}</label>
         <textarea
           id="description"
           class="textarea textarea--neumorphic"
@@ -33,15 +37,22 @@
           v-model="description"
         />
       </span>
-      <span class="form-container__field">
-        <label for="difficulty">Difficulty level</label>
+      <span class="form-container__field" id="difficulty-level">
+        <label for="difficulty">{{
+          $t("patternsubmissionpage.difficulty-level")
+        }}</label>
         <select name="difficulty" id="difficulty" v-model="difficulty">
+          <option selected>0</option>
           <option v-for="index in 5" :key="index">{{ index }}</option>
         </select>
       </span>
     </div>
     <span class="submit-container">
-      <basic-button title="Submit" @click="onSubmit" type="navigation" />
+      <basic-button
+        :title="$t('common.submit')"
+        @click="onSubmit"
+        type="navigation"
+      />
     </span>
   </div>
 </template>
@@ -51,6 +62,7 @@ import BasicButton from "../components/Basic-Button.vue";
 import ImageInput from "../components/ImageInput.vue";
 import { apiCall } from "../services/patterns-api";
 import { imageService } from "../services/image.service";
+
 export default {
   components: { BasicButton, ImageInput },
   name: "PatternSubmissionPage",
@@ -80,6 +92,10 @@ export default {
       apiCall.submitNewPattern(pattern).then((response) => {
         if (response) {
           this.$router.back();
+          this.emitter.emit(
+            "launch-alert",
+            this.$t("patternsubmissionpage.success-submission-alert")
+          );
         }
       });
     },
