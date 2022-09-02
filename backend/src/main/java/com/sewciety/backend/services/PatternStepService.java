@@ -6,7 +6,6 @@ import java.util.Optional;
 
 import com.sewciety.backend.entity.PatternStep;
 import com.sewciety.backend.repositories.PatternStepRepository;
-import com.sewciety.backend.repositories.SbsImageRepository;
 import com.sewciety.backend.utils.GoogleCloudStorage.GoogleCloudStorage;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +18,6 @@ public class PatternStepService {
 
     @Autowired
     private PatternStepRepository patternStepRepository;
-    @Autowired
-    private SbsImageRepository sbsImageRepository;
 
     public PatternStep postPatternStep(PatternStep patternStep) {
         return patternStepRepository.save(patternStep);

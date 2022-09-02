@@ -6,14 +6,18 @@
     "criterias": "de critères",
     "upload": "Téléverser",
     "cancel": "Annuler",
-    "confirm": "Confirmer"
+    "confirm": "Confirmer",
+    "submit": "Soumettre"
   },
   "homepage": {
     "find-pattern": "Rechercher un patron",
-    "research-placeholder": "Titre d'un patron, numero, marque ...",
+    "research-placeholder": "Titre d'un patron, numero, ...",
     "select-brand": "Selectionner une marque",
     "research": "Rechercher",
     "quick-access": "Accès rapide"
+  },
+  "patternresearchpage": {
+    "no-pattern-available" : "Oups, aucun patron disponible !"
   },
   "burgermenu": {
     "homepage": "Accueil",
@@ -21,6 +25,15 @@
     "inventory": "Inventaire",
     "tools": "Outils",
     "logout": "Déconnexion"
+  },
+  "patternsubmissionpage": {
+    "submit-pattern": "Proposer un patron",
+    "name": "Nom",
+    "brand": "Marque",
+    "image": "Image",
+    "description": "Description",
+    "difficulty-level": "Niveau de difficulté",
+    "success-submission-alert" : "Merci ! Votre patron a été envoyé et sera bientôt disponible."
   },
   "patternpage": {
     "pattern": "Patron",

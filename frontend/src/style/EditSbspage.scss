@@ -1,6 +1,9 @@
 @import "./Global.scss";
 
 .create-sbs-page {
+  height: calc(100vh - #{$header-height});
+  overflow: auto;
+
   @media (min-width: 1024px) {
     display: flex;
     flex-direction: column;

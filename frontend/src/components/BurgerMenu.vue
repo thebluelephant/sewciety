@@ -11,7 +11,7 @@
             <svg>
               <use class="icon" xlink:href="#home" />
             </svg>
-            <a>{{ $t("burgermenu.homepage") }}</a>
+            <p>{{ $t("burgermenu.homepage") }}</p>
           </router-link>
         </li>
 
@@ -20,16 +20,24 @@
             <svg>
               <use class="icon" xlink:href="#search" />
             </svg>
-            <a>{{ $t("burgermenu.research") }}</a>
+            <p>{{ $t("burgermenu.research") }}</p>
           </router-link>
         </li>
-
+        <li>
+          <router-link class="routerlink" to="/pattern/new" exact>
+            <svg>
+              <use class="icon" xlink:href="#add-pattern" />
+            </svg>
+            <p>{{ $t('patternsubmissionpage.submit-pattern') }}</p>
+          </router-link>
+        </li>
+        <!--
         <li>
           <router-link class="routerlink" to="/inventory" exact>
             <svg>
               <use class="icon" xlink:href="#inventory" />
             </svg>
-            <a>{{ $t("burgermenu.inventory") }}</a>
+            <p>{{ $t("burgermenu.inventory") }}</p>
           </router-link>
         </li>
 
@@ -38,10 +46,10 @@
             <svg>
               <use class="icon" xlink:href="#tool" />
             </svg>
-            <a>{{ $t("burgermenu.tools") }}</a>
+            <p>{{ $t("burgermenu.tools") }}</p>
           </router-link>
         </li>
-
+        -->
         <span
           v-if="$auth.isAuthenticated.value"
           class="container__routerlink"
@@ -51,7 +59,7 @@
             <svg>
               <use class="icon" xlink:href="#logout" />
             </svg>
-            <a>{{ $t("burgermenu.logout") }}</a>
+            <p>{{ $t("burgermenu.logout") }}</p>
           </li>
         </span>
       </ul>

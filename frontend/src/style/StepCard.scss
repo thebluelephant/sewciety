@@ -57,7 +57,6 @@
     }
 
     .image {
-      background-color: #5de8d157;
       min-width: 100%;
       border-radius: 5px;
       display: flex;
@@ -66,16 +65,12 @@
       padding: 10px 0;
       margin-bottom: 2%;
 
-      input {
-        width: 115px;
-      }
-
       img {
-        max-height: 250px;
+        max-width: 95%;
 
         @media (min-width: 1024px) {
           max-height: 500px;
-          max-width: 30%;
+          max-width: 95%;
         }
       }
     }

@@ -15,6 +15,7 @@
         class="pattern__image"
         alt="pattern img"
         :src="pattern.image"
+        @error="setAltImage"
       />
       <p class="pattern__title title--primary">{{ pattern.name }}</p>
       <p class="pattern__description">{{ pattern.description }}</p>
@@ -32,6 +33,7 @@
 import ChipMenu from "../components/ChipMenu.vue";
 import { apiCall } from "../services/patterns-api";
 import StepByStepContainer from "../components/StepByStepContainer.vue";
+import { imageService } from "../services/image.service";
 
 export default {
   components: { ChipMenu, StepByStepContainer },
@@ -48,7 +50,6 @@ export default {
     this.emitter.emit("displayLoader");
     this.fetchPatternData();
     this.displayedComponent = "Patron";
-    
   },
   methods: {
     fetchPatternData() {
@@ -61,6 +62,9 @@ export default {
     },
     setVisibleComponent(componentName) {
       this.displayedComponent = componentName;
+    },
+    setAltImage(event) {
+      return imageService.setAlternateImage(event);
     },
   },
 };

@@ -31,7 +31,7 @@
         <img
           v-if="disableImageUpload && initialValue.image"
           :src="initialValue?.image"
-          alt=""
+          alt="step by step image"
         />
       </div>
 

@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     onResearch() {
-      //  The minimized config is only used in the research page so we doesn't need to update routing
+      //  The minimized config is only used in the research page so we don't need to redirect user on research
       if (this.minimized) {
         this.$emit("research-pattern", this.research, this.brand);
       } else {
