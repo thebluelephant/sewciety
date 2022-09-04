@@ -44,7 +44,8 @@
     "create-sbs": "Create a step by step",
     "add-step": "Add step",
     "publish": "Publish",
-    "save": "Save"
+    "save": "Save",
+    "success-publishing-alert" : "Thank you ! Your post will be visible after validation by our moderators."
   },
   "stepbystep": {
     "my-saved-sbs": "My saved step by step",

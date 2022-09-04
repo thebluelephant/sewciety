@@ -24,15 +24,18 @@ public class StepByStep {
     private String authorUsername;
     @Column(name = "date")
     private Date date;
+    @Column(name = "verified", nullable = true)
+    private Boolean verified;
 
     public StepByStep() {
     }
 
-    public StepByStep(Integer patternId, String authorId, String authorUsername, Date date) {
+    public StepByStep(Integer patternId, String authorId, String authorUsername, Date date, Boolean verified) {
         this.patternId = patternId;
         this.authorId = authorId;
         this.authorUsername = authorUsername;
         this.date = date;
+        this.verified = verified;
     }
 
     public Integer getId() {
@@ -73,5 +76,13 @@ public class StepByStep {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Boolean getVerified() {
+        return verified;
+    }
+
+    public void setVerified(Boolean verified) {
+        this.verified = verified;
     }
 }

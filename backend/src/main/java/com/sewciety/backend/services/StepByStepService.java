@@ -28,7 +28,7 @@ public class StepByStepService {
     public Integer postNewStepByStep(FeNewStepByStep feStepByStep) {
         // First we create a StepByStep and post it
         StepByStep newStepByStep = postStepByStep(new StepByStep(feStepByStep.getPatternId(),
-                feStepByStep.getAuthorId(), feStepByStep.getAuthorUsername(), new Date()));
+                feStepByStep.getAuthorId(), feStepByStep.getAuthorUsername(), new Date(), false));
 
         // Then, with the new Step by step created in DB, we create a progress that we
         // automatically close
@@ -57,9 +57,9 @@ public class StepByStepService {
 
     }
 
-    public void deleteSbs(Integer sbsId) { 
-        patternStepService.deleteAllPatternStepBySbsId(sbsId); 
-        sbsOnProgressRepository.deleteBySbsId(sbsId); 
+    public void deleteSbs(Integer sbsId) {
+        patternStepService.deleteAllPatternStepBySbsId(sbsId);
+        sbsOnProgressRepository.deleteBySbsId(sbsId);
         stepByStepRepository.deleteById(sbsId);
     }
 }
