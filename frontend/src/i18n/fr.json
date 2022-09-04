@@ -44,7 +44,8 @@
     "create-sbs": "Créer un pas à pas",
     "add-step": "Ajouter une étape",
     "publish": "Publier",
-    "save": "Sauvegarder"
+    "save": "Sauvegarder",
+    "success-publishing-alert" : "Merci ! Votre publication sera visible après validation de nos modérateurs."
   },
   "stepbystep": {
     "my-saved-sbs": "Mes pas à pas sauvegardés", 

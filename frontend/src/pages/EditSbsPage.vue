@@ -235,6 +235,10 @@ export default {
         .createNewStepByStep(this.$route.params.id, this.steps, onProgress)
         .then((response) => {
           if (response === 200) {
+            this.emitter.emit(
+              "launch-alert",
+              this.$t("createsbspage.success-publishing-alert")
+            );
             this.$router.push({ path: `/pattern/${this.$route.params.id}` });
           }
         });
@@ -242,7 +246,7 @@ export default {
     saveSteps() {
       this.emitter.emit("displayLoader");
       this.updatedNewStepsToSave();
-      
+
       if (this.newStepsToSave.length > 0) {
         apiCall
           .submitSteps(this.newStepsToSave, this.$route.params.sbsId)
