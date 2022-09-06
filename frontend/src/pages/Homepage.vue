@@ -1,7 +1,10 @@
 <template>
   <div class="homepage">
     <span class="homepage__header">
-      <div class="title title--primary" v-if="username">
+      <div
+        class="title title--primary"
+        v-if="$auth.isAuthenticated.value && username"
+      >
         {{ $t("common.hello") }}
         <span class="title__username">{{ username }}</span
         >!
@@ -44,9 +47,11 @@ export default {
     };
   },
   mounted() {
-    userService
-      .getCurrentUserUsername()
-      .then((username) => (this.username = username));
+    if (this.$auth.isAuthenticated.value) {
+      userService
+        .getCurrentUserUsername()
+        .then((username) => (this.username = username));
+    }
   },
   methods: {
     redirectOnPatternSubmission() {

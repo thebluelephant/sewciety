@@ -7,7 +7,9 @@
     "upload": "Upload",
     "cancel": "Cancel",
     "confirm": "Confirm",
-    "submit": "Submit"
+    "submit": "Submit",
+    "login": "Login",
+    "signin":"Sign in"
   },
   "homepage": {
     "find-pattern": "Find a pattern",
@@ -17,7 +19,7 @@
     "quick-access": "Quick access"
   },
   "patternresearchpage": {
-    "no-pattern-available" : "Oups, no pattern available !"
+    "no-pattern-available": "Oups, no pattern available !"
   },
   "burgermenu": {
     "homepage": "Homepage",
@@ -33,7 +35,7 @@
     "image": "Image",
     "description": "Description",
     "difficulty-level": "Difficulty level",
-    "success-submission-alert" : "Thank you ! Your pattern has been sent and will be available soon. "
+    "success-submission-alert": "Thank you ! Your pattern has been sent and will be available soon. "
   },
   "patternpage": {
     "pattern": "Pattern",
@@ -45,7 +47,7 @@
     "add-step": "Add step",
     "publish": "Publish",
     "save": "Save",
-    "success-publishing-alert" : "Thank you ! Your post will be visible after validation by our moderators."
+    "success-publishing-alert": "Thank you ! Your post will be visible after validation by our moderators."
   },
   "stepbystep": {
     "my-saved-sbs": "My saved step by step",

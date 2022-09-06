@@ -17,14 +17,16 @@
     "quick-access": "Accès rapide"
   },
   "patternresearchpage": {
-    "no-pattern-available" : "Oups, aucun patron disponible !"
+    "no-pattern-available": "Oups, aucun patron disponible !"
   },
   "burgermenu": {
     "homepage": "Accueil",
     "research": "Recherche",
     "inventory": "Inventaire",
     "tools": "Outils",
-    "logout": "Déconnexion"
+    "logout": "Déconnexion",
+    "login": "Connexion",
+    "signin":"Inscription"
   },
   "patternsubmissionpage": {
     "submit-pattern": "Proposer un patron",
@@ -33,7 +35,7 @@
     "image": "Image",
     "description": "Description",
     "difficulty-level": "Niveau de difficulté",
-    "success-submission-alert" : "Merci ! Votre patron a été envoyé et sera bientôt disponible."
+    "success-submission-alert": "Merci ! Votre patron a été envoyé et sera bientôt disponible."
   },
   "patternpage": {
     "pattern": "Patron",
@@ -45,10 +47,10 @@
     "add-step": "Ajouter une étape",
     "publish": "Publier",
     "save": "Sauvegarder",
-    "success-publishing-alert" : "Merci ! Votre publication sera visible après validation de nos modérateurs."
+    "success-publishing-alert": "Merci ! Votre publication sera visible après validation de nos modérateurs."
   },
   "stepbystep": {
-    "my-saved-sbs": "Mes pas à pas sauvegardés", 
+    "my-saved-sbs": "Mes pas à pas sauvegardés",
     "delete-step": "Êtes-vous sûr de vouloir supprimer cette étape ? Cette action est définitive.",
     "delete-stepbystep": "Êtes-vous sûr de vouloir supprimer ce pas à pas ? Cette action est définitive."
   }

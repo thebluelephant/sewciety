@@ -122,6 +122,12 @@ export default {
     editExplanations(index, explanations) {
       this.steps[index].explanations = explanations;
     },
+    launchPublicationSuccessAlert() {
+      this.emitter.emit(
+        "launch-alert",
+        this.$t("createsbspage.success-publishing-alert")
+      );
+    },
     updatedNewStepsToSave() {
       // We filter steps that are differents (or new) from the initial steps received from the back
       // To avoid uselessly modify value in DB whereas a step hasn't been modified.
@@ -139,7 +145,7 @@ export default {
     save() {
       if (this.validateSteps()) {
         if (this.$route.params.sbsId) {
-          this.saveSteps();
+          this.saveSteps(true);
         } else {
           this.createNewStepByStep(true);
         }
@@ -151,7 +157,7 @@ export default {
           apiCall
             .updateSbsProgress(this.$route.params.sbsId, false)
             .then(() => {
-              this.saveSteps();
+              this.saveSteps(false);
             });
         } else {
           this.createNewStepByStep(false);
@@ -235,15 +241,14 @@ export default {
         .createNewStepByStep(this.$route.params.id, this.steps, onProgress)
         .then((response) => {
           if (response === 200) {
-            this.emitter.emit(
-              "launch-alert",
-              this.$t("createsbspage.success-publishing-alert")
-            );
             this.$router.push({ path: `/pattern/${this.$route.params.id}` });
+            if (!onProgress) {
+              this.launchPublicationSuccessAlert();
+            }
           }
         });
     },
-    saveSteps() {
+    saveSteps(onProgress) {
       this.emitter.emit("displayLoader");
       this.updatedNewStepsToSave();
 
@@ -253,9 +258,17 @@ export default {
           .then((response) => {
             if (response === 200) {
               this.$router.push({ path: `/pattern/${this.$route.params.id}` });
+              if (!onProgress) {
+                this.launchPublicationSuccessAlert();
+              }
             }
           });
-      } else this.$router.push({ path: `/pattern/${this.$route.params.id}` });
+      } else {
+        this.$router.push({ path: `/pattern/${this.$route.params.id}` });
+        if (!onProgress) {
+          this.launchPublicationSuccessAlert();
+        }
+      }
     },
   },
 };

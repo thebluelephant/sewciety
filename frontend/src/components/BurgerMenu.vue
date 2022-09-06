@@ -28,7 +28,7 @@
             <svg>
               <use class="icon" xlink:href="#add-pattern" />
             </svg>
-            <p>{{ $t('patternsubmissionpage.submit-pattern') }}</p>
+            <p>{{ $t("patternsubmissionpage.submit-pattern") }}</p>
           </router-link>
         </li>
         <!--
@@ -62,6 +62,21 @@
             <p>{{ $t("burgermenu.logout") }}</p>
           </li>
         </span>
+        <span
+          v-if="!$auth.isAuthenticated.value"
+          class="container__routerlink"
+          @click="login"
+        >
+          <li>
+            <svg>
+              <use class="icon" xlink:href="#signin" />
+            </svg>
+            <span class=" sign-in">
+              <p>{{ $t("burgermenu.login") }}</p>
+              <p>{{ $t("burgermenu.signin") }}</p>
+            </span>
+          </li>
+        </span>
       </ul>
     </section>
   </content>
@@ -83,6 +98,9 @@ export default {
       this.$auth.logout({
         returnTo: window.location.origin,
       });
+    },
+    login() {
+      this.$auth.loginWithRedirect();
     },
   },
 };

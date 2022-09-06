@@ -229,19 +229,33 @@ svg {
   width: 25px;
   margin-right: 25px;
 }
+
+.container__routerlink {
+  cursor: pointer;
+  li {
+    align-items: center;
+  }
+
+  .sign-in {
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+    padding-right: 15px;
+
+    p {
+      margin: 0;
+      font-size: 1rem;
+    }
+  }
+}
 .routerlink {
   p {
     width: 110px;
     white-space: normal;
+    font-size: 1rem;
 
     @media (max-width: 700px) {
       width: auto;
     }
-  }
-}
-
-.container__routerlink {
-  li {
-    align-items: center;
   }
 }
