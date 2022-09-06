@@ -1,5 +1,5 @@
 <template>
-  <div class="alert">
+  <div :class="[show ? 'alert' : 'alert--hidden']">
     <div
       :class="[
         show
@@ -16,7 +16,6 @@
 export default {
   components: {},
   name: "Alert",
-  props: ["launchAlert"],
   mounted() {
     this.emitter.on("launch-alert", (payload) => {
       this.show = true;

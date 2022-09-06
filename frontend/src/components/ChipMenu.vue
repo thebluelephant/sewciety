@@ -4,7 +4,7 @@
     and push us to use JS to realize the tabs animation-->
     <input
       v-for="(chip, index) in statedChips"
-      :key="chip"
+      :key="index"
       @click="onChipClick(index, chip)"
       type="radio"
       :id="`radio-${index}`"
@@ -12,7 +12,7 @@
     />
     <label
       v-for="(chip, index) in statedChips"
-      :key="chip"
+      :key="index"
       :class="[chip.active ? 'tab tab--active' : 'tab']"
       :for="`radio-${index}`"
       >{{ chip.name }}</label
@@ -39,9 +39,9 @@ export default {
   methods: {
     onChipClick(index, chip) {
       this.$emit("chip-clicked", chip.name);
-      this.statedChips.forEach(
-        (chip, chipIndex) => (chip.active = chipIndex === index)
-      );
+      this.statedChips = this.chips.map((chip, chipIndex) => {
+        return { name: chip, active: index === chipIndex };
+      });
     },
   },
 };

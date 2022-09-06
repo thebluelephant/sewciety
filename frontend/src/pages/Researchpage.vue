@@ -9,6 +9,9 @@
       />
     </span>
     <span class="research-page__cards">
+      <p v-if="(this.$route.query.research || this.$route.query.brand & !this.patterns.length)">
+        {{ $t("patternresearchpage.no-pattern-available") }}
+      </p>
       <PatternCard
         v-for="pattern in patterns"
         :key="pattern.id"
@@ -18,9 +21,6 @@
         class="card"
       />
     </span>
-    <p v-if="!this.patterns.length">
-      {{ $t("patternresearchpage.no-pattern-available") }}
-    </p>
   </div>
 </template>
 
@@ -61,7 +61,7 @@ export default {
       router.push({
         name: "PatternSubmissionPage",
       });
-    }
+    },
   },
 };
 </script>

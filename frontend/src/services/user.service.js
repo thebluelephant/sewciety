@@ -4,13 +4,17 @@ export const userService = {
   // Return User ID with the "auth0|" value in it. Usually used to deal with authentication process
   getCurrentAuthUserId: () => {
     const token = localStorage.getItem("token");
-    return userService.decodeToken(token).sub;
+    if (token) {
+      return userService.decodeToken(token).sub;
+    }
   },
 
   // Return user ID without the "auth0|"
   getCurrentUserId: () => {
     const authId = userService.getCurrentAuthUserId();
-    return authId.substring(6);
+    if (authId) {
+      return authId.substring(6);
+    }
   },
   getCurrentUserUsername: async () => {
     const currentUserData = await userService.getCurrentUserData();
