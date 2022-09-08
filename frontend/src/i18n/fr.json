@@ -15,9 +15,7 @@
     "select-brand": "Selectionner une marque",
     "research": "Rechercher",
     "quick-access": "Accès rapide",
-    "headline1": "le premier site de ",
-    "headline2": "tutoriels de patrons de couture ",
-    "headline3": "enrichi par la communauté "
+    "subtitle" : "Qu'est ce qu'on fait aujourd'hui ?"
   },
   "patternresearchpage": {
     "no-pattern-available": "Oups, aucun patron disponible !"

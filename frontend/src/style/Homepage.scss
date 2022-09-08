@@ -19,61 +19,37 @@
 
   &__header {
     margin-bottom: 5%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 2vw;
 
-    &__headline {
-      position: absolute;
-      top: 10px;
-      left: 30%;
-      display: flex;
-      align-items: center;
-      width: 40vw;
-
-      @media (max-width: 700px) {
-        width: 65vw;
-        left: 25%;
-      }
-
-      img {
-        height: 65px;
-        margin: 0 20px 15px 0;
-
-        @media (max-width: 700px) {
-          height: 55px;
-        }
-      }
-      p {
-        margin: 0 0 10px 0;
-        width: 80%;
-        text-align: start;
-      }
-      .text {
-        font-size: 20px;
-        &--pink {
-          color: $pink;
-        }
-        &--green {
-          color: $green-darker;
-        }
-        @media (max-width: 700px) {
-          font-size: 12px;
-        }
-      }
-    }
     &__title {
       display: flex;
       justify-content: center;
       align-items: center;
       border-radius: 15px;
       height: 50px;
-      min-width: 250px;
       background-color: $pink;
       color: white;
-      margin-bottom: 20px;
       padding: 0 15px;
+      margin: 0 15px 20px 0;
+      
+
+      @media (max-width: 700px) {
+        font-size: 5vw;
+      }
 
       .username {
         text-transform: capitalize;
         margin: 0 10px;
+      }
+    }
+    &__subtitle {
+      font-size: 20px;
+
+      p {
+        margin: 0;
       }
     }
   }

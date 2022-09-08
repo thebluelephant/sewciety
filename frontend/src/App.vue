@@ -2,8 +2,16 @@
   <span>
     <Loader v-if="showLoader" class="loader" />
     <Alert />
-    <div class="menu">
-      <BurgerMenu />
+    <div class="header">
+      <div class="menu">
+        <BurgerMenu />
+      </div>
+      <div class="logo">
+        <img
+          :src="require('./assets/image/logo-horizontal-pink.png')"
+          alt="logo"
+        />
+      </div>
     </div>
     <router-view />
   </span>
@@ -75,6 +83,8 @@ export default {
   src: url("assets/fonts/Quicksand_Dash.otf") format("opentype");
 }
 
+$burgerMenuDimension: 40px;
+
 html {
   background: #efefef;
 }
@@ -99,9 +109,24 @@ html {
   }
 }
 
-.menu {
-  height: 40px;
-  width: 40px;
+.header {
+  display: flex;
+  margin-bottom: 20px;
+  .menu {
+    height: $burgerMenuDimension;
+    width: $burgerMenuDimension;
+  }
+  .logo {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    img {
+      height: 50px;
+      @media (max-width: 700px) {
+        height: 40px;
+      }
+    }
+  }
 }
 
 body {
