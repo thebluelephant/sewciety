@@ -17,9 +17,7 @@
     "select-brand": "Select a brand",
     "research": "Research",
     "quick-access": "Quick access",
-    "headline1": "the first community enriched",
-    "headline2": "sewing pattern tutorial ",
-    "headline3": "site "
+    "subtitle" : "What do we do today ?"
   },
   "patternresearchpage": {
     "no-pattern-available": "Oups, no pattern available !"

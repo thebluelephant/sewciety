@@ -2,19 +2,6 @@
   <div class="homepage">
     <span class="homepage__header">
       <div
-        class="homepage__header__headline"
-        v-if="!$auth.isAuthenticated.value"
-      >
-        <img :src="require('../assets/image/logo-pink.png')" alt="logo" />
-        <p class="text">
-          <span class="headline--pink">Sewciety </span>,
-          {{ $t("homepage.headline1") }}
-          <span class="headline--green">{{ $t("homepage.headline2") }}</span>
-          {{ $t("homepage.headline3") }} &#128578;
-        </p>
-      </div>
-
-      <div
         class="homepage__header__title title--primary"
         v-if="$auth.isAuthenticated.value && username"
       >
@@ -22,6 +9,7 @@
         <span class="username">{{ username }}</span
         >! &#128075;
       </div>
+      <p v-if="$auth.isAuthenticated.value && username" class="homepage__header__subtitle">{{$t("homepage.subtitle")}}</p>
     </span>
 
     <span class="homepage__pattern-research">
