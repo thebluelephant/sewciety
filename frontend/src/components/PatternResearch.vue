@@ -1,12 +1,12 @@
 <template>
   <div class="pattern-research">
-    <span v-if="!minimized" class="title title--secondary"
-      >{{$t('homepage.find-pattern')}}</span
-    >
     <div
       class="container"
       :class="{ 'container--minimized': minimized && !showMoreCriterias }"
     >
+      <span v-if="!minimized" class="title title--secondary">{{
+        $t("homepage.find-pattern")
+      }}</span>
       <input
         class="container__search-input"
         :placeholder="$t('homepage.research-placeholder')"
@@ -18,9 +18,12 @@
         class="container__brand-select"
         name="brand-selector"
         v-model="brand"
-        v-if="!minimized && brands.length > 0 || (minimized && showMoreCriterias) && brands.length > 0"
+        v-if="
+          (!minimized && brands.length > 0) ||
+            (minimized && showMoreCriterias && brands.length > 0)
+        "
       >
-        <option value="" disabled>{{$t('homepage.select-brand')}}</option>
+        <option value="" disabled>{{ $t("homepage.select-brand") }}</option>
         <option
           v-for="brand in brands"
           v-show="brand"
@@ -40,8 +43,9 @@
           v-if="minimized || showMoreCriterias"
           @click="showMoreCriterias = !showMoreCriterias"
         >
-          <span v-if="!showMoreCriterias">{{$t('common.more')}}</span>
-          <span v-if="showMoreCriterias">{{$t('common.less')}}</span> {{$t('common.criterias')}}
+          <span v-if="!showMoreCriterias">{{ $t("common.more") }}</span>
+          <span v-if="showMoreCriterias">{{ $t("common.less") }}</span>
+          {{ $t("common.criterias") }}
         </p>
         <basic-button
           :title="$t('homepage.research')"
@@ -89,7 +93,7 @@ export default {
   },
   beforeMount() {
     apiCall.getBrands().then((resp) => {
-      this.brands = resp;      
+      this.brands = resp;
     });
   },
 };

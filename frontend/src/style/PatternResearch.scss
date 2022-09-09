@@ -16,6 +16,8 @@
 
   .title {
     margin-bottom: 15px;
+    align-self: flex-start;
+    margin-top: 10px;
   }
 
   .container {
@@ -28,9 +30,11 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    box-shadow: 6px 5px 15px -1px rgb(168 168 168 / 55%);
 
     &--minimized {
       height: 100px;
+      box-shadow: none;
     }
 
     &__search-input {
