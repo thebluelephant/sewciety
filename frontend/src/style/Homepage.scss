@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: center;
   padding-top: 50px;
+  position: relative;
 
   .title {
     margin-bottom: 15px;
@@ -15,23 +16,18 @@
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-    position: fixed;
-    top: 55vh;
+    position: absolute;
+    top: 450px;
 
-    @media (max-width: 600px) {
-      top: 35vh;
+    @media (max-width: 400px) {
+      top : 370px;
     }
   }
 
   &__header {
-    position: relative;
+    position: absolute;
     height: 400px;
     width: 95%;
-
-    @media (max-width: 1100px) {
-      width: 100vw;
-      height: auto;
-    }
 
     .image {
       height: 435px;
@@ -41,12 +37,13 @@
       background: url("../assets/image/homepage-image.jpg");
       background-size: cover;
 
-      @media (max-width: 1000px) {
-        height: 325px;
+      @media (max-width: 1200px) {
+        width: 70%;
+        opacity: 0.8;
       }
       @media (max-width: 700px) {
-        height: 225px;
-        width: 100%;
+       width: 100%;
+       opacity: 0.5;
       }
     }
 
@@ -56,31 +53,43 @@
       display: flex;
       flex-direction: column;
       text-align: left;
-      font-family: "QuickSand-book";
+      font-family: "QuickSand-regular";
       margin: 2% 0 0 2%;
       z-index: 1;
 
-      @media (max-width: 600px) {
-        display: none;
-      }
-
+      @media (max-width: 700px) {
+        margin: 15% 0 0 2%;
+       }
       &__slogan {
         margin: 0;
         font-size: 100px;
-        width: 75%;
+        width: 70%;
         letter-spacing: -5px;
-        line-height: 100px;
+        line-height: 105px;
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1200px) {
+          font-size: 80px;
+        }
+        @media (max-width: 900px) {
+          font-size: 60px;
+          line-height: 65px;
+        }
+        @media (max-width: 700px) {
           font-size: 50px;
-          width: 95%;
           line-height: 55px;
+          text-align: center;
+          width: 100%;
+        }
+        @media (max-width: 400px) {
+          font-size: 40px;
+          line-height: 45px;
+          letter-spacing: 0;
         }
 
         &--highlight {
           background-color: $pink;
           color: white;
-          padding: 5px;
+          padding: 0 10px;
           border-radius: 10px;
         }
       }
@@ -88,9 +97,17 @@
         font-size: 25px;
         width: 35%;
 
-        @media (max-width: 1100px) {
-          font-size: 15px;
+        @media (max-width: 1200px) {
+          font-size: 20px;
+          width: 40%;
         }
+        @media (max-width: 700px) {
+          width: 90%;
+          text-align: center;
+        }
+        @media (max-width: 300px) {
+          font-size: 12px;
+         }
       }
     }
   }
