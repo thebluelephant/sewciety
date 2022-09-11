@@ -67,20 +67,20 @@ export default {
 @import "style/Global.scss";
 
 @font-face {
-  font-family: "QuickSand-book";
-  src: url("assets/fonts/Quicksand_Book.otf") format("opentype");
+  font-family: "QuickSand-regular";
+  src: url("assets/fonts/Quicksand-Regular.ttf") format("ttf");
 }
 @font-face {
   font-family: "QuickSand-bold";
-  src: url("assets/fonts/Quicksand_Bold.otf") format("opentype");
+  src: url("assets/fonts/Quicksand_Bold.ttf") format("ttf");
 }
 @font-face {
   font-family: "QuickSand-light";
-  src: url("assets/fonts/Quicksand_Light.otf") format("opentype");
+  src: url("assets/fonts/Quicksand_Light.ttf") format("ttf");
 }
 @font-face {
   font-family: "QuickSand-dash";
-  src: url("assets/fonts/Quicksand_Dash.otf") format("opentype");
+  src: url("assets/fonts/Quicksand_Dash.ttf") format("ttf");
 }
 
 $burgerMenuDimension: 40px;
@@ -90,7 +90,7 @@ html {
 }
 
 #app {
-  font-family: QuickSand-bold;
+  font-family: "QuickSand-bold";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
