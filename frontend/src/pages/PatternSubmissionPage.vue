@@ -4,24 +4,27 @@
       {{ $t("patternsubmissionpage.submit-pattern") }}
     </p>
     <div class="form-container">
-      <span class="form-container__field">
-        <label for="name">{{ $t("patternsubmissionpage.name") }}</label>
-        <input
-          id="name"
-          class="input input--neumorphic"
-          type="text"
-          v-model="name"
-        />
+      <span class="form-container--inline">
+        <span class="form-container__field form-container__field--inline">
+          <label for="name">{{ $t("patternsubmissionpage.name") }}</label>
+          <input
+            id="name"
+            class="input input--neumorphic"
+            type="text"
+            v-model="name"
+          />
+        </span>
+        <span class="form-container__field form-container__field--inline">
+          <label for="brand">{{ $t("patternsubmissionpage.brand") }}</label>
+          <input
+            id="brand"
+            class="input input--neumorphic"
+            type="text"
+            v-model="brand"
+          />
+        </span>
       </span>
-      <span class="form-container__field">
-        <label for="brand">{{ $t("patternsubmissionpage.brand") }}</label>
-        <input
-          id="brand"
-          class="input input--neumorphic"
-          type="text"
-          v-model="brand"
-        />
-      </span>
+
       <span class="form-container__field">
         <label for="brand">{{ $t("patternsubmissionpage.image") }}</label>
         <image-input @imageChange="onImageChange($event)" />
@@ -50,7 +53,7 @@
     <span class="submit-container">
       <basic-button
         :title="$t('common.submit')"
-        @click="onSubmit"
+        @clicked="onSubmit"
         type="navigation"
       />
     </span>

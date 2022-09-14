@@ -21,9 +21,10 @@
       padding: 0 10px;
 
       .card {
+        flex-wrap: wrap;
         &__header {
           display: flex;
-          width: 70%;
+          width: 50%;
           justify-content: space-between;
 
           .username {
@@ -36,10 +37,23 @@
         &__buttons{
           display: flex;
           min-width: 120px;
-          justify-content: space-around;
+
+          @media (max-width: 700px) {
+            flex-direction: column;
+          }
+          .delete{
+            margin-right: 10px;
+
+            @media (max-width: 700px) {
+              margin-bottom: 10px;
+              margin-right: 0;
+            }
+          }
         }
       }
     }
+
+    
   }
   .create-sbs {
     &--centered {

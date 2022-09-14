@@ -28,7 +28,6 @@ public class PatternStepController {
         Gson gson = new Gson();
         List<PatternStep> deserializedPatternSteps = new ArrayList<>();
 
-        int index = 0;
         for (String patternStep : patternSteps) {
             // For each patternStep string, we re-convert it to Json
             PatternStep deserializedStep = gson.fromJson(patternStep, PatternStep.class);
@@ -39,7 +38,6 @@ public class PatternStepController {
             if (deserializedStep.getTitle() != null) {
                 deserializedPatternSteps.add(deserializedStep);
             }
-            index++;
         }
         return patternStepService.postPatternsSteps(deserializedPatternSteps);
     };

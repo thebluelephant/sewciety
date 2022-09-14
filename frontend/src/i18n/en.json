@@ -9,7 +9,8 @@
     "confirm": "Confirm",
     "submit": "Submit",
     "login": "Login",
-    "signin":"Sign in"
+    "signin":"Sign in",
+    "tooltip-signin":"You must be logged in to access this feature"
   },
   "homepage": {
     "find-pattern": "Find a pattern",

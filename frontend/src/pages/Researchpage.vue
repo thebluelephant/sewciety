@@ -4,12 +4,14 @@
       <PatternResearch :minimized="true" @research-pattern="fetchPatterns" />
       <basic-button
         :title="$t('patternsubmissionpage.submit-pattern')"
-        @click="redirectOnPatternSubmission"
+        @clicked="redirectOnPatternSubmission"
+        :disable="!$auth.isAuthenticated.value"
+        :toolTip="$t('common.tooltip-signin')"
         type="navigation"
       />
     </span>
     <span class="research-page__cards">
-      <p v-if="(this.$route.query.research || this.$route.query.brand & !this.patterns.length)">
+      <p v-if="this.patterns !== null && !this.patterns.length">
         {{ $t("patternresearchpage.no-pattern-available") }}
       </p>
       <PatternCard
@@ -36,7 +38,7 @@ export default {
   name: "Research",
   data() {
     return {
-      patterns: [],
+      patterns: null,
     };
   },
   beforeMount() {
@@ -51,16 +53,19 @@ export default {
       const brand = brandTerm ?? this.$route.query.brand;
 
       apiCall.findPattern(research, brand).then((resp) => {
-        if (resp.length) {
+        if (resp) {
+          
           this.patterns = resp;
           this.emitter.emit("hideLoader");
         }
       });
     },
     redirectOnPatternSubmission() {
-      router.push({
-        name: "PatternSubmissionPage",
-      });
+      if (this.$auth.isAuthenticated.value) {
+        router.push({
+          name: "PatternSubmissionPage",
+        });
+      }
     },
   },
 };

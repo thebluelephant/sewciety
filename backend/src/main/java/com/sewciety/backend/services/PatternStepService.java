@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import com.sewciety.backend.entity.PatternStep;
 import com.sewciety.backend.repositories.PatternStepRepository;
+import com.sewciety.backend.utils.ImageUtils;
 import com.sewciety.backend.utils.GoogleCloudStorage.GoogleCloudStorage;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,12 +40,19 @@ public class PatternStepService {
                     oldStep.setTitle(step.getTitle());
                     oldStep.setExplanations(step.getExplanations());
 
-                    // We delete the image in GCP before uploading the new (or not) one to have its new URL
-                    String imageName = GoogleCloudStorage.getFileNameByUrl(oldStep.getImage());
-                    GoogleCloudStorage.deleteImage("sewciety-patternsteps-images", imageName);
-                    String ImageUrl = GoogleCloudStorage.uploadImage(step.getImage(), "sewciety-patternsteps-images");
-                    oldStep.setImage(ImageUrl);
-
+                    // If the step.getImage() is a base64, it means the user upload a new image (and
+                    // didn't update the initial image with another one,
+                    // for example when he deletes a step and the previous already-saved images are
+                    // moving from one step to another)
+                    // So if the image is a base64, We delete the image in GCP before uploading the
+                    // new one to have its new URL.
+                    if (ImageUtils.isBase64Encoded(step.getImage())) {
+                        String imageName = GoogleCloudStorage.getFileNameByUrl(oldStep.getImage());
+                        GoogleCloudStorage.deleteImage("sewciety-patternsteps-images", imageName);
+                        String ImageUrl = GoogleCloudStorage.uploadImage(step.getImage(),
+                                "sewciety-patternsteps-images");
+                        oldStep.setImage(ImageUrl);
+                    }
                     patternStepRepository.save(oldStep);
                 }
             } else {
@@ -62,12 +70,9 @@ public class PatternStepService {
 
     public void deletePatternStep(Integer patternStepId) {
         PatternStep patternStep = patternStepRepository.getById(patternStepId);
-
         String imageName = GoogleCloudStorage.getFileNameByUrl(patternStep.getImage());
         GoogleCloudStorage.deleteImage("sewciety-patternsteps-images", imageName);
-
         patternStepRepository.deleteById(patternStepId);
-
     }
 
     @Transactional

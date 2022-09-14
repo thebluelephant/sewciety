@@ -26,8 +26,8 @@
         </span>
         <span class="card__buttons">
           <basic-button
-            class="sbs-list__delete"
-            @click="
+            class="delete"
+            @clicked="
               () => {
                 sbsIdToDelete = sbs.id;
                 showDeletePopin = true;
@@ -38,8 +38,8 @@
             :icon="'#delete'"
           />
           <basic-button
-            class="sbs-list__redirection"
-            @click="redirectToSbsCreationPage(sbs.id)"
+            class="redirection"
+            @clicked="redirectToSbsCreationPage(sbs.id)"
             type="navigation"
             :mini="true"
           />
@@ -56,21 +56,22 @@
 
         <basic-button
           class="sbs-list__redirection"
-          @click="redirectToSbsDetailsPage(sbs.id)"
+          @clicked="redirectToSbsDetailsPage(sbs.id)"
           type="navigation"
           :mini="true"
         />
       </div>
     </div>
     <basic-button
-      class="create-sbs"
       :class="[
         `create-sbs`,
         hasSavedSbs || hasPublishedSbs ? '' : `create-sbs--centered`,
       ]"
       :title="`${$t('createsbspage.create-sbs')}`"
-      @click="redirectToSbsCreationPage()"
+      @clicked="redirectToSbsCreationPage()"
+      :disable="!$auth.isAuthenticated.value"
       type="action"
+      :toolTip="$t('common.tooltip-signin')"
     />
   </div>
 </template>
@@ -102,10 +103,12 @@ export default {
       return moment(stepByStepDate).format("DD-MM-YYYY");
     },
     redirectToSbsCreationPage(sbsId) {
-      this.$router.push({
-        name: "EditSbsPage",
-        params: { patternId: this.patternId, sbsId: sbsId },
-      });
+      if (this.$auth.isAuthenticated.value) {
+        this.$router.push({
+          name: "EditSbsPage",
+          params: { patternId: this.patternId, sbsId: sbsId },
+        });
+      }
     },
     redirectToSbsDetailsPage(sbsId) {
       this.$router.push({ name: "SbsDetailsPage", params: { sbsId: sbsId } });

@@ -42,7 +42,7 @@ content {
   top: 0;
   height: 100vh;
   width: 100vw;
-  box-shadow: 10px 0px 15px rgba(24, 94, 224, 0.15);
+  box-shadow: 10px 0 15px rgba(24, 94, 224, 0.15);
   transform: translate(-100vw, 0);
   /* ie workaround */
   -ms-transform: translatex(-100vw);

@@ -3,13 +3,37 @@
 .basic-button {
   cursor: pointer;
   max-width: 200px;
+  min-width: 80px;
   height: 40px;
   border-radius: 7px;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 2px 2px 5px 0px rgba(171, 171, 171, 0.714);
+  box-shadow: 2px 2px 5px 0 rgba(171, 171, 171, 0.714);
   padding: 0 10px;
+  position: relative;
+
+  .tooltip {
+    position: absolute;
+    display: flex;
+    top: 40px;
+    min-width: 190px;
+    height: auto;
+    background-color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    box-shadow: 2px 2px 5px 0 rgba(171, 171, 171, 0.714);
+    &::after {
+      content: " ";
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent transparent white transparent;
+    }
+  }
 
   &-navigation {
     background: linear-gradient(
@@ -32,21 +56,19 @@
     border: solid 3px $green;
     box-shadow: none;
 
-    a {
+    .container {
       color: $green !important;
     }
   }
 
   &--disable {
     border: solid 3px lightgrey;
-    cursor: initial;
-    pointer-events: none;
+    cursor: default;
     background: transparent;
     box-shadow: none;
-
-    a {
+    
+    .container {
       color: lightgrey !important;
-      pointer-events: none;
     }
   }
 
@@ -55,7 +77,7 @@
     height: 30px;
   }
 
-  a {
+  .container {
     text-decoration: none;
     color: black;
 

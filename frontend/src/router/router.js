@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import Homepage from "../pages/Homepage.vue";
 import Researchpage from "../pages/Researchpage.vue";
 import PatternPage from "../pages/PatternPage.vue";
@@ -54,10 +54,11 @@ const routes = [
     component: PatternSubmissionPage,
     beforeEnter: authGuard,
   },
+  { path: "/:catchAll(.*)", redirect: "/" },
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes,
 });
 
