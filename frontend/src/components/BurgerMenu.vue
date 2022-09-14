@@ -72,8 +72,7 @@
               <use class="icon" xlink:href="#signin" />
             </svg>
             <span class=" sign-in">
-              <p>{{ $t("burgermenu.login") }}</p>
-              <p>{{ $t("burgermenu.signin") }}</p>
+              <p>{{ $t('common.signin') }}</p>
             </span>
           </li>
         </span>

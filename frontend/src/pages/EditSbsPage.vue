@@ -53,7 +53,7 @@
     <div class="create-sbs-page__addStep-container">
       <basic-button
         :title="`${$t('createsbspage.add-step')}`"
-        @click="addStep()"
+        @clicked="addStep()"
         :disable="steps.length && steps.some((step) => !step.isValid)"
         type="action"
       />
@@ -63,14 +63,14 @@
         class="save"
         :title="`${$t('createsbspage.save')}`"
         :disable="isSaveButtonDisable()"
-        @click="save()"
+        @clicked="save()"
         type="secondary-navigation"
       />
       <basic-button
         class="publish"
         :title="`${$t('createsbspage.publish')}`"
         :disable="isPublishButtonDisable()"
-        @click="publish()"
+        @clicked="publish()"
         type="navigation"
       />
     </div>
@@ -251,7 +251,6 @@ export default {
     saveSteps(onProgress) {
       this.emitter.emit("displayLoader");
       this.updatedNewStepsToSave();
-
       if (this.newStepsToSave.length > 0) {
         apiCall
           .submitSteps(this.newStepsToSave, this.$route.params.sbsId)

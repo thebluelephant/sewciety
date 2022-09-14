@@ -8,10 +8,23 @@
       </div>
       <div class="logo">
         <img
+          @click="this.$router.push('/')"
           :src="require('./assets/image/logo-horizontal-pink.png')"
           alt="logo"
         />
       </div>
+      <basic-button
+        class="signin-button"
+        :title="
+          $auth.isAuthenticated.value
+            ? $t('burgermenu.logout')
+            : $t('common.signin')
+        "
+        @clicked="onSignIn"
+        :type="
+          $auth.isAuthenticated.value ? 'secondary-navigation' : 'navigation'
+        "
+      />
     </div>
     <router-view />
   </span>
@@ -22,6 +35,7 @@ import BurgerMenu from "./components/BurgerMenu.vue";
 import Loader from "./components/Loader.vue";
 import Alert from "./components/Alert.vue";
 import { userService } from "./services/user.service";
+import BasicButton from "./components/Basic-Button.vue";
 
 export default {
   name: "App",
@@ -29,6 +43,7 @@ export default {
     Loader,
     BurgerMenu,
     Alert,
+    BasicButton,
   },
   data() {
     return {
@@ -59,6 +74,15 @@ export default {
         }
       });
     },
+    onSignIn() {
+      if (this.$auth.isAuthenticated.value) {
+        this.$auth.logout({
+          returnTo: window.location.origin,
+        });
+      } else {
+        this.$auth.loginWithRedirect();
+      }
+    },
   },
 };
 </script>
@@ -86,7 +110,7 @@ export default {
 $burgerMenuDimension: 40px;
 
 html {
-  background: #efefef;
+  background: #f7f7f8;
 }
 
 #app {
@@ -101,7 +125,7 @@ html {
   left: 0;
   right: 0;
   padding: 15px;
-  background: #efefef;
+  background: #f7f7f8;
   overflow: hidden;
 
   .loader {
@@ -119,12 +143,23 @@ html {
   .logo {
     width: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: $burgerMenuDimension; // Allows to really center the div
+
+    @media (max-width: 1000px) {
+      margin-right: 0;
+    }
     img {
-      height: 50px;
-      @media (max-width: 700px) {
-        height: 40px;
+      height: 35px;
+      @media (max-width: 400px) {
+        height: 20px;
       }
+    }
+  }
+  .signin-button {
+    @media (max-width: 400px) {
+      display: none;
     }
   }
 }

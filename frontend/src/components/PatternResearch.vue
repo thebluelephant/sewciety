@@ -23,7 +23,7 @@
             (minimized && showMoreCriterias && brands.length > 0)
         "
       >
-        <option value="" disabled>{{ $t("homepage.select-brand") }}</option>
+        <option value="">{{ $t("homepage.select-brand") }}</option>
         <option
           v-for="brand in brands"
           v-show="brand"
@@ -49,7 +49,7 @@
         </p>
         <basic-button
           :title="$t('homepage.research')"
-          @click="onResearch"
+          @clicked="onResearch"
           type="navigation"
           :mini="minimized"
         />
@@ -83,12 +83,12 @@ export default {
       //  The minimized config is only used in the research page so we don't need to redirect user on research
       if (this.minimized) {
         this.$emit("research-pattern", this.research, this.brand);
-      } else {
+      } else if (this.brand || this.research) {
         router.push({
           name: "Research",
           query: { research: this.research, brand: this.brand },
         });
-      }
+      } else return;
     },
   },
   beforeMount() {

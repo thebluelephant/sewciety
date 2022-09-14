@@ -33,7 +33,7 @@ public class PatternService {
     }
 
     public List<Pattern> findPatternByBrandContaining(Optional<String> brand) {
-        return patternRepository.findPatternByBrandContaining(brand);
+        return patternRepository.findPatternByBrand(brand);
     }
 
     public Pattern findPatternById(Integer id) {

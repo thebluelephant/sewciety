@@ -12,18 +12,19 @@ import com.sewciety.backend.entity.Pattern;
 @Repository
 public interface PatternRepository extends JpaRepository<Pattern, Integer> {
 
-    List<Pattern> findAll(); 
+    List<Pattern> findAll();
 
-    @Query(value = "SELECT DISTINCT p.brand from Pattern p")
+    @Query(value = "SELECT DISTINCT p.brand from Pattern p WHERE p.verified = 1")
     List<String> getBrands();
 
-    @Query(value = "SELECT p from Pattern p WHERE p.name LIKE %:input% OR p.brand LIKE %:input%")
+    @Query(value = "SELECT p from Pattern p WHERE p.verified = 1 AND (p.name LIKE %:input% OR p.brand LIKE %:input%)")
     List<Pattern> findPatternByInput(Optional<String> input);
 
-    @Query(value = "SELECT p from Pattern p WHERE p.brand = :brand AND p.name LIKE %:input%")
+    @Query(value = "SELECT p from Pattern p WHERE p.brand = :brand AND p.verified = 1 AND p.name LIKE %:input%")
     List<Pattern> findPatternByInputAndBrand(Optional<String> input, Optional<String> brand);
 
-    List<Pattern> findPatternByBrandContaining(Optional<String> brand);
+    @Query(value = "SELECT p from Pattern p WHERE p.brand = :brand AND p.verified = 1")
+    List<Pattern> findPatternByBrand(Optional<String> brand);
 
     @Query(value = "SELECT p from Pattern p WHERE p.id = :id ")
     Pattern findPatternById(Integer id);

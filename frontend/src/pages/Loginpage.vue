@@ -5,14 +5,14 @@
         v-if="!$auth.isAuthenticated.value"
         class="pattern-card__button"
         title="Connexion"
-        @click="login"
+        @clicked="login"
         type="navigation"
       />
       <basic-button
         v-if="$auth.isAuthenticated.value"
         class="pattern-card__button"
         title="Deconnexion"
-        @click="logout"
+        @clicked="logout"
         type="navigation"
       />
     </div>

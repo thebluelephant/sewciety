@@ -7,12 +7,12 @@
       <span class="footer">
         <basic-button
           :title="$t('common.cancel')"
-          @click="this.$emit('onCancel')"
+          @clicked="this.$emit('onCancel')"
           type="action"
         />
         <basic-button
           :title="$t('common.confirm')"
-          @click="this.$emit('onConfirm')"
+          @clicked="this.$emit('onConfirm')"
           type="action"
         />
       </span>

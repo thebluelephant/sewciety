@@ -7,7 +7,9 @@
     "upload": "Téléverser",
     "cancel": "Annuler",
     "confirm": "Confirmer",
-    "submit": "Soumettre"
+    "submit": "Soumettre",
+    "tooltip-signin":"Vous devez être connecté pour accéder à cette fonctionnalité",
+    "signin":"S'identifier"
   },
   "homepage": {
     "find-pattern": "Rechercher un patron",
@@ -27,9 +29,7 @@
     "research": "Recherche",
     "inventory": "Inventaire",
     "tools": "Outils",
-    "logout": "Déconnexion",
-    "login": "Connexion",
-    "signin":"Inscription"
+    "logout": "Déconnexion"
   },
   "patternsubmissionpage": {
     "submit-pattern": "Proposer un patron",

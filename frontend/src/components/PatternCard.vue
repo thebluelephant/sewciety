@@ -11,7 +11,7 @@
       :mini="true"
       :route="route"
       type="navigation"
-      @click="onRedirect"
+      @clicked="onRedirect"
     />
     <span class="pattern-card__title">{{ title }}</span>
   </div>
