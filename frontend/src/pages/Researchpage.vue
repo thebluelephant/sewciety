@@ -3,6 +3,7 @@
     <span class="research-page__research">
       <PatternResearch :minimized="true" @research-pattern="fetchPatterns" />
       <basic-button
+        id="basic-button__submit-pattern"
         :title="$t('patternsubmissionpage.submit-pattern')"
         @clicked="redirectOnPatternSubmission"
         :disable="!$auth.isAuthenticated.value"
@@ -54,7 +55,6 @@ export default {
 
       apiCall.findPattern(research, brand).then((resp) => {
         if (resp) {
-          
           this.patterns = resp;
           this.emitter.emit("hideLoader");
         }
