@@ -127,6 +127,7 @@ html {
   padding: 15px;
   background: #f7f7f8;
   overflow: hidden;
+  
 
   .loader {
     z-index: 1000;

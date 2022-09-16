@@ -8,6 +8,10 @@
   overflow: auto;
   padding-bottom: 20px;
 
+  @media (max-height: 700px) {
+    height: 85vh;
+  }
+
   .title {
     width: 63vw;
     text-align: start;

@@ -5,11 +5,19 @@
   flex-direction: column;
   align-items: center;
 
+  @media (max-height: 700px) {
+    height: 90%;
+  }
+
   .pattern {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 10%;
+
+    @media (max-height: 700px) {
+      overflow: auto;
+    }
 
     @media (min-width: 1024px) {
       margin-top: unset;

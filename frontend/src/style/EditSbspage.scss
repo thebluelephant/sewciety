@@ -4,6 +4,10 @@
   height: calc(100vh - #{$header-height});
   overflow: auto;
 
+  @media (max-height: 700px) {
+    height: calc(100vh - 20vh);
+  }
+
   @media (min-width: 1024px) {
     display: flex;
     flex-direction: column;
@@ -74,7 +78,7 @@
     min-width: 100%;
     flex-wrap: wrap;
 
-    .basic-button{
+    .basic-button {
       margin-bottom: 10px;
     }
 
