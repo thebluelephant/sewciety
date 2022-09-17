@@ -3,7 +3,7 @@
 $header: 250px;
 
 .research-page {
-  height: 100%;
+  height: calc(100% - #{$header-height});
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -16,7 +16,7 @@ $header: 250px;
     align-items: baseline;
 
     #basic-button__submit-pattern {
-      @media (max-height: 700px) {
+      @include respond-above(md) {
         display: none;
       }
     }
@@ -31,8 +31,8 @@ $header: 250px;
     flex-wrap: wrap;
     overflow: auto;
 
-    @media (max-height: 700px) {
-      height: calc(100vh - 150px);
+    @include respond-above(md) {
+      height: calc(100vh - 150px - #{$header-height});
     }
 
     .card {
