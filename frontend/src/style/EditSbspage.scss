@@ -3,25 +3,25 @@
 .create-sbs-page {
   height: calc(100vh - #{$header-height});
   overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  @media (max-height: 700px) {
-    height: calc(100vh - 20vh);
+  @include respond-above(md) {
+    height: calc(100vh - 15vh);
   }
-
-  @media (min-width: 1024px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
   .card {
     margin-bottom: 25px;
+    width: 100%;
   }
   &__cards-container {
     position: relative;
+    width: 50%;
+    display: flex;
+    justify-content: center;
 
-    @media (min-width: 1024px) {
-      width: 50%;
+    @include respond-above(lg) {
+      width: 100%;
     }
 
     .delete-button {
@@ -50,12 +50,7 @@
       }
     }
   }
-  &__cards-container {
-    @media (min-width: 1024px) {
-      display: flex;
-      justify-content: center;
-    }
-  }
+
   &__addStep-container {
     display: flex;
     align-items: center;
@@ -66,24 +61,32 @@
     border-radius: 5px;
     box-shadow: 1px 4px 3px -4px $grey;
 
-    @media (min-width: 1024px) {
-      min-width: 50%;
-      max-width: unset;
+    min-width: 50%;
+    max-width: unset;
+
+    @include respond-above(lg) {
+      width: 100%;
+    }
+
+    .basic-button {
+      @include respond-above(md) {
+        margin: 10px;
+      }
     }
   }
   &__submit-container {
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
-    min-width: 100%;
+    min-width: 50%;
     flex-wrap: wrap;
 
     .basic-button {
       margin-bottom: 10px;
     }
 
-    @media (min-width: 1024px) {
-      min-width: 50%;
+    @include respond-above(md) {
+      min-width: 100%;
     }
   }
 }

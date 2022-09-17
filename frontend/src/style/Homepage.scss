@@ -10,11 +10,8 @@
   .title {
     margin-bottom: 15px;
   }
-
-  @media (max-height: 700px) {
-    padding: 0;
-    height: 90%;
-    overflow: auto;
+  @include respond-above(md) {
+    padding-top: 10px;
   }
 
   &__pattern-research {
@@ -25,8 +22,8 @@
     position: absolute;
     top: 500px;
 
-    @media (max-width: 400px) {
-      top: 370px;
+    @include respond-above(md) {
+      top: 35vh;
     }
   }
 
@@ -34,6 +31,10 @@
     position: absolute;
     height: 400px;
     width: 95%;
+
+    @include respond-above(md) {
+      height: 220px;
+    }
 
     .image {
       height: 435px;
@@ -43,13 +44,16 @@
       background: url("../assets/image/homepage-image.jpg");
       background-size: cover;
 
-      @media (max-width: 1200px) {
+      @include respond-above(lg) {
         width: 70%;
         opacity: 0.8;
       }
-      @media (max-width: 700px) {
+      @include respond-above(md) {
         width: 100%;
-        opacity: 0.5;
+        opacity: 0.3;
+      }
+      @include respond-above(sm) {
+        height: 35vh;
       }
     }
 
@@ -63,32 +67,38 @@
       margin: 2% 0 0 2%;
       z-index: 1;
 
-      @media (max-width: 700px) {
-        margin: 15% 0 0 2%;
+      @include respond-above(md) {
+        margin: 5% 0 0 5%;
       }
+      @include respond-above(sm) {
+        margin: 5% 0 0 2%;
+      }
+
       &__slogan {
         margin: 0;
         font-size: 100px;
         width: 70%;
         letter-spacing: -5px;
         line-height: 105px;
-
-        @media (max-width: 1200px) {
+        @include respond-above(xxl) {
           font-size: 80px;
         }
-        @media (max-width: 900px) {
+        @include respond-above(xl) {
+          font-size: 75px;
+        }
+        @include respond-above(md) {
           font-size: 60px;
           line-height: 65px;
         }
-        @media (max-width: 700px) {
+        @include respond-above(sm) {
           font-size: 50px;
           line-height: 55px;
           text-align: center;
           width: 100%;
         }
-        @media (max-width: 400px) {
-          font-size: 40px;
-          line-height: 45px;
+        @include respond-above(xs) {
+          font-size: 25px;
+          line-height: 30px;
           letter-spacing: 0;
         }
 
@@ -101,17 +111,21 @@
       }
       &__description {
         font-size: 25px;
-        width: 35%;
+        width: 40%;
 
-        @media (max-width: 1200px) {
+        @include respond-above(xl) {
           font-size: 20px;
-          width: 40%;
+          width: 50%;
         }
-        @media (max-width: 700px) {
-          width: 90%;
+        @include respond-above(md) {
+          font-size: 20px;
+          width: 45%;
+        }
+        @include respond-above(sm) {
+          width: 100%;
           text-align: center;
         }
-        @media (max-width: 300px) {
+        @include respond-above(xs) {
           font-size: 12px;
         }
       }

@@ -127,7 +127,6 @@ html {
   padding: 15px;
   background: #f7f7f8;
   overflow: hidden;
-  
 
   .loader {
     z-index: 1000;
@@ -148,8 +147,11 @@ html {
     cursor: pointer;
     margin-left: $burgerMenuDimension; // Allows to really center the div
 
-    @media (max-width: 1000px) {
+    @include respond-above(lg) {
       margin-right: 0;
+    }
+    @include respond-above(xs) {
+      margin-left: 0;
     }
     img {
       height: 35px;
@@ -159,7 +161,7 @@ html {
     }
   }
   .signin-button {
-    @media (max-width: 400px) {
+    @include respond-above(xs) {
       display: none;
     }
   }

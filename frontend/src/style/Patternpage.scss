@@ -5,8 +5,8 @@
   flex-direction: column;
   align-items: center;
 
-  @media (max-height: 700px) {
-    height: 90%;
+  @include respond-above(md) {
+    height: calc(100vh - #{$header-height} - 3vh);
   }
 
   .pattern {
@@ -15,11 +15,11 @@
     align-items: center;
     margin-top: 10%;
 
-    @media (max-height: 700px) {
+    @include respond-above(lg) {
       overflow: auto;
+      margin-top: 0;
     }
-
-    @media (min-width: 1024px) {
+    @include respond-above(xxl) {
       margin-top: unset;
     }
 
@@ -27,10 +27,16 @@
       height: 40vh;
     }
 
+    &__title {
+      @include respond-above(sm) {
+        margin: 10px 0 0 0;
+        font-size: 25px;
+      }
+    }
+
     &__description {
       line-height: 20px;
-
-      @media (min-width: 1024px) {
+      @include respond-above(xxl) {
         max-width: 70%;
       }
     }
@@ -38,11 +44,10 @@
 
   .step-by-step {
     min-width: 100%;
-
-    @media (min-width: 1024px) {
+    
+    @include respond-above(lg) {
       min-width: 70%;
     }
-
     .create-sbs {
       margin-top: 5%;
     }
