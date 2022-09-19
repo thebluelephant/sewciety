@@ -1,7 +1,7 @@
 @import "./Global.scss";
 
 .create-sbs-page {
-  height: calc(100vh - #{$header-height});
+  height: calc(100vh - #{$app-header-height});
   overflow: auto;
   display: flex;
   flex-direction: column;

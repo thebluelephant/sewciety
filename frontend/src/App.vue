@@ -1,5 +1,10 @@
 <template>
   <span>
+    <metainfo>
+      <template v-slot:title="{ content }">{{
+        content ? `${content} | Sewciety` : `Sewciety`
+      }}</template>
+    </metainfo>
     <Loader v-if="showLoader" class="loader" />
     <Alert />
     <div class="header">
@@ -35,6 +40,7 @@ import BurgerMenu from "./components/BurgerMenu.vue";
 import Loader from "./components/Loader.vue";
 import Alert from "./components/Alert.vue";
 import { userService } from "./services/user.service";
+import { useMeta } from "vue-meta";
 import BasicButton from "./components/Basic-Button.vue";
 
 export default {
@@ -44,6 +50,12 @@ export default {
     BurgerMenu,
     Alert,
     BasicButton,
+  },
+  setup() {
+    useMeta({
+      title: "Sewciety App",
+      htmlAttrs: { lang: "en", amp: true },
+    });
   },
   data() {
     return {

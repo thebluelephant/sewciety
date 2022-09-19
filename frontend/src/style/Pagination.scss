@@ -1,0 +1,26 @@
+@import "./Global.scss";
+
+.pagination {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  p {
+    cursor: pointer;
+  }
+
+  &__count {
+    margin: 0 20px;
+  }
+  
+  &__symbole {
+    width: 20px;
+    height: 20px;
+    background: $pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: white;
+  }
+}

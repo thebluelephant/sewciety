@@ -65,10 +65,14 @@ import BasicButton from "../components/Basic-Button.vue";
 import ImageInput from "../components/ImageInput.vue";
 import { apiCall } from "../services/patterns-api";
 import { imageService } from "../services/image.service";
+import { useMeta } from "vue-meta";
 
 export default {
   components: { BasicButton, ImageInput },
   name: "PatternSubmissionPage",
+  setup() {
+    useMeta({ title: "Soumettre un patron de couture" });
+  },
   data() {
     return {
       name: null,

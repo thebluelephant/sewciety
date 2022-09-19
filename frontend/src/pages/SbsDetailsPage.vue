@@ -17,10 +17,14 @@
 <script>
 import { apiCall } from "../services/stepByStep-api";
 import StepCard from "../components/StepCard.vue";
+import { useMeta } from "vue-meta";
 
 export default {
   name: "SbsDetailsPage",
   components: { StepCard },
+  setup() {
+    useMeta({ title: "Etape par etape" });
+  },
   data() {
     return {
       stepByStep: null,

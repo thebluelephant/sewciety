@@ -82,12 +82,16 @@ import StepCard from "../components/StepCard.vue";
 import BasicButton from "../components/Basic-Button.vue";
 import Popin from "../components/Popin.vue";
 import { apiCall } from "../services/stepByStep-api";
+import { useMeta } from "vue-meta";
 var isEqual = require("lodash/isEqual");
 var cloneDeep = require("lodash/cloneDeep");
 
 export default {
   name: "EditSbsPage",
   components: { StepCard, BasicButton, Popin },
+  setup() {
+    useMeta({ title: "Editer le pas à pas d'un patron" });
+  },
   data() {
     return {
       steps: [],

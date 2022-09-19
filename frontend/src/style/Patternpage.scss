@@ -6,7 +6,7 @@
   align-items: center;
 
   @include respond-above(md) {
-    height: calc(100vh - #{$header-height} - 3vh);
+    height: calc(100vh - #{$app-header-height} - 3vh);
   }
 
   .pattern {
