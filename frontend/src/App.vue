@@ -92,19 +92,28 @@ export default {
 
 @font-face {
   font-family: "QuickSand-regular";
-  src: url("assets/fonts/Quicksand-Regular.ttf") format("ttf");
+  src: url("assets/fonts/Quicksand_Regular/QuicksandRegular.eot");
+  src: url("assets/fonts/Quicksand_Regular/QuicksandRegular.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/fonts/Quicksand_Regular/QuicksandRegular.woff") format("woff"),
+    url("assets/fonts/Quicksand_Regular/QuicksandRegular.ttf")
+      format("truetype");
 }
 @font-face {
   font-family: "QuickSand-bold";
-  src: url("assets/fonts/Quicksand_Bold.ttf") format("ttf");
+  src: url("assets/fonts/Quicksand_Bold/QuicksandBold.eot");
+  src: url("assets/fonts/Quicksand_Bold/QuicksandBold.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/fonts/Quicksand_Bold/QuicksandBold.woff") format("woff"),
+    url("assets/fonts/Quicksand_Bold/QuicksandBold.ttf") format("truetype");
 }
 @font-face {
   font-family: "QuickSand-light";
-  src: url("assets/fonts/Quicksand_Light.ttf") format("ttf");
-}
-@font-face {
-  font-family: "QuickSand-dash";
-  src: url("assets/fonts/Quicksand_Dash.ttf") format("ttf");
+  src: url("assets/fonts/Quicksand_Light/QuicksandLight.eot");
+  src: url("assets/fonts/Quicksand_Light/QuicksandLight.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/fonts/Quicksand_Light/QuicksandLight.woff") format("woff"),
+    url("assets/fonts/Quicksand_Light/QuicksandLight.ttf") format("truetype");
 }
 
 $burgerMenuDimension: 40px;

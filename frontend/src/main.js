@@ -1,7 +1,6 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router/router";
-
 import authConfig from "../auth_config-development.json";
 import authProductionConfig from "../auth_config-production.json";
 import { setupAuth } from "./auth/auth";

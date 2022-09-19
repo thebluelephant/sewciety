@@ -12,6 +12,11 @@
   height: 30px;
   align-items: center;
   margin-bottom: 5%;
+
+  @media (max-height: 800px) and (min-width : 1000px) {
+    margin-bottom: 10px;
+  }
+
 }
 
 .chip-menu * {
