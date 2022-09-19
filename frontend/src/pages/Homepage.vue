@@ -25,9 +25,13 @@
 <script>
 import PatternResearch from "../components/PatternResearch.vue";
 import router from "../router/router.js";
+import { useMeta } from "vue-meta";
 
 export default {
   name: "Homepage",
+  setup() {
+    useMeta({ title: "Sewciety page d'accueil" });
+  },
   components: {
     PatternResearch,
   },

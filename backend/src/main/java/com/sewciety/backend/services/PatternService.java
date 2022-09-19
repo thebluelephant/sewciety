@@ -5,6 +5,9 @@ import com.sewciety.backend.repositories.PatternRepository;
 import com.sewciety.backend.utils.GoogleCloudStorage.GoogleCloudStorage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -24,16 +27,20 @@ public class PatternService {
         return patternRepository.getBrands();
     }
 
-    public List<Pattern> findPatternByInput(Optional<String> input) {
-        return patternRepository.findPatternByInput(input);
+    public Page<Pattern> findPatternByInput(Optional<String> input, int page, int size) {
+        Pageable paging = PageRequest.of(page, size);
+        return patternRepository.findPatternByInput(input, paging);
     }
 
-    public List<Pattern> findPatternByInputAndBrand(Optional<String> input, Optional<String> brand) {
-        return patternRepository.findPatternByInputAndBrand(input, brand);
+    public Page<Pattern> findPatternByInputAndBrand(Optional<String> input, Optional<String> brand, int page,
+            int size) {
+        Pageable paging = PageRequest.of(page, size);
+        return patternRepository.findPatternByInputAndBrand(input, brand, paging);
     }
 
-    public List<Pattern> findPatternByBrandContaining(Optional<String> brand) {
-        return patternRepository.findPatternByBrand(brand);
+    public Page<Pattern> findPatternByBrandContaining(Optional<String> brand, int page, int size) {
+        Pageable paging = PageRequest.of(page, size);
+        return patternRepository.findPatternByBrand(brand, paging);
     }
 
     public Pattern findPatternById(Integer id) {

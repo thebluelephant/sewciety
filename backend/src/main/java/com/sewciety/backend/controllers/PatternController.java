@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.sewciety.backend.services.PatternService;
+import org.springframework.data.domain.Page;
 
 import java.io.IOException;
 import java.util.List;
@@ -38,14 +39,15 @@ public class PatternController {
     }
 
     @GetMapping()
-    public List<Pattern> findPatternByNameOrBrand(@RequestParam("input") Optional<String> input,
-            @RequestParam("brand") Optional<String> brand) {
+    public Page<Pattern> findPatternByNameOrBrand(@RequestParam("input") Optional<String> input,
+            @RequestParam("brand") Optional<String> brand, @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size) {
         if (brand.isEmpty()) {
-            return patternService.findPatternByInput(input);
+            return patternService.findPatternByInput(input, page, size);
         } else if (input.isEmpty()) {
-            return patternService.findPatternByBrandContaining(brand);
+            return patternService.findPatternByBrandContaining(brand, page, size);
         } else {
-            return patternService.findPatternByInputAndBrand(input, brand);
+            return patternService.findPatternByInputAndBrand(input, brand, page, size);
         }
     }
 

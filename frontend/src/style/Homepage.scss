@@ -13,6 +13,9 @@
   @include respond-above(md) {
     padding-top: 10px;
   }
+  @media (max-height: 800px) and (min-width: 1000px) {
+    padding-top: 10px;
+  }
 
   &__pattern-research {
     width: 100%;
@@ -24,6 +27,9 @@
 
     @include respond-above(md) {
       top: 35vh;
+    }
+    @media (max-height: 800px) and (min-width: 1000px) {
+      top: 55vh;
     }
   }
 
@@ -79,7 +85,8 @@
         font-size: 100px;
         width: 70%;
         letter-spacing: -5px;
-        line-height: 105px;
+        line-height: 110px;
+
         @include respond-above(xxl) {
           font-size: 80px;
         }

@@ -8,6 +8,7 @@ module.exports = {
     https: true,
     hotOnly: false,
   },
+  transpileDependencies: ["vue-meta"],
 
   configureWebpack: {
     plugins: [new Dotenv()],

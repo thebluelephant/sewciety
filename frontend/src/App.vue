@@ -1,5 +1,10 @@
 <template>
   <span>
+    <metainfo>
+      <template v-slot:title="{ content }">{{
+        content ? `${content} | Sewciety` : `Sewciety`
+      }}</template>
+    </metainfo>
     <Loader v-if="showLoader" class="loader" />
     <Alert />
     <div class="header">
@@ -35,6 +40,7 @@ import BurgerMenu from "./components/BurgerMenu.vue";
 import Loader from "./components/Loader.vue";
 import Alert from "./components/Alert.vue";
 import { userService } from "./services/user.service";
+import { useMeta } from "vue-meta";
 import BasicButton from "./components/Basic-Button.vue";
 
 export default {
@@ -44,6 +50,12 @@ export default {
     BurgerMenu,
     Alert,
     BasicButton,
+  },
+  setup() {
+    useMeta({
+      title: "Sewciety App",
+      htmlAttrs: { lang: "en", amp: true },
+    });
   },
   data() {
     return {
@@ -92,19 +104,28 @@ export default {
 
 @font-face {
   font-family: "QuickSand-regular";
-  src: url("assets/fonts/Quicksand-Regular.ttf") format("ttf");
+  src: url("assets/fonts/Quicksand_Regular/QuicksandRegular.eot");
+  src: url("assets/fonts/Quicksand_Regular/QuicksandRegular.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/fonts/Quicksand_Regular/QuicksandRegular.woff") format("woff"),
+    url("assets/fonts/Quicksand_Regular/QuicksandRegular.ttf")
+      format("truetype");
 }
 @font-face {
   font-family: "QuickSand-bold";
-  src: url("assets/fonts/Quicksand_Bold.ttf") format("ttf");
+  src: url("assets/fonts/Quicksand_Bold/QuicksandBold.eot");
+  src: url("assets/fonts/Quicksand_Bold/QuicksandBold.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/fonts/Quicksand_Bold/QuicksandBold.woff") format("woff"),
+    url("assets/fonts/Quicksand_Bold/QuicksandBold.ttf") format("truetype");
 }
 @font-face {
   font-family: "QuickSand-light";
-  src: url("assets/fonts/Quicksand_Light.ttf") format("ttf");
-}
-@font-face {
-  font-family: "QuickSand-dash";
-  src: url("assets/fonts/Quicksand_Dash.ttf") format("ttf");
+  src: url("assets/fonts/Quicksand_Light/QuicksandLight.eot");
+  src: url("assets/fonts/Quicksand_Light/QuicksandLight.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/fonts/Quicksand_Light/QuicksandLight.woff") format("woff"),
+    url("assets/fonts/Quicksand_Light/QuicksandLight.ttf") format("truetype");
 }
 
 $burgerMenuDimension: 40px;

@@ -34,10 +34,14 @@ import ChipMenu from "../components/ChipMenu.vue";
 import { apiCall } from "../services/patterns-api";
 import StepByStepContainer from "../components/StepByStepContainer.vue";
 import { imageService } from "../services/image.service";
+import { useMeta } from "vue-meta";
 
 export default {
   components: { ChipMenu, StepByStepContainer },
   name: "PatternPage",
+  setup() {
+    useMeta({ title: "Page Patron de couture" });
+  },
   data() {
     return {
       pattern: "",

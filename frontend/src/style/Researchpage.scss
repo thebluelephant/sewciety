@@ -1,9 +1,9 @@
 @import "./Global.scss";
 
-$header: 250px;
+$research-container-height: 200px;
 
 .research-page {
-  height: calc(100% - #{$header-height});
+  height: calc(100% - #{$app-header-height});
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -25,15 +25,11 @@ $header: 250px;
   &__cards {
     margin-top: 20px;
     display: flex;
-    height: calc(100vh - #{$header});
+    height: calc(100% - #{$research-container-height});
     width: 100%;
     justify-content: center;
     flex-wrap: wrap;
     overflow: auto;
-
-    @include respond-above(md) {
-      height: calc(100vh - 150px - #{$header-height});
-    }
 
     .card {
       margin: 0 15px 10px 0;

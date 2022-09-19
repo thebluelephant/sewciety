@@ -3,12 +3,14 @@ const apiUrl = process.env.VUE_APP_API_URL;
 
 export const apiCall = {
   // Find pattern by input or brand
-  findPattern: (input, brand) => {
+  findPattern: (input, brand, pageNumber, nbrByPage) => {
     return axios
       .get(`${apiUrl}/pattern`, {
         params: {
           ...(input ? { input: input } : {}),
           ...(brand ? { brand: brand } : {}),
+          page : pageNumber,
+          size : nbrByPage
         },
       })
       .then((response) => {

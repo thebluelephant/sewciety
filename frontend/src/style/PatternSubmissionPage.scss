@@ -7,14 +7,12 @@
   height: 90vh;
   padding-bottom: 20px;
   overflow: auto;
-  @include respond-above(lg) {
+
+  @media (max-height: 800px) and (min-width : 1000px) {
+    height: 80vh;
   }
   @include respond-above(md) {
     height: 85vh;
-  }
-  @include respond-above(sm) {
-  }
-  @include respond-above(xs) {
   }
 
   .title {

@@ -1,7 +1,10 @@
 <template>
   <div class="research-page">
     <span class="research-page__research">
-      <PatternResearch :minimized="true" @research-pattern="fetchPatterns" />
+      <PatternResearch
+        :minimized="true"
+        @research-pattern="onManualResearchPattern"
+      />
       <basic-button
         id="basic-button__submit-pattern"
         :title="$t('patternsubmissionpage.submit-pattern')"
@@ -24,6 +27,12 @@
         class="card"
       />
     </span>
+    <Pagination
+      :totalPages="totalPages"
+      :currentPage="currentIndexPage"
+      @pageIndex-next="() => onIndexClicked(this.currentIndexPage + 1)"
+      @pageIndex-previous="() => onIndexClicked(this.currentIndexPage - 1)"
+    />
   </div>
 </template>
 
@@ -31,15 +40,24 @@
 import PatternCard from "../components/PatternCard.vue";
 import PatternResearch from "../components/PatternResearch.vue";
 import BasicButton from "../components/Basic-Button.vue";
+import Pagination from "../components/Pagination.vue";
 import router from "../router/router.js";
 import { apiCall } from "../services/patterns-api";
+import { useMeta } from "vue-meta";
 
 export default {
-  components: { PatternCard, PatternResearch, BasicButton },
+  components: { PatternCard, PatternResearch, BasicButton, Pagination },
   name: "Research",
+  setup() {
+    useMeta({ title: "Rechercher un patron de couture" });
+  },
   data() {
     return {
       patterns: null,
+      totalPages: "",
+      researchInputValue: null,
+      researchBrandValue: null,
+      currentIndexPage: 0,
     };
   },
   beforeMount() {
@@ -49,16 +67,21 @@ export default {
     }
   },
   methods: {
-    fetchPatterns(researchTerm, brandTerm) {
-      const research = researchTerm ?? this.$route.query.research;
-      const brand = brandTerm ?? this.$route.query.brand;
-
-      apiCall.findPattern(research, brand).then((resp) => {
+    fetchPatterns(pageNumber) {
+      const research = this.researchInputValue ?? this.$route.query.research;
+      const brand = this.researchBrandValue ?? this.$route.query.brand;
+      apiCall.findPattern(research, brand, pageNumber, 30).then((resp) => {
         if (resp) {
-          this.patterns = resp;
+          this.patterns = resp.content;
+          this.totalPages = resp.totalPages;
           this.emitter.emit("hideLoader");
         }
       });
+    },
+    onManualResearchPattern(research, brand) {
+      this.researchInputValue = research;
+      this.researchBrandValue = brand;
+      this.fetchPatterns();
     },
     redirectOnPatternSubmission() {
       if (this.$auth.isAuthenticated.value) {
@@ -66,6 +89,10 @@ export default {
           name: "PatternSubmissionPage",
         });
       }
+    },
+    onIndexClicked(indexClicked) {
+      this.currentIndexPage = indexClicked;
+      this.fetchPatterns(indexClicked);
     },
   },
 };
