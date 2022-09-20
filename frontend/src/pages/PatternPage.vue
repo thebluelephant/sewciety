@@ -40,7 +40,7 @@ export default {
   components: { ChipMenu, StepByStepContainer },
   name: "PatternPage",
   setup() {
-    useMeta({ title: "Page Patron de couture" });
+    useMeta({ title: "Sewciety - Patron de couture", content : "Sewciety propose le détail d'un patron dans lequel vous retrouverez son descriptif ainsi que les tutoriels couture disponibles." });
   },
   data() {
     return {

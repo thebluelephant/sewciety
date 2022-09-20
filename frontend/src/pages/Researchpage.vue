@@ -49,7 +49,7 @@ export default {
   components: { PatternCard, PatternResearch, BasicButton, Pagination },
   name: "Research",
   setup() {
-    useMeta({ title: "Rechercher un patron de couture" });
+    useMeta({ title: "Sewciety - Rechercher un patron de couture", content : "Sewciety met à disposition un champ de recherche de patron de couture par marque, ou par titre." });
   },
   data() {
     return {
