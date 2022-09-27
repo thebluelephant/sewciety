@@ -4,16 +4,20 @@
       class="container"
       :class="{ 'container--minimized': minimized && !showMoreCriterias }"
     >
-      <span v-if="!minimized" class="title title--secondary">{{
-        $t("homepage.find-pattern")
-      }}</span>
+      <span class="container__header">
+        <span v-if="!minimized" class="title title--secondary">{{
+          $t("homepage.find-pattern")
+        }}</span>
+        <LoaderMini v-if="!brands.length" class="loader-mini"/>
+      </span>
+
       <input
         class="container__search-input"
         :placeholder="$t('homepage.research-placeholder')"
         type="text"
         v-model="research"
+        :disabled="!brands.length"
       />
-
       <select
         class="container__brand-select"
         name="brand-selector"
@@ -52,6 +56,7 @@
           @clicked="onResearch"
           type="navigation"
           :mini="minimized"
+          :disable="!brands.length"
         />
       </div>
     </div>
@@ -62,9 +67,10 @@
 import { apiCall } from "../services/patterns-api";
 import BasicButton from "./Basic-Button.vue";
 import router from "../router/router.js";
+import LoaderMini from "../components/LoaderMini.vue";
 
 export default {
-  components: { BasicButton },
+  components: { BasicButton, LoaderMini },
   name: "PatternResearch",
   props: ["minimized"],
   component: {

@@ -38,6 +38,16 @@ $research-container-height: 200px;
       height: 100px;
     }
 
+    &__header {
+      display: flex;
+      position: relative;
+      width: 100%;
+
+      .loader-mini{
+        position: absolute;
+        right : 0;
+      }
+    }
     &__search-input {
       border: none;
       width: 100%;
