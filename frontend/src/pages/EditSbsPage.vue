@@ -90,7 +90,7 @@ export default {
   name: "EditSbsPage",
   components: { StepCard, BasicButton, Popin },
   setup() {
-    useMeta({ title: "Sewciety - Créer/Éditer un tutoriel couture", content : "Créez et éditez le tutoriel d'un patron de couture" });
+    useMeta({ title: "Créer/Éditer un tutoriel couture", content : "Créez et éditez le tutoriel d'un patron de couture" });
   },
   data() {
     return {

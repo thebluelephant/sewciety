@@ -10,7 +10,7 @@
   .title {
     margin-bottom: 15px;
   }
-  @include respond-above(md) {
+  @include respond-under(md) {
     padding-top: 10px;
   }
   @media (max-height: 800px) and (min-width: 1000px) {
@@ -25,7 +25,7 @@
     position: absolute;
     top: 500px;
 
-    @include respond-above(md) {
+    @include respond-under(md) {
       top: 35vh;
     }
     @media (max-height: 800px) and (min-width: 1000px) {
@@ -38,7 +38,7 @@
     height: 400px;
     width: 95%;
 
-    @include respond-above(md) {
+    @include respond-under(md) {
       height: 220px;
     }
 
@@ -50,15 +50,15 @@
       background: url("../assets/image/homepage-image.jpg");
       background-size: cover;
 
-      @include respond-above(lg) {
+      @include respond-under(lg) {
         width: 70%;
         opacity: 0.8;
       }
-      @include respond-above(md) {
+      @include respond-under(md) {
         width: 100%;
         opacity: 0.3;
       }
-      @include respond-above(sm) {
+      @include respond-under(sm) {
         height: 35vh;
       }
     }
@@ -73,10 +73,10 @@
       margin: 2% 0 0 2%;
       z-index: 1;
 
-      @include respond-above(md) {
+      @include respond-under(md) {
         margin: 5% 0 0 5%;
       }
-      @include respond-above(sm) {
+      @include respond-under(sm) {
         margin: 5% 0 0 2%;
       }
 
@@ -87,23 +87,23 @@
         letter-spacing: -5px;
         line-height: 110px;
 
-        @include respond-above(xxl) {
+        @include respond-under(xxl) {
           font-size: 80px;
         }
-        @include respond-above(xl) {
+        @include respond-under(xl) {
           font-size: 75px;
         }
-        @include respond-above(md) {
+        @include respond-under(md) {
           font-size: 60px;
           line-height: 65px;
         }
-        @include respond-above(sm) {
+        @include respond-under(sm) {
           font-size: 50px;
           line-height: 55px;
           text-align: center;
           width: 100%;
         }
-        @include respond-above(xs) {
+        @include respond-under(xs) {
           font-size: 25px;
           line-height: 30px;
           letter-spacing: 0;
@@ -120,19 +120,19 @@
         font-size: 25px;
         width: 40%;
 
-        @include respond-above(xl) {
+        @include respond-under(xl) {
           font-size: 20px;
           width: 50%;
         }
-        @include respond-above(md) {
+        @include respond-under(md) {
           font-size: 20px;
           width: 45%;
         }
-        @include respond-above(sm) {
+        @include respond-under(sm) {
           width: 100%;
           text-align: center;
         }
-        @include respond-above(xs) {
+        @include respond-under(xs) {
           font-size: 12px;
         }
       }

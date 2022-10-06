@@ -16,7 +16,7 @@ $research-container-height: 180px;
     align-items: baseline;
 
     #basic-button__submit-pattern {
-      @include respond-above(md) {
+      @include respond-under(md) {
         display: none;
       }
     }

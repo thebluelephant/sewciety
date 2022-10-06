@@ -11,7 +11,7 @@
   @media (max-height: 800px) and (min-width : 1000px) {
     height: 80vh;
   }
-  @include respond-above(md) {
+  @include respond-under(md) {
     height: 85vh;
   }
 
@@ -20,10 +20,10 @@
     text-align: start;
     margin: 0 0 10px 0;
 
-    @include respond-above(md) {
+    @include respond-under(md) {
       font-size: 25px;
     }
-    @include respond-above(xs) {
+    @include respond-under(xs) {
       font-size: 20px;
     }
   }
@@ -41,7 +41,7 @@
     padding: 30px;
     margin-bottom: 20px;
 
-    @include respond-above(md) {
+    @include respond-under(md) {
       width: 70vw;
       box-shadow: 4px 4px 6px 0 rgb(0 0 0 / 15%),
         -8px -8px 12px 0 rgb(255 255 255 / 30%);
@@ -52,7 +52,7 @@
       justify-content: space-between;
       width: 100%;
 
-      @include respond-above(md) {
+      @include respond-under(md) {
         flex-direction: column;
       }
     }
@@ -66,7 +66,7 @@
       &--inline {
         min-width: 45%;
       }
-      @include respond-above(md) {
+      @include respond-under(md) {
         flex-direction: column;
         align-items: start;
       }
@@ -80,7 +80,7 @@
       label {
         margin-right: 20px;
         margin-bottom: 5px;
-        @include respond-above(md) {
+        @include respond-under(md) {
           margin-bottom: 5px;
         }
       }

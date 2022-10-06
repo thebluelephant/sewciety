@@ -23,7 +23,7 @@ export default {
   name: "SbsDetailsPage",
   components: { StepCard },
   setup() {
-    useMeta({ title: "Sewciety - Détails d'un tutoriel de couture", content : "Accédez au tutoriel de ce patron de couture écrit par un internaute l'ayant déjà réalisé." });
+    useMeta({ title: "Détails d'un tuto' couture", content : "Accédez au tutoriel de ce patron de couture écrit par un internaute l'ayant déjà réalisé." });
   },
   data() {
     return {
