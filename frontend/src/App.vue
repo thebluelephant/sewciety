@@ -2,7 +2,7 @@
   <span>
     <metainfo>
       <template v-slot:title="{ content }">{{
-        content ? `${content} | Sewciety` : `Sewciety`
+        content ? `Sewciety - ${content}` : `Sewciety`
       }}</template>
     </metainfo>
     <Loader v-if="showLoader" class="loader" />
@@ -168,10 +168,10 @@ html {
     cursor: pointer;
     margin-left: $burgerMenuDimension; // Allows to really center the div
 
-    @include respond-above(lg) {
+    @include respond-under(lg) {
       margin-right: 0;
     }
-    @include respond-above(xs) {
+    @include respond-under(xs) {
       margin-left: 0;
     }
     img {
@@ -182,7 +182,7 @@ html {
     }
   }
   .signin-button {
-    @include respond-above(xs) {
+    @include respond-under(xs) {
       display: none;
     }
   }

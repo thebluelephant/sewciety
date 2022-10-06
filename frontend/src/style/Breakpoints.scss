@@ -7,7 +7,7 @@ $breakpoints:  (
   "xxl": 90em // 1440px
 );
  
-@mixin respond-above($breakpoint) {
+@mixin respond-under($breakpoint) {
   // If the breakpoint exists in the map.
   @if map-has-key($breakpoints, $breakpoint) {
     // Get the breakpoint value.
