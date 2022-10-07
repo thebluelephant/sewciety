@@ -30,7 +30,11 @@ import { useMeta } from "vue-meta";
 export default {
   name: "Homepage",
   setup() {
-    useMeta({ title: "Accueil", content : "Sewciety propose des tutoriels de patrons de couture réalisés par et pour la communauté !" });
+    useMeta({
+      title: "Accueil",
+      content:
+        "Sewciety propose des tutoriels de patrons de couture réalisés par et pour la communauté !",
+    });
   },
   components: {
     PatternResearch,

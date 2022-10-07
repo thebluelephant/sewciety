@@ -16,12 +16,14 @@ export const userService = {
       return authId.substring(6);
     }
   },
+
   getCurrentUserUsername: async () => {
     const currentUserData = await userService.getCurrentUserData();
     if (currentUserData) {
       return currentUserData.username;
     }
   },
+
   getCurrentUserData: async () => {
     let authUserId = userService.getCurrentAuthUserId();
     const accessToken = await apiCall.getAccessToken();
@@ -34,13 +36,35 @@ export const userService = {
         });
     }
   },
-  getUserLang: async () => {
-    const currentUserData = await userService.getCurrentUserData();
-    if (currentUserData) {
-      return currentUserData.user_metadata.lang;
-    }
-  },
+
   decodeToken: function(token) {
     return JSON.parse(atob(token.split(".")[1]));
+  },
+
+  getUserBonus: async () => {
+    const currentUserData = await userService.getCurrentUserData();
+    if (currentUserData) {
+      return currentUserData.user_metadata.bonus;
+    }
+  },
+
+  getUserMetadata: async () => {
+    const currentUserData = await userService.getCurrentUserData();
+    if (currentUserData) {
+      return currentUserData.user_metadata;
+    }
+  },
+  
+  incrementUserBonusOfOne: async () => {
+    const authUserId = await userService.getCurrentAuthUserId();
+    const userBonus = await userService.getUserBonus();
+
+    if (userBonus !== null) {
+      return apiCall
+        .updateUserBonus(authUserId, userBonus + 1)
+        .then((response) => {
+          return response;
+        });
+    }
   },
 };
