@@ -1,0 +1,92 @@
+@import "./Global.scss";
+
+.contact-page {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin-top: 100px;
+  height: calc(100% - #{$app-header-height});
+  overflow: auto;
+
+  @include respond-under(xl) {
+    margin-top: 5px;
+  }
+
+  .card {
+    background-color: $white;
+    border-radius: 10px;
+    box-shadow: 1px 4px 3px -4px $grey;
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+
+    @include respond-under(md) {
+      width: 80%;
+    }
+
+    &__header {
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      margin-bottom: 40px;
+      height: auto;
+
+      .title {
+        margin: 0 20px 0 0;
+      }
+
+      @include respond-under(lg) {
+        flex-direction: column;
+      }
+    }
+
+    &__form {
+      padding: 0;
+      flex-direction: column;
+      width: 100%;
+      align-items: flex-start;
+
+      label {
+        margin: 0 10px 10px 0;
+      }
+      input,
+      textarea {
+        margin-bottom: 20px;
+      }
+      &__contact {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      &__name,
+      &__email {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        width: 100%;
+
+        input {
+          width: 70%;
+        }
+      }
+
+      .contact-textarea {
+        width: 100%;
+      }
+    }
+
+    &__footer {
+      display: flex;
+      width: 100%;
+      justify-content: end;
+
+      button {
+        width: 200px;
+        background-color: transparent;
+        border: transparent;
+      }
+    }
+  }
+}

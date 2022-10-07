@@ -71,7 +71,11 @@ export default {
   components: { BasicButton, ImageInput },
   name: "PatternSubmissionPage",
   setup() {
-    useMeta({ title: "Répertorier un patron de couture", content : "Votre patron de couture n'est pas encore disponible sur Sewciety ? Soumettez-le pour proposer à votre tour un tutoriel de réalisation " });
+    useMeta({
+      title: "Répertorier un patron de couture",
+      content:
+        "Votre patron de couture n'est pas encore disponible sur Sewciety ? Soumettez-le pour proposer à votre tour un tutoriel de réalisation ",
+    });
   },
   data() {
     return {

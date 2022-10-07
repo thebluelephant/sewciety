@@ -8,8 +8,9 @@
     "cancel": "Annuler",
     "confirm": "Confirmer",
     "submit": "Soumettre",
-    "tooltip-signin":"Vous devez être connecté pour accéder à cette fonctionnalité",
-    "signin":"S'identifier"
+    "tooltip-signin": "Vous devez être connecté pour accéder à cette fonctionnalité",
+    "signin": "S'identifier",
+    "send": "Envoyer"
   },
   "homepage": {
     "find-pattern": "Rechercher un patron",
@@ -29,7 +30,8 @@
     "research": "Recherche",
     "inventory": "Inventaire",
     "tools": "Outils",
-    "logout": "Déconnexion"
+    "logout": "Déconnexion",
+    "contact": "Contact"
   },
   "patternsubmissionpage": {
     "submit-pattern": "Proposer un patron",
@@ -56,5 +58,14 @@
     "my-saved-sbs": "Mes pas à pas sauvegardés",
     "delete-step": "Êtes-vous sûr de vouloir supprimer cette étape ? Cette action est définitive.",
     "delete-stepbystep": "Êtes-vous sûr de vouloir supprimer ce pas à pas ? Cette action est définitive."
+  },
+  "contact": {
+    "title": "Formulaire de contact",
+    "subtitle": "Une question ? Un bug ? Contactez-nous !",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Votre message",
+    "success": "Message envoyé, merci !",
+    "error": "Erreur dans l'envoi du message, réessayez plus tard !"
   }
 }

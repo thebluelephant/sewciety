@@ -7,6 +7,7 @@ import Callbackpage from "../pages/Authentication/Callbackpage.vue";
 import Loginpage from "../pages/Loginpage.vue";
 import SbsDetailsPage from "../pages/SbsDetailsPage.vue";
 import PatternSubmissionPage from "../pages/PatternSubmissionPage.vue";
+import ContactPage from "../pages/ContactPage.vue";
 import { authGuard } from "../auth/auth";
 
 const routes = [
@@ -47,6 +48,11 @@ const routes = [
     path: "/pattern/:id",
     name: "Patternpage",
     component: PatternPage,
+  },
+  {
+    path: "/contact",
+    name: "ContactPage",
+    component: ContactPage,
   },
   {
     path: "/pattern/new",
