@@ -6,6 +6,7 @@
   width: 50px;
   margin-right: 10px;
   cursor: default;
+  z-index: 2;
 
   @include respond-under(sm) {
     height: 35px;

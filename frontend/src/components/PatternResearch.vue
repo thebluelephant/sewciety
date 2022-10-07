@@ -1,56 +1,44 @@
 <template>
   <div class="pattern-research">
-    <div
-      class="container"
-      :class="{ 'container--minimized': minimized && !showMoreCriterias }"
-    >
+    <div class="container" :class="{ 'container--minimized': minimized }">
       <span class="container__header">
         <span v-if="!minimized" class="title title--secondary">{{
           $t("homepage.find-pattern")
         }}</span>
-        <LoaderMini v-if="!brands.length" class="loader-mini"/>
+        <LoaderMini v-if="!brands.length" class="loader-mini" />
       </span>
 
-      <input
-        class="container__search-input"
-        :placeholder="$t('homepage.research-placeholder')"
-        type="text"
-        v-model="research"
-        :disabled="!brands.length"
-      />
-      <select
-        class="container__brand-select"
-        name="brand-selector"
-        v-model="brand"
-        v-if="
-          (!minimized && brands.length > 0) ||
-            (minimized && showMoreCriterias && brands.length > 0)
-        "
+      <span
+        class="container__body"
+        :class="{ 'container__body--minimized': minimized }"
       >
-        <option value="">{{ $t("homepage.select-brand") }}</option>
-        <option
-          v-for="brand in brands"
-          v-show="brand"
-          :value="brand"
-          :key="brand"
+        <input
+          class="search-input"
+          :class="{ 'search-input--minimized': minimized }"
+          :placeholder="$t('homepage.research-placeholder')"
+          type="text"
+          v-model="research"
+          :disabled="!brands.length"
+        />
+        <select
+          class="brand-select"
+          name="brand-selector"
+          v-model="brand"
+          v-if="brands.length > 0"
         >
-          {{ brand }}
-        </option>
-      </select>
+          <option value="">{{ $t("homepage.select-brand") }}</option>
+          <option
+            v-for="brand in brands"
+            v-show="brand"
+            :value="brand"
+            :key="brand"
+          >
+            {{ brand }}
+          </option>
+        </select>
+      </span>
 
-      <div
-        class="container__buttons"
-        :class="{ 'container__buttons--minimized': minimized }"
-      >
-        <p
-          class="more-criterias"
-          v-if="minimized || showMoreCriterias"
-          @click="showMoreCriterias = !showMoreCriterias"
-        >
-          <span v-if="!showMoreCriterias">{{ $t("common.more") }}</span>
-          <span v-if="showMoreCriterias">{{ $t("common.less") }}</span>
-          {{ $t("common.criterias") }}
-        </p>
+      <div class="container__buttons">
         <basic-button
           :title="$t('homepage.research')"
           @clicked="onResearch"
@@ -81,8 +69,12 @@ export default {
       research: "",
       brand: "",
       brands: [],
-      showMoreCriterias: false,
     };
+  },
+  beforeMount() {
+    apiCall.getBrands().then((resp) => {
+      this.brands = resp;
+    });
   },
   methods: {
     onResearch() {
@@ -96,11 +88,6 @@ export default {
         });
       } else return;
     },
-  },
-  beforeMount() {
-    apiCall.getBrands().then((resp) => {
-      this.brands = resp;
-    });
   },
 };
 </script>
