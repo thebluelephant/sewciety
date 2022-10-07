@@ -68,5 +68,8 @@
     "message": "Your message",
     "success": "Message sent, thank you ! ",
     "error": "The message could not be sent, please try again later !"
+  },
+  "bonus":{
+    "tooltip" : "Earn a bonus for each published tutorial, and win gifts from our partners!"
   }
 }

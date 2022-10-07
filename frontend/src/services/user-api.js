@@ -54,4 +54,23 @@ export const apiCall = {
       } else console.log("User info: A problem happened", response);
     });
   },
+
+  // Update user metadata "bonus" in Auth0 with a new value
+  updateUserBonus: async (userId, newBonus) => {
+    const accessToken = await apiCall.getAccessToken();
+    const data = { user_metadata: { bonus: newBonus } };
+    const config = {
+      headers: {
+        "Content-Type": "application/json;charset=UTF-8",
+        Authorization: "Bearer " + accessToken,
+      },
+    };
+    return axios
+      .patch(`${apiUrl}/users/${userId}`, data, config)
+      .then((response) => {
+        if (response.status === 200) {
+          return response.data;
+        } else console.log("User bonus: A problem happened", response);
+      });
+  },
 };

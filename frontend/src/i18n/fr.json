@@ -67,5 +67,8 @@
     "message": "Votre message",
     "success": "Message envoyé, merci !",
     "error": "Erreur dans l'envoi du message, réessayez plus tard !"
+  },
+  "bonus":{
+    "tooltip" : "Gagnez un bonus à chaque tuto' publié, et remportez des cadeaux de nos partenaires ! "
   }
 }
