@@ -19,7 +19,7 @@
         />
       </div>
       <span class="utils">
-        <Bonus />
+        <Bonus v-if="$auth.isAuthenticated.value" />
         <basic-button
           class="signin-button"
           :title="

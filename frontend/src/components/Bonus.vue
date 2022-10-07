@@ -1,5 +1,5 @@
 <template>
-  <div class="bonus">
+  <div class="bonus" v-if="bonus >= 0">
     <span
       class="bonus__chip"
       @mouseenter="manageToolTip(true)"
@@ -16,7 +16,7 @@
           </textPath>
         </text>
       </svg>
-      <p class="count" v-if="bonus">{{ bonus }}</p>
+      <p class="count">{{ bonus }}</p>
     </span>
     <p v-if="showTooltip" class="bonus__tooltip">
       {{ $t("bonus.tooltip") }}

@@ -33,7 +33,6 @@ export const apiCall = {
 
     return axios.get(`${apiUrl}/userInfo`, config).then((response) => {
       if (response.status === 200) {
-        console.log(response.data);
         return response.data;
       } else
         console.log("CurrentUserAuthProfile : A problem happened", response);

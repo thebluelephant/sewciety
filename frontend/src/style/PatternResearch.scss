@@ -36,6 +36,10 @@ $research-container-height: 200px;
 
     &--minimized {
       height: 100px;
+
+      @include respond-under(sm) {
+        height: 120px;
+      }
     }
 
     &__header {
@@ -43,30 +47,55 @@ $research-container-height: 200px;
       position: relative;
       width: 100%;
 
-      .loader-mini{
+      .loader-mini {
         position: absolute;
-        right : 0;
-      }
-    }
-    &__search-input {
-      border: none;
-      width: 100%;
-      height: 40px;
-      border-radius: 10px;
-      padding-left: 5px;
-
-      &::placeholder {
-        font-style: italic;
-        color: $grey;
+        right: 0;
       }
     }
 
-    &__brand-select {
+    &__body {
+      display: flex;
       width: 100%;
-      border: none;
-      background: transparent;
-      border-bottom: 2px $grey solid;
-      cursor: pointer;
+      flex-direction: column;
+
+      &--minimized {
+        flex-direction: row;
+
+        @include respond-under(sm) {
+          flex-direction: column;
+        }
+      }
+
+      .search-input {
+        border: none;
+        width: 100%;
+        height: 40px;
+        border-radius: 10px;
+        padding-left: 5px;
+        margin-bottom: 20px;
+
+        &::placeholder {
+          font-style: italic;
+          color: $grey;
+        }
+
+        &--minimized {
+          margin-bottom: 0;
+          margin-right: 20px;
+
+          @include respond-under(sm) {
+            margin-bottom: 10px;
+          }
+        }
+      }
+
+      .brand-select {
+        width: 100%;
+        border: none;
+        background: transparent;
+        border-bottom: 2px $grey solid;
+        cursor: pointer;
+      }
     }
 
     &__buttons {
@@ -74,20 +103,6 @@ $research-container-height: 200px;
       display: flex;
       justify-content: end;
       margin: 0 10px 5px 0;
-
-      .more-criterias {
-        margin: 0;
-        font-weight: bold;
-        text-decoration: underline;
-        font-size: 12px;
-        cursor: pointer;
-      }
-
-      &--minimized {
-        justify-content: space-between;
-        justify-content: baseline;
-        align-items: flex-end;
-      }
     }
   }
 }
