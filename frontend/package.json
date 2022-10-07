@@ -9,10 +9,12 @@
     "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/i18n/**/*.json\""
   },
   "dependencies": {
+    "@emailjs/browser": "^3.7.0",
     "auth0-js": "^9.19.0",
     "auth0-spa-js": "^1.6.5",
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
+    "emailjs": "^4.0.1",
     "lodash": "^4.17.21",
     "mitt": "^3.0.0",
     "moment": "^2.29.3",

@@ -31,6 +31,14 @@
             <p>{{ $t("patternsubmissionpage.submit-pattern") }}</p>
           </router-link>
         </li>
+        <li>
+          <router-link class="routerlink" to="/contact" exact>
+            <svg>
+              <use class="icon" xlink:href="#send-message" />
+            </svg>
+            <p>{{ $t("burgermenu.contact") }}</p>
+          </router-link>
+        </li>
         <!--
         <li>
           <router-link class="routerlink" to="/inventory" exact>
@@ -72,7 +80,7 @@
               <use class="icon" xlink:href="#signin" />
             </svg>
             <span class=" sign-in">
-              <p>{{ $t('common.signin') }}</p>
+              <p>{{ $t("common.signin") }}</p>
             </span>
           </li>
         </span>

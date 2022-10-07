@@ -6,6 +6,8 @@
   align-items: center;
   padding-top: 100px;
   position: relative;
+  height: calc(100vh - #{$app-header-height});
+  overflow: auto;
 
   .title {
     margin-bottom: 15px;
@@ -87,6 +89,11 @@
         letter-spacing: -5px;
         line-height: 110px;
 
+        @media (max-height: 500px) {
+          font-size: 30px;
+          line-height: 35px;
+          letter-spacing: -2px;
+        }
         @include respond-under(xxl) {
           font-size: 80px;
         }
@@ -120,6 +127,9 @@
         font-size: 25px;
         width: 40%;
 
+        @media (max-height: 500px) {
+          font-size: 15px;
+        }
         @include respond-under(xl) {
           font-size: 20px;
           width: 50%;
