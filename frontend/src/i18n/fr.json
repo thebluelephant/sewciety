@@ -44,20 +44,20 @@
   },
   "patternpage": {
     "pattern": "Patron",
-    "step-by-step": "Pas à pas",
+    "step-by-step": "Tutoriels",
     "achievements": "Réalisations"
   },
   "createsbspage": {
-    "create-sbs": "Créer un pas à pas",
+    "create-sbs": "Créer un tuto'",
     "add-step": "Ajouter une étape",
     "publish": "Publier",
     "save": "Sauvegarder",
     "success-publishing-alert": "Merci ! Votre publication sera visible après validation de nos modérateurs."
   },
   "stepbystep": {
-    "my-saved-sbs": "Mes pas à pas sauvegardés",
+    "my-saved-sbs": "Mes tuto' sauvegardés",
     "delete-step": "Êtes-vous sûr de vouloir supprimer cette étape ? Cette action est définitive.",
-    "delete-stepbystep": "Êtes-vous sûr de vouloir supprimer ce pas à pas ? Cette action est définitive."
+    "delete-stepbystep": "Êtes-vous sûr de vouloir supprimer ce tutoriel ? Cette action est définitive."
   },
   "contact": {
     "title": "Formulaire de contact",

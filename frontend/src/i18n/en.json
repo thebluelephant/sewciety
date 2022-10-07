@@ -45,20 +45,20 @@
   },
   "patternpage": {
     "pattern": "Pattern",
-    "step-by-step": "Step by step",
+    "step-by-step": "Tutorials",
     "achievements": "Achievements"
   },
   "createsbspage": {
-    "create-sbs": "Create a step by step",
+    "create-sbs": "Create a tutorial",
     "add-step": "Add step",
     "publish": "Publish",
     "save": "Save",
     "success-publishing-alert": "Thank you ! Your post will be visible after validation by our moderators."
   },
   "stepbystep": {
-    "my-saved-sbs": "My saved step by step",
+    "my-saved-sbs": "My saved tutorials",
     "delete-step": "Are you sure you want to delete this step ? This action will be definitive.",
-    "delete-stepbystep": "Are you sure you want to delete this step by step ? This action will be definitive."
+    "delete-stepbystep": "Are you sure you want to delete this tutorial ? This action will be definitive."
   },
   "contact": {
     "title": "Contact form",
