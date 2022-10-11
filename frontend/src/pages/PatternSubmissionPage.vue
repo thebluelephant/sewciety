@@ -87,9 +87,9 @@ export default {
     };
   },
   methods: {
-    onImageChange(e) {
+    onImageChange(image) {
       imageService
-        .fileToBase64(e.target.files[0])
+        .fileToBase64(image)
         .then((result) => (this.image = result));
     },
     onSubmit() {

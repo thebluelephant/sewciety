@@ -33,6 +33,7 @@
 
 <script>
 import { imageService } from "../services/image.service";
+import * as imageConversion from "image-conversion";
 
 export default {
   name: "ImageInput",
@@ -58,9 +59,19 @@ export default {
   },
   methods: {
     onInputValueChange(e) {
-      this.$emit("imageChange", e);
-      this.isPreviewVisible = true;
-      this.previewImage();
+      this.compressImage(e.target.files[0]).then((compressedImage) => {
+        this.$emit("imageChange", compressedImage);
+        this.isPreviewVisible = true;
+        this.previewImage();
+      });
+    },
+
+    compressImage(image) {
+      return imageConversion
+        .compressAccurately(image, 150)
+        .then((compressedImage) => {
+          return compressedImage;
+        });
     },
 
     previewImage(automaticImageUpdate) {
