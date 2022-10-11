@@ -70,5 +70,8 @@
   },
   "bonus":{
     "tooltip" : "Gagnez un bonus à chaque tuto' publié, et remportez des cadeaux de nos partenaires ! "
+  },
+  "loader-mini":{
+    "mention": "Un petit instant, nous récupérons la liste des patrons !"
   }
 }

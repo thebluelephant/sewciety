@@ -93,6 +93,7 @@ export default {
         .then((result) => (this.image = result));
     },
     onSubmit() {
+      this.emitter.emit("displayLoader");
       const pattern = {
         name: this.name,
         brand: this.brand,
@@ -102,6 +103,7 @@ export default {
       };
       apiCall.submitNewPattern(pattern).then((response) => {
         if (response) {
+          this.emitter.emit("hideLoader");
           this.$router.back();
           this.emitter.emit(
             "launch-alert",

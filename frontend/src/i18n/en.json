@@ -71,5 +71,8 @@
   },
   "bonus":{
     "tooltip" : "Earn a bonus for each published tutorial, and win gifts from our partners!"
+  },
+  "loader-mini":{
+    "mention": "One moment, we recover the list of patterns!"
   }
 }

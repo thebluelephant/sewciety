@@ -1,7 +1,10 @@
 <template>
   <div class="loader-mini">
-    <div></div>
-    <div></div>
+    <p class="loader-mini__mention">{{ $t("loader-mini.mention") }} </p>
+    <div class="loader-mini__loader">
+      <div></div>
+      <div></div>
+    </div>
   </div>
 </template>
 
