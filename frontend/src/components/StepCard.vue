@@ -78,8 +78,8 @@ export default {
     onTitleChange(e) {
       this.$emit("titleChange", e.target.value);
     },
-    onImageChange(e) {
-      this.$emit("imageChange", e.target.files[0]);
+    onImageChange(image) {
+      this.$emit("imageChange", image);
     },
     onExplanationsChange(e) {
       this.$emit("explanationsChange", e.target.value);
