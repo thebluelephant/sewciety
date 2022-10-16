@@ -5,7 +5,7 @@
         <span v-if="!minimized" class="title title--secondary">{{
           $t("homepage.find-pattern")
         }}</span>
-        <LoaderMini v-if="!brands.length" class="loader-mini" />
+        <LoaderMini v-if="!brands.length && !minimized" class="loader-mini" />
       </span>
 
       <span
