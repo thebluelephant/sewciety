@@ -68,7 +68,7 @@ export default {
 
     compressImage(image) {
       return imageConversion
-        .compressAccurately(image, 150)
+        .compressAccurately(image, 600)
         .then((compressedImage) => {
           return compressedImage;
         });

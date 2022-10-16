@@ -50,6 +50,11 @@ $research-container-height: 200px;
       .loader-mini {
         position: absolute;
         right: 0;
+
+        @include respond-under(sm) {
+          right: unset;
+          top: 25px;
+        }
       }
     }
 

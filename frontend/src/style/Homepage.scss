@@ -94,11 +94,6 @@
         letter-spacing: -5px;
         line-height: 110px;
 
-        @media (max-height: 500px) {
-          font-size: 30px;
-          line-height: 35px;
-          letter-spacing: -2px;
-        }
         @include respond-under(xxl) {
           font-size: 80px;
         }
@@ -120,6 +115,11 @@
           line-height: 30px;
           letter-spacing: 0;
         }
+        @media (max-height: 650px) {
+          font-size: 30px;
+          line-height: 35px;
+          letter-spacing: -2px;
+        }
 
         &--highlight {
           background-color: $pink;
@@ -132,9 +132,7 @@
         font-size: 25px;
         width: 40%;
 
-        @media (max-height: 500px) {
-          font-size: 15px;
-        }
+
         @include respond-under(xl) {
           font-size: 20px;
           width: 50%;
@@ -149,6 +147,9 @@
         }
         @include respond-under(xs) {
           font-size: 12px;
+        }
+        @media (max-height: 650px) {
+          font-size: 15px;
         }
       }
     }
