@@ -48,21 +48,19 @@
     height: 90%;
     max-width: 100%;
     justify-content: space-around;
+    flex-direction: column;
 
 
     &--disabled{
+      flex-direction: row;
+      text-align: start;
 
       @include respond-under(md) {
         flex-direction: column;
+        text-align: center;
       }
-
       .description {
-        margin-bottom: 30px;
-      }
-    }
-
-    .description {
-      &--disabled {
+        margin-bottom: 30px; 
         text-align: start;
         width: 100%;
       }
@@ -85,6 +83,10 @@
           max-width: 95%;
         }
       }
+    }
+
+    textarea{
+      margin-bottom: 20px;
     }
   }
 }

@@ -57,7 +57,9 @@
     box-shadow: none;
 
     .container {
-      color: $green !important;
+      p {
+        color: $green !important;
+      }
     }
   }
 
