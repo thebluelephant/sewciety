@@ -14,16 +14,16 @@
   },
   "homepage": {
     "find-pattern": "Rechercher un patron",
-    "research-placeholder": "Titre d'un patron, numero, ...",
-    "select-brand": "Selectionner une marque",
     "research": "Rechercher",
-    "slogan-1": "Votre",
-    "slogan-2": "créativité",
-    "slogan-3": "n'a plus de limite !",
-    "description": "Apprenez à réaliser étape par étape votre patron de couture grâce à la communauté Sewciety !"
+    "slogan-1": "Partagez ",
+    "slogan-2": "votre passion pour la couture !",
+    "description1": "Trouvez parmis les centaines de patrons référencés celui qui correspond à votre ouvrage, et suivez les étapes de réalisation concoctées par d'autres membres !",
+    "description2": "Aucun tuto' n'est disponible ? N'hésitez-pas à réaliser le vôtre et partagez vos connaissances !"
   },
   "patternresearchpage": {
-    "no-pattern-available": "Oups, aucun patron disponible !"
+    "no-pattern-available": "Oups, aucun patron disponible !",
+    "research-placeholder": "Rechercher par titre de patron, marque ...",
+    "select-brand": "Selectionnez une marque"
   },
   "burgermenu": {
     "homepage": "Accueil",
@@ -68,10 +68,10 @@
     "success": "Message envoyé, merci !",
     "error": "Erreur dans l'envoi du message, réessayez plus tard !"
   },
-  "bonus":{
-    "tooltip" : "Gagnez un bonus à chaque tuto' publié, et remportez des cadeaux de nos partenaires ! "
+  "bonus": {
+    "tooltip": "Gagnez un bonus à chaque tuto' publié, et remportez des cadeaux de nos partenaires ! "
   },
-  "loader-mini":{
+  "loader-mini": {
     "mention": "Un petit instant, nous récupérons la liste des patrons !"
   }
 }

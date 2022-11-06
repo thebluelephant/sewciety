@@ -1,44 +1,47 @@
 <template>
   <div class="homepage">
-    <span class="homepage__header">
-      <span class="text">
-        <p class="text__slogan">
-          {{ $t("homepage.slogan-1") }}
-          <span class="text__slogan--highlight">{{
-            $t("homepage.slogan-2")
-          }}</span>
-          {{ $t("homepage.slogan-3") }}
+    <div class="homepage__header">
+      <div class="left-column">
+        <p class="title title--primary">
+          <span class="title--pink"> {{ $t("homepage.slogan-1") }} </span
+          >{{ $t("homepage.slogan-2") }}
         </p>
-        <p class="text__description">
-          {{ $t("homepage.description") }}
+        <p class="description">
+          {{ $t("homepage.description1") }} <br />
+          <br />
+          {{ $t("homepage.description2") }} <br />
         </p>
-      </span>
-      <span class="image" />
-    </span>
-
-    <span class="homepage__pattern-research">
-      <PatternResearch />
-    </span>
+        <HomePatternResearch />
+      </div>
+      <div class="right-column">
+        <img
+          :src="require('../assets/image/homepage-woman.png')"
+          alt="homepage woman"
+        />
+      </div>
+    </div>
+    <div class="homepage__body">
+      <HowItWorks />
+    </div>
   </div>
 </template>
 
 <script>
-import PatternResearch from "../components/PatternResearch.vue";
 import router from "../router/router.js";
 import { useMeta } from "vue-meta";
+import HowItWorks from "../components/HowItWorks.vue";
+import HomePatternResearch from "../components/HomePatternResearch.vue";
 
 export default {
   name: "Homepage",
   setup() {
     useMeta({
-      title: "Accueil",
+      title: "Plateforme participative de tutoriels couture !",
       content:
-        "Sewciety propose des tutoriels de patrons de couture réalisés par et pour la communauté !",
+        "Sewciety est la première plateforme participative de tutoriels couture axée sur la réalisation des patrons. Trouvez le tuto' adapté à votre ouvrage, ou partagez le votre !",
     });
   },
-  components: {
-    PatternResearch,
-  },
+  components: { HowItWorks, HomePatternResearch },
   methods: {
     redirectOnPatternSubmission() {
       router.push({

@@ -4,154 +4,90 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 100px;
   position: relative;
   height: calc(100vh - #{$app-header-height});
   overflow: auto;
 
-  button{
-    position: absolute;
-    left : 0
-  }
-
-  .title {
-    margin-bottom: 15px;
-  }
-  @include respond-under(md) {
-    padding-top: 10px;
-  }
-  @media (max-height: 800px) and (min-width: 1000px) {
-    padding-top: 10px;
-  }
-
-  &__pattern-research {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    position: absolute;
-    top: 500px;
-
-    @include respond-under(md) {
-      top: 35vh;
-    }
-    @media (max-height: 800px) and (min-width: 1000px) {
-      top: 55vh;
-    }
-  }
-
   &__header {
-    position: absolute;
-    height: 400px;
-    width: 95%;
+    width: 80%;
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
 
-    @include respond-under(md) {
-      height: 220px;
+    @include respond-under(lg) {
+      position: relative;
     }
 
-    .image {
-      height: 435px;
-      width: 60%;
-      position: absolute;
-      right: 0;
-      background: url("../assets/image/homepage-image.jpg");
-      background-size: cover;
-
-      @include respond-under(lg) {
-        width: 70%;
-        opacity: 0.8;
-      }
-      @include respond-under(md) {
-        width: 100%;
-        opacity: 0.3;
-      }
-      @include respond-under(sm) {
-        height: 35vh;
-      }
-    }
-
-    .text {
-      position: absolute;
-      left: 0;
+    .left-column {
+      width: 55%;
+      margin-top: 5%;
+      text-align: initial;
       display: flex;
       flex-direction: column;
-      text-align: left;
-      font-family: "QuickSand-regular";
-      margin: 2% 0 0 2%;
-      z-index: 1;
 
-      @include respond-under(md) {
-        margin: 5% 0 0 5%;
+      @include respond-under(lg) {
+        width: 100%;
+        z-index: 1;
       }
+
       @include respond-under(sm) {
-        margin: 5% 0 0 2%;
+        justify-content: center;
+        text-align: center;
       }
 
-      &__slogan {
+      .title {
+        font-size: 50px;
         margin: 0;
-        font-size: 100px;
-        width: 70%;
-        letter-spacing: -5px;
-        line-height: 110px;
 
-        @include respond-under(xxl) {
-          font-size: 80px;
-        }
-        @include respond-under(xl) {
-          font-size: 75px;
-        }
-        @include respond-under(md) {
-          font-size: 60px;
-          line-height: 65px;
+        @include respond-under(lg) {
+          font-size: 30px;
         }
         @include respond-under(sm) {
-          font-size: 50px;
-          line-height: 55px;
-          text-align: center;
-          width: 100%;
-        }
-        @include respond-under(xs) {
           font-size: 25px;
-          line-height: 30px;
-          letter-spacing: 0;
-        }
-        @media (max-height: 650px) {
-          font-size: 30px;
-          line-height: 35px;
-          letter-spacing: -2px;
         }
 
-        &--highlight {
-          background-color: $pink;
-          color: white;
-          padding: 0 10px;
-          border-radius: 10px;
+        &--pink {
+          color: $pink;
         }
       }
-      &__description {
-        font-size: 25px;
-        width: 40%;
 
+      .description {
+        margin-bottom: 5%;
 
-        @include respond-under(xl) {
-          font-size: 20px;
-          width: 50%;
-        }
-        @include respond-under(md) {
-          font-size: 20px;
-          width: 45%;
-        }
         @include respond-under(sm) {
-          width: 100%;
-          text-align: center;
-        }
-        @include respond-under(xs) {
-          font-size: 12px;
-        }
-        @media (max-height: 650px) {
-          font-size: 15px;
+          font-size: 13px;
         }
       }
     }
+
+    .right-column {
+      width: 45%;
+      display: flex;
+      align-items: flex-end;
+
+      @include respond-under(sm) {
+        display: none;
+      }
+
+      @include respond-under(lg) {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+
+      img {
+        height: 650px;
+
+        @include respond-under(xl) {
+          height: 450px;
+        }
+        @include respond-under(lg) {
+          height: 380px;
+        }
+      }
+    }
+  }
+  &__body {
+    width: 80%;
   }
 }

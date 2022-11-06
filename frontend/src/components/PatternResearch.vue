@@ -1,21 +1,14 @@
 <template>
   <div class="pattern-research">
-    <div class="container" :class="{ 'container--minimized': minimized }">
+    <div class="container">
       <span class="container__header">
-        <span v-if="!minimized" class="title title--secondary">{{
-          $t("homepage.find-pattern")
-        }}</span>
-        <LoaderMini v-if="!brands.length && !minimized" class="loader-mini" />
+        <LoaderMini v-if="!brands.length" class="loader-mini" />
       </span>
 
-      <span
-        class="container__body"
-        :class="{ 'container__body--minimized': minimized }"
-      >
+      <span class="container__body">
         <input
           class="search-input"
-          :class="{ 'search-input--minimized': minimized }"
-          :placeholder="$t('homepage.research-placeholder')"
+          :placeholder="$t('patternresearchpage.research-placeholder')"
           type="text"
           v-model="research"
           :disabled="!brands.length"
@@ -26,7 +19,7 @@
           v-model="brand"
           v-if="brands.length > 0"
         >
-          <option value="">{{ $t("homepage.select-brand") }}</option>
+          <option value="">{{ $t("patternresearchpage.select-brand") }}</option>
           <option
             v-for="brand in brands"
             v-show="brand"
@@ -43,7 +36,7 @@
           :title="$t('homepage.research')"
           @clicked="onResearch"
           type="navigation"
-          :mini="minimized"
+          :mini="true"
           :disable="!brands.length"
         />
       </div>
@@ -54,13 +47,11 @@
 <script>
 import { apiCall } from "../services/patterns-api";
 import BasicButton from "./Basic-Button.vue";
-import router from "../router/router.js";
 import LoaderMini from "../components/LoaderMini.vue";
 
 export default {
   components: { BasicButton, LoaderMini },
   name: "PatternResearch",
-  props: ["minimized"],
   component: {
     BasicButton,
   },
@@ -78,15 +69,7 @@ export default {
   },
   methods: {
     onResearch() {
-      //  The minimized config is only used in the research page so we don't need to redirect user on research
-      if (this.minimized) {
-        this.$emit("research-pattern", this.research, this.brand);
-      } else if (this.brand || this.research) {
-        router.push({
-          name: "Research",
-          query: { research: this.research, brand: this.brand },
-        });
-      } else return;
+      this.$emit("research-pattern", this.research, this.brand);
     },
   },
 };

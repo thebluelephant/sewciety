@@ -24,7 +24,6 @@ $research-container-height: 200px;
 
   .container {
     width: 90%;
-    height: $research-container-height;
     border-radius: 20px;
     padding: 0 20px;
     background-color: $green-light;
@@ -34,12 +33,10 @@ $research-container-height: 200px;
     align-items: center;
     box-shadow: 6px 5px 15px -1px rgb(168 168 168 / 55%);
 
-    &--minimized {
-      height: 100px;
+    height: 100px;
 
-      @include respond-under(sm) {
-        height: 120px;
-      }
+    @include respond-under(sm) {
+      height: 120px;
     }
 
     &__header {
@@ -61,14 +58,10 @@ $research-container-height: 200px;
     &__body {
       display: flex;
       width: 100%;
-      flex-direction: column;
+      flex-direction: row;
 
-      &--minimized {
-        flex-direction: row;
-
-        @include respond-under(sm) {
-          flex-direction: column;
-        }
+      @include respond-under(sm) {
+        flex-direction: column;
       }
 
       .search-input {
@@ -77,20 +70,15 @@ $research-container-height: 200px;
         height: 40px;
         border-radius: 10px;
         padding-left: 5px;
-        margin-bottom: 20px;
-
+        margin-bottom: 0;
+        margin-right: 20px;
+        
         &::placeholder {
           font-style: italic;
           color: $grey;
         }
-
-        &--minimized {
-          margin-bottom: 0;
-          margin-right: 20px;
-
-          @include respond-under(sm) {
-            margin-bottom: 10px;
-          }
+        @include respond-under(sm) {
+          margin-bottom: 10px;
         }
       }
 
