@@ -1,0 +1,34 @@
+@import "./Global.scss";
+
+$research-container-height: 50px;
+
+.pattern-research {
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: 4px 5px 4px #ababab4a;
+
+  @include respond-under(sm) {
+    margin : 15px 0 30px 0;
+  }
+
+  &__search-input {
+    width: 80%;
+    background: transparent;
+    border: transparent;
+
+    &::placeholder {
+      font-style: italic;
+      color: $grey;
+    }
+  }
+
+  &__buttons {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    margin: 0 10px 5px 0;
+  }
+}

@@ -58,8 +58,8 @@ export default {
   },
   setup() {
     useMeta({
-      title: "Sewciety App",
-      htmlAttrs: { lang: "en", amp: true },
+      title: "Sewciety App, plateforme participative de tutoriels couture !",
+      htmlAttrs: { lang: "fr", amp: true },
     });
   },
   data() {

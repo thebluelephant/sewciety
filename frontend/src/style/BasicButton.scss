@@ -66,9 +66,11 @@
     cursor: default;
     background: transparent;
     box-shadow: none;
-    
+
     .container {
-      color: lightgrey !important;
+      p {
+        color: lightgrey !important;
+      }
     }
   }
 
@@ -79,13 +81,12 @@
 
   .container {
     text-decoration: none;
-    color: black;
 
     svg {
       margin-top: 4px; //Magic number to correcty center the svg
       height: 25px;
       width: 25px;
-      fill: black;
+      color: #5a5a5a;
     }
   }
 }

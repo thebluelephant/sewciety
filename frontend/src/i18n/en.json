@@ -15,16 +15,16 @@
   },
   "homepage": {
     "find-pattern": "Find a pattern",
-    "research-placeholder": "Pattern title, number, ...",
-    "select-brand": "Select a brand",
     "research": "Research",
-    "slogan-1": "Your",
-    "slogan-2": "creativity",
-    "slogan-3": "doesn't have limits !",
-    "description": "Learn to realize step by step your sewing pattern thanks to the Sewciety community !"
+    "slogan-1": "Share ",
+    "slogan-2": "your passion for sewing !",
+    "description1": "Find among the hundreds of referenced patterns the one that corresponds to your work, and follow the steps of realization concocted by other members!",
+    "description2": "No tutorial available? Don't hesitate to make your own and share your knowledge!"
   },
   "patternresearchpage": {
-    "no-pattern-available": "Oups, no pattern available !"
+    "no-pattern-available": "Oups, no pattern available !",
+    "research-placeholder": "Research by pattern title, brand ...",
+    "select-brand": "Select a brand"
   },
   "burgermenu": {
     "homepage": "Homepage",
@@ -69,10 +69,10 @@
     "success": "Message sent, thank you ! ",
     "error": "The message could not be sent, please try again later !"
   },
-  "bonus":{
-    "tooltip" : "Earn a bonus for each published tutorial, and win gifts from our partners!"
+  "bonus": {
+    "tooltip": "Earn a bonus for each published tutorial, and win gifts from our partners!"
   },
-  "loader-mini":{
+  "loader-mini": {
     "mention": "One moment, we recover the list of patterns!"
   }
 }

@@ -39,9 +39,6 @@ import { useMeta } from "vue-meta";
 export default {
   components: { ChipMenu, StepByStepContainer },
   name: "PatternPage",
-  setup() {
-    useMeta({ title: "Patron de couture", content : "Sewciety propose le détail d'un patron dans lequel vous retrouverez son descriptif ainsi que les tutoriels couture disponibles." });
-  },
   data() {
     return {
       pattern: "",
@@ -54,6 +51,11 @@ export default {
     this.emitter.emit("displayLoader");
     this.fetchPatternData();
     this.displayedComponent = "Patron";
+    useMeta({
+      title: `Tutoriel couture du patron ${this.pattern.name}, marque ${this.pattern.brand}`,
+      content:
+        "Sewciety propose le détail d'un patron dans lequel vous retrouverez son descriptif ainsi que les tutoriels couture disponibles.",
+    });
   },
   methods: {
     fetchPatternData() {
