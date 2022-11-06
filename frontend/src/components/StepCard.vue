@@ -21,7 +21,7 @@
           v-if="!disableTitleEdition"
         />
       </div>
-      <div class="step-card__body">
+      <div class="step-card__body" :class="disableImageUpload ? 'step-card__body--disabled' : ''">
         <div class="image">
           <image-input
             v-if="!disableImageUpload"
